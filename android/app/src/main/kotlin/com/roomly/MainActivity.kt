@@ -1,4 +1,4 @@
-package com.voiceRooms.voice_rooms
+package com.roomly
 
 import io.flutter.embedding.android.FlutterActivity
 

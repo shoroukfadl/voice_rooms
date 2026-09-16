@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "492758182833",
+    "project_id": "voice-rooms-b001f",
+    "storage_bucket": "voice-rooms-b001f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:492758182833:android:585d53c0fa230228836b90",
+        "android_client_info": {
+          "package_name": "com.voiceRooms.voice_rooms"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBhnB9AYdDwAL9HTHOXU9mFas_oB4dZBo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

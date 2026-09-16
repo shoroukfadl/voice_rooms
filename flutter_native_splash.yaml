@@ -1,0 +1,23 @@
+flutter_native_splash:
+  color: "#F8FAFB"
+  color_dark: "#0D1B24"
+  image:                assets/logo_waveform.gif
+  #image_dark:          assets/splash-invert.png
+
+  fullscreen: true
+
+  #! ANDROID 12+ configuration:
+  android_12:
+    # background color
+    color: "#F8FAFB"
+    color_dark: "#0D1B24"
+
+    image: assets/logo_waveform.gif
+    # image_dark: assets/images/logo/logo-splash2.png
+    icon_background_color: "#111111"
+    # icon_background_color_dark: "#eeeeee"
+
+    # branding:
+    # The branding image dimensions must be 800x320 px.
+    #branding:      assets/dart.png
+    #branding_dark: assets/dart_dark.png

@@ -1,0 +1,119 @@
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:responsive_framework/responsive_framework.dart';
+import 'package:voice_rooms/core/Language/locales.dart';
+
+import '../Core/Theme/theme_colors.dart';
+
+extension StringExtensions on String {
+  String get translate {
+    return tr;
+  }
+}
+
+extension WidgetsExtensions on Widget {
+  Widget align(AlignmentDirectional position) => Align(
+        alignment: position,
+        child: this,
+      );
+
+  Widget get expand => Expanded(child: this);
+
+  Widget get center => Center(child: this);
+
+  Widget expandFlex(int flex) => Expanded(flex: flex, child: this);
+
+  Widget paddingSymmetric({double vertical = 0.0, double horizontal = 0.0}) =>
+      Padding(
+        padding: EdgeInsets.symmetric(
+          vertical: vertical,
+          horizontal: horizontal,
+        ),
+        child: this,
+      );
+
+  Widget paddingAll({double padding = 0.0}) => Padding(
+        padding: EdgeInsets.all(padding),
+        child: this,
+      );
+
+  Widget paddingOnly({
+    double start = 0.0,
+    double end = 0.0,
+    double top = 0.0,
+    double bottom = 0.0,
+  }) =>
+      Padding(
+        padding: EdgeInsetsDirectional.only(
+            start: start, end: end, top: top, bottom: bottom),
+        child: this,
+      );
+}
+
+extension MapExtensions on Map {
+  Map<String, String> dynamicMapToString() {
+    Map<String, String> body = {};
+    forEach((key, value) {
+      if (value is List) {
+        body.addAll(_mapListValueHandler(key, value));
+      } else if (value is Map) {
+        body.addAll(value.dynamicMapToString());
+      } else if (value is DateTime) {
+        body[key] = value.toIso8601String();
+      } else if (value != null) {
+        body[key] = value.toString();
+      }
+    });
+    return body;
+  }
+
+  Map<String, String> _mapListValueHandler(String key, List iterator) {
+    Map<String, String> result = {};
+    for (var item in iterator) {
+      result["$key[${iterator.indexOf(item)}]"] = item.toString();
+    }
+    return result;
+  }
+}
+
+extension DoubleExtensions on double {
+  Widget get heightBox => SizedBox(height: this);
+
+  Widget get widthBox => SizedBox(width: this);
+}
+
+extension LayoutExtensions on BuildContext {
+  double get width => ResponsiveBreakpoints.of(this).screenWidth;
+
+  bool get isLarge => ResponsiveBreakpoints.of(this).isDesktop;
+
+  bool get isMedium => ResponsiveBreakpoints.of(this).isTablet;
+
+  bool get isSmall =>
+      ResponsiveBreakpoints.of(this).isPhone ||
+      ResponsiveBreakpoints.of(this).isMobile;
+
+  double matchedSize(
+      {required double large, required double medium, required double small}) {
+    if (isLarge) {
+      return large;
+    } else if (isMedium)
+      return medium;
+    else
+      return small;
+  }
+}
+
+extension ThemeHelper on BuildContext {
+  AppColors get colors => Theme.of(this).extension<AppColors>()!;
+}
+
+extension DateFormating on DateTime {
+  String get yyyy_MM_dd => DateFormat("yyyy-MM-dd").format(this);
+
+  String get yyyySlashMMSlahdd => DateFormat("yyyy/MM.dd").format(this);
+
+  String get yyyyMM => DateFormat("MMM yyyy").format(this);
+
+  String get yyyy => DateFormat("yyyy").format(this);
+}
