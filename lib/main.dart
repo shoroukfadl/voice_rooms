@@ -1,29 +1,87 @@
+import 'dart:async';
 import 'dart:ui';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:url_strategy/url_strategy.dart';
 import 'package:voice_rooms/Core/Theme/theme_colors.dart';
 import 'package:voice_rooms/core/Language/app_languages.dart';
-import 'package:voice_rooms/core/Language/app_styles.dart';
 import 'package:voice_rooms/core/Language/locales.dart';
 import 'package:voice_rooms/core/Theme/theme_cubit.dart';
 import 'package:voice_rooms/core/Theme/theme_state.dart';
+import 'package:voice_rooms/core/error/errorWidget/custom_error_widget.dart';
+import 'package:voice_rooms/firebase_options.dart';
 import 'package:voice_rooms/utilities/app_themes.dart';
 import 'package:voice_rooms/utilities/git_it.dart';
+import 'package:voice_rooms/utilities/router_config.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await GitIt.initGitIt();
-  //setPathUrlStrategy();
+  runZonedGuarded(() async {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
 
-  runApp(MultiBlocProvider(providers: [
-    BlocProvider<ThemeCubit>(create: (_) => ThemeCubit()..getCurrentTheme()),
-    BlocProvider<AppLanguage>(create: (_) => AppLanguage()),
-  ], child: const EntryPoint()));
+    await GitIt.initGitIt();
+
+    setPathUrlStrategy();
+
+    FlutterError.onError = (FlutterErrorDetails details) {
+      reportError(
+        details.exception,
+        details.stack,
+        context: 'FlutterError',
+      );
+
+      FlutterError.presentError(details);
+    };
+
+    ErrorWidget.builder = (FlutterErrorDetails details) {
+      return CustomErrorWidget(
+        errorDetails: details,
+      );
+    };
+
+    PlatformDispatcher.instance.onError = (error, stack) {
+      reportError(
+        error,
+        stack,
+        context: 'PlatformDispatcher',
+      );
+
+      return true;
+    };
+
+    runApp(
+      MultiBlocProvider(
+        providers: [
+          BlocProvider<ThemeCubit>(
+            create: (_) => ThemeCubit()..getCurrentTheme(),
+          ),
+          BlocProvider<AppLanguage>(
+            create: (_) => AppLanguage(),
+          ),
+        ],
+        child: const EntryPoint(),
+      ),
+    );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      FlutterNativeSplash.remove();
+    });
+  }, (error, stack) {
+    reportError(
+      error,
+      stack,
+      context: 'runZonedGuarded',
+    );
+  });
 }
 
 class EntryPoint extends StatefulWidget {
@@ -52,7 +110,7 @@ class _EntryPointState extends State<EntryPoint> {
           isDark: isDark,
         ).copyWith(
           extensions: <ThemeExtension<dynamic>>[
-            isDark ? AppColors.darkValues : AppColors.lightValues,
+            isDark ? AppColors.dark : AppColors.light,
           ],
         );
 
@@ -62,7 +120,7 @@ class _EntryPointState extends State<EntryPoint> {
             const Breakpoint(start: 600, end: 1439, name: TABLET),
             const Breakpoint(start: 1440, end: double.infinity, name: DESKTOP),
           ],
-          child: MaterialApp(
+          child: MaterialApp.router(
             locale: Locale(appLan.appLang.name),
             supportedLocales:
                 Languages.values.map((e) => Locale(e.name)).toList(),
@@ -83,8 +141,7 @@ class _EntryPointState extends State<EntryPoint> {
               );
             },
             scrollBehavior: MyCustomScrollBehavior(),
-            //routerConfig: GoRouterConfig.router,
-            home: const MyHomePage(title: 'title'),
+            routerConfig: GoRouterConfig.router,
             theme: currentTheme,
             themeAnimationCurve: Curves.easeInOut,
             themeAnimationDuration: Duration(milliseconds: 300),
@@ -104,47 +161,4 @@ class MyCustomScrollBehavior extends MaterialScrollBehavior {
         PointerDeviceKind.mouse,
         PointerDeviceKind.trackpad
       };
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            Text('You have pushed the button this many times:',
-                style: AppTextStyles.h1(context: context)),
-            Text('$_counter', style: AppTextStyles.h1(context: context)),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-    );
-  }
 }

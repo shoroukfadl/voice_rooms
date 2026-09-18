@@ -1,10 +1,11 @@
 flutter_native_splash:
   color: "#F8FAFB"
   color_dark: "#0D1B24"
-  image:                assets/logo_waveform.gif
-  #image_dark:          assets/splash-invert.png
-
-  fullscreen: true
+  image:                assets/images/logo.png
+  image_dark:           assets/images/logo.png
+  image_web:            assets/images/logo.png
+  image_dark_web:       assets/images/logo.png
+  fullscreen: false
 
   #! ANDROID 12+ configuration:
   android_12:
@@ -12,10 +13,10 @@ flutter_native_splash:
     color: "#F8FAFB"
     color_dark: "#0D1B24"
 
-    image: assets/logo_waveform.gif
-    # image_dark: assets/images/logo/logo-splash2.png
-    icon_background_color: "#111111"
-    # icon_background_color_dark: "#eeeeee"
+    image: assets/images/logo.png
+    image_dark: assets/images/logo.png
+    icon_background_color: "#FFFFFF"
+    icon_background_color_dark: "#000000"
 
     # branding:
     # The branding image dimensions must be 800x320 px.

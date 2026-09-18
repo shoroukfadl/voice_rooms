@@ -4,7 +4,7 @@ import '../Core/Theme/theme_colors.dart';
 
 class AppThemes {
   static ThemeData createTheme({required bool isArabic, required bool isDark}) {
-    final colorExt = isDark ? AppColors.darkValues : AppColors.lightValues;
+    final colorExt = isDark ? AppColors.dark : AppColors.light;
 
     return ThemeData(
       brightness: isDark ? Brightness.dark : Brightness.light,

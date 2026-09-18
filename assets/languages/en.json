@@ -3,10 +3,8 @@
   "join": "Join",
   "continueButton": "Continue",
   "cancel": "Cancel",
-
   "onboardingTitle": "Talk. Listen. Think out loud.",
   "onboardingSubtitle": "Join live audio rooms with developers around you, with an AI recap so you never miss a thread.",
-
   "signupTitle": "Create your account",
   "signupSubtitle": "Use your email to get started.",
   "fullNameLabel": "Full name",
@@ -14,11 +12,9 @@
   "passwordLabel": "Password",
   "createAccountButton": "Create account",
   "orContinueWith": "or continue with",
-
   "homeTitle": "Rooms for you",
   "homeEmptyStateText": "Nothing planned tonight? Host one.",
   "newRoomButton": "New room",
-
   "exploreTitle": "Explore",
   "exploreSearchPlaceholder": "Search rooms, topics, people",
   "filterForYou": "For you",
@@ -26,7 +22,6 @@
   "filterAiAndMl": "AI & ML",
   "filterStartups": "Startups",
   "filterDesign": "Design",
-
   "createRoomScreenTitle": "New room",
   "roomTitleLabel": "Room title",
   "roomTitlePlaceholder": "Weekly Flutter Q&A",
@@ -37,19 +32,16 @@
   "publicRoomToggleTitle": "Public room",
   "publicRoomToggleSubtitle": "Anyone can find and join",
   "goLiveButton": "Go live",
-
   "speakersLabel": "Speakers",
   "listenersLabel": "Listeners",
   "listeningAndSpeaking": "{listeners} listening · {speakers} speaking",
   "aiSummaryReady": "AI summary ready for the last {minutes} min",
-
   "summaryScreenTitle": "Room summary",
   "keyPointsLabel": "Key points",
   "topicsCoveredLabel": "Topics covered",
   "mentionedLinksLabel": "Mentioned links",
   "shareSummaryButton": "Share summary",
   "lastMinutesDuration": "last {minutes} min",
-
   "notificationsTitle": "Notifications",
   "roomWentLive": "{roomName} just went live",
   "summaryReady": "Your AI summary for {roomName} is ready",
@@ -57,13 +49,11 @@
   "roomStartingSoon": "{roomName} starts in {time}",
   "minutesAgo": "{count} min ago",
   "yesterday": "Yesterday",
-
   "roomsHostedLabel": "Rooms hosted",
   "followersLabel": "Followers",
   "followingLabel": "Following",
   "pastRoomsLabel": "Past rooms",
   "listenersCountAndTime": "{count} listeners · {time}",
-
   "settingsTitle": "Settings",
   "accountSection": "Account",
   "editProfile": "Edit profile",
@@ -73,5 +63,14 @@
   "aiSummaryPreferences": "AI summary preferences",
   "downloadsAndStorage": "Downloads & storage",
   "aboutSection": "About",
-  "versionLabel": "Version {version}"
+  "versionLabel": "Version {version}",
+
+  "loginTitle": "Welcome back",
+  "loginSubtitle": "Login to keep the conversation going.",
+  "login": "Login",
+  "don'tHaveAccount": "Don't have account ?",
+  "forgotPassword": "Forgot password ?",
+  "signInApple": "Apple",
+  "signInWithGoogle": "Google",
+  "haveAccount": "Have account ?"
 }

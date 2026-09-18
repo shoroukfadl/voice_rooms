@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:universal_html/html.dart' as html;
-import 'package:voice_rooms/mainLayout/main_layout_widget.dart';
+import 'package:voice_rooms/features/boarding/presentation/pages/boarding_screen.dart';
+import 'package:voice_rooms/features/login/presentation/pages/login_screen.dart';
+import 'package:voice_rooms/features/register/presentation/pages/register_screen.dart';
 
 BuildContext? get CURRENT_CONTEXT =>
     GoRouterConfig.router.routerDelegate.navigatorKey.currentContext;
@@ -42,51 +44,63 @@ class GoRouterConfig {
   static GoRouter get router => _router;
   static final GoRouter _router = GoRouter(
     routes: <RouteBase>[
-      // GoRoute(
-      //   name: SplashScreen.routeName,
-      //   path: SplashScreen.routeName,
-      //   redirect: (_, s) {
-      //     SeoHelper.setMetaTags(
-      //       title: "Shorouk Fadl | شروق فضل",
-      //       description:
-      //           "Flutter Developer With Experience in Flutter Framework , Scalable Application [Web , Ios ,Android] ",
-      //     );
-      //     return null;
-      //   },
-      //   pageBuilder: (_, GoRouterState state) {
-      //     return getCustomTransitionPage(
-      //       state: state,
-      //       child: const SplashScreen(),
-      //     );
-      //   },
-      // ),
-      ShellRoute(
-          builder: (context, state, child) {
-            return MainLayoutWidget(
-              currentPath: state.fullPath,
-              child: child,
-            );
-          },
-          routes: [
-            // GoRoute(
-            //   name: HomeView.routeName,
-            //   path: HomeView.routeName,
-            //   redirect: (_, s) {
-            //     SeoHelper.setMetaTags(
-            //       title: "Shorouk Fadl | شروق فضل",
-            //       description:
-            //           "Flutter Developer With Experience in Flutter Framework , Scalable Application [Web , Ios ,Android] ",
-            //     );
-            //     return null;
-            //   },
-            //   pageBuilder: (_, GoRouterState state) {
-            //     return getCustomTransitionPage(
-            //       state: state,
-            //       child: const HomeView(),
-            //     );
-            //   },
-            // )
-          ]),
+      GoRoute(
+        name: BoardingScreen.routeName,
+        path: BoardingScreen.routeName,
+        pageBuilder: (_, GoRouterState state) {
+          return getCustomTransitionPage(
+            state: state,
+            child: const BoardingScreen(),
+          );
+        },
+      ),
+      GoRoute(
+        path: "/${LoginScreen.routeName}",
+        name: LoginScreen.routeName,
+        pageBuilder: (_, GoRouterState state) {
+          return getCustomTransitionPage(
+            state: state,
+            child: const LoginScreen(),
+          );
+        },
+      ),
+      GoRoute(
+        path: "/${RegisterScreen.routeName}",
+        name: RegisterScreen.routeName,
+        pageBuilder: (_, GoRouterState state) {
+          return getCustomTransitionPage(
+            state: state,
+            child: const RegisterScreen(),
+          );
+        },
+      ),
+      // ShellRoute(
+      //     builder: (context, state, child) {
+      //       return MainLayoutWidget(
+      //         currentPath: state.fullPath,
+      //         child: child,
+      //       );
+      //     },
+      //     routes: [
+      //       // GoRoute(
+      //       //   name: HomeView.routeName,
+      //       //   path: HomeView.routeName,
+      //       //   redirect: (_, s) {
+      //       //     SeoHelper.setMetaTags(
+      //       //       title: "Shorouk Fadl | شروق فضل",
+      //       //       description:
+      //       //           "Flutter Developer With Experience in Flutter Framework , Scalable Application [Web , Ios ,Android] ",
+      //       //     );
+      //       //     return null;
+      //       //   },
+      //       //   pageBuilder: (_, GoRouterState state) {
+      //       //     return getCustomTransitionPage(
+      //       //       state: state,
+      //       //       child: const HomeView(),
+      //       //     );
+      //       //   },
+      //       // )
+      //     ]),
     ],
     redirect: (BuildContext context, GoRouterState state) {
       return null;

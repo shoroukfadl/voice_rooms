@@ -3,10 +3,8 @@
   "join": "انضمام",
   "continueButton": "متابعة",
   "cancel": "إلغاء",
-
   "onboardingTitle": "اتكلم. اسمع. فكّر بصوت عالي.",
   "onboardingSubtitle": "انضم لغرف صوتية مباشرة مع مطورين حواليك، مع ملخص ذكاء اصطناعي عشان متفوتش أي حاجة.",
-
   "signupTitle": "أنشئ حسابك",
   "signupSubtitle": "استخدم بريدك الإلكتروني عشان تبدأ.",
   "fullNameLabel": "الاسم بالكامل",
@@ -14,11 +12,9 @@
   "passwordLabel": "كلمة المرور",
   "createAccountButton": "إنشاء حساب",
   "orContinueWith": "أو تابع باستخدام",
-
   "homeTitle": "غرف مقترحة لك",
   "homeEmptyStateText": "مفيش حاجة مجدولة الليلة؟ افتح غرفة.",
   "newRoomButton": "غرفة جديدة",
-
   "exploreTitle": "استكشاف",
   "exploreSearchPlaceholder": "ابحث عن غرف، مواضيع، أشخاص",
   "filterForYou": "لك",
@@ -26,7 +22,6 @@
   "filterAiAndMl": "الذكاء الاصطناعي",
   "filterStartups": "ستارت أب",
   "filterDesign": "تصميم",
-
   "createRoomScreenTitle": "غرفة جديدة",
   "roomTitleLabel": "عنوان الغرفة",
   "roomTitlePlaceholder": "لقاء فلاتر الأسبوعي",
@@ -37,19 +32,16 @@
   "publicRoomToggleTitle": "غرفة عامة",
   "publicRoomToggleSubtitle": "أي حد يقدر يلاقيها وينضم",
   "goLiveButton": "ابدأ البث",
-
   "speakersLabel": "المتحدثون",
   "listenersLabel": "المستمعون",
   "listeningAndSpeaking": "{listeners} بيستمعوا · {speakers} بيتكلموا",
   "aiSummaryReady": "ملخص AI جاهز لآخر {minutes} دقيقة",
-
   "summaryScreenTitle": "ملخص الغرفة",
   "keyPointsLabel": "أهم النقاط",
   "topicsCoveredLabel": "المواضيع اللي اتناقشت",
   "mentionedLinksLabel": "الروابط المذكورة",
   "shareSummaryButton": "مشاركة الملخص",
   "lastMinutesDuration": "آخر {minutes} دقيقة",
-
   "notificationsTitle": "الإشعارات",
   "roomWentLive": "{roomName} بدأت البث دلوقتي",
   "summaryReady": "ملخص AI بتاع {roomName} جاهز",
@@ -57,13 +49,11 @@
   "roomStartingSoon": "{roomName} هتبدأ خلال {time}",
   "minutesAgo": "من {count} دقيقة",
   "yesterday": "إمبارح",
-
   "roomsHostedLabel": "غرف استضفتها",
   "followersLabel": "متابعين",
   "followingLabel": "بتتابع",
   "pastRoomsLabel": "غرف سابقة",
   "listenersCountAndTime": "{count} مستمع · {time}",
-
   "settingsTitle": "الإعدادات",
   "accountSection": "الحساب",
   "editProfile": "تعديل البروفايل",
@@ -73,5 +63,28 @@
   "aiSummaryPreferences": "تفضيلات ملخص AI",
   "downloadsAndStorage": "التنزيلات والتخزين",
   "aboutSection": "عن التطبيق",
-  "versionLabel": "الإصدار {version}"
+  "versionLabel": "الإصدار {version}",
+  "forgotPasswordTitle": "نسيت كلمة المرور؟",
+  "forgotPasswordSubtitle": "متقلقش، اكتب بريدك الإلكتروني وهنبعتلك رابط تعيدها بيه.",
+  "sendResetLinkButton": "إرسال رابط إعادة التعيين",
+  "rememberedPasswordText": "فاكرها؟",
+  "logInLink": "تسجيل الدخول",
+  "resetLinkSentTitle": "افتح بريدك الإلكتروني",
+  "resetLinkSentSubtitle": "بعتنالك رابط إعادة تعيين كلمة المرور على",
+  "didntGetItText": "مستلمتش الإيميل؟",
+  "resendEmailLink": "إعادة إرسال",
+  "backToLogInButton": "رجوع لتسجيل الدخول",
+  "verifyEmailTitle": "أكّد بريدك الإلكتروني",
+  "verifyEmailSubtitle": "اكتب الكود المكوّن من 6 أرقام اللي بعتناه على",
+  "codeExpiresInText": "الكود هينتهي خلال",
+  "resendLink": "إعادة إرسال",
+  "verifyEmailButton": "تأكيد البريد الإلكتروني",
+  "loginTitle": "مرحبا, بعودتك",
+  "loginSubtitle":"قم بتجيل الدخول الان",
+  "login": "تسجيل الدخول",
+  "don'tHaveAccount":"ليس لديك حساب ؟",
+  "forgotPassword": "هل نسيت كلمه السر ؟",
+  "signInApple":"عبر ابل",
+  "signInWithGoogle": "عبر جوجل",
+  "haveAccount": "لديك حساب ؟"
 }

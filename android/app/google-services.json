@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "492758182833",
-    "project_id": "voice-rooms-b001f",
-    "storage_bucket": "voice-rooms-b001f.firebasestorage.app"
+    "project_number": "117406445608",
+    "project_id": "roomly-58cf3",
+    "storage_bucket": "roomly-58cf3.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:492758182833:android:585d53c0fa230228836b90",
+        "mobilesdk_app_id": "1:117406445608:android:1df0f7d8b8cebfb61a851d",
         "android_client_info": {
-          "package_name": "com.voiceRooms.voice_rooms"
+          "package_name": "com.roomly"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBBhnB9AYdDwAL9HTHOXU9mFas_oB4dZBo"
+          "current_key": "AIzaSyCGy07_EGGI6qUgJAG0DlZrNswgu4iyLlM"
         }
       ],
       "services": {

@@ -47,29 +47,28 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAZXG40PfozjIOU06QIVzrrdEudCqFMA80',
-    appId: '1:492758182833:web:8db89cea16e2ac3f836b90',
-    messagingSenderId: '492758182833',
-    projectId: 'voice-rooms-b001f',
-    authDomain: 'voice-rooms-b001f.firebaseapp.com',
-    storageBucket: 'voice-rooms-b001f.firebasestorage.app',
-    measurementId: 'G-73GSCJJGQD',
+    apiKey: 'AIzaSyCzBPlvljBPlMylJNIjsEhEHq_1FenlIRA',
+    appId: '1:117406445608:web:cdadd2e21c4c70941a851d',
+    messagingSenderId: '117406445608',
+    projectId: 'roomly-58cf3',
+    authDomain: 'roomly-58cf3.firebaseapp.com',
+    storageBucket: 'roomly-58cf3.firebasestorage.app',
+    measurementId: 'G-SHRN582P9B',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBBhnB9AYdDwAL9HTHOXU9mFas_oB4dZBo',
-    appId: '1:492758182833:android:585d53c0fa230228836b90',
-    messagingSenderId: '492758182833',
-    projectId: 'voice-rooms-b001f',
-    storageBucket: 'voice-rooms-b001f.firebasestorage.app',
+    apiKey: 'AIzaSyCGy07_EGGI6qUgJAG0DlZrNswgu4iyLlM',
+    appId: '1:117406445608:android:1df0f7d8b8cebfb61a851d',
+    messagingSenderId: '117406445608',
+    projectId: 'roomly-58cf3',
+    storageBucket: 'roomly-58cf3.firebasestorage.app',
   );
-
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyC7MCeQRUkzscv7No_q16b_SIznIdfE8bU',
-    appId: '1:492758182833:ios:9e72b24ee3dfd935836b90',
-    messagingSenderId: '492758182833',
-    projectId: 'voice-rooms-b001f',
-    storageBucket: 'voice-rooms-b001f.firebasestorage.app',
-    iosBundleId: 'com.voiceRooms.voiceRooms',
+    apiKey: 'AIzaSyBuza9kBYQlYQaxfyfbW0zzEre8LgJFhio',
+    appId: '1:117406445608:ios:08333acf8c0771d31a851d',
+    messagingSenderId: '117406445608',
+    projectId: 'roomly-58cf3',
+    storageBucket: 'roomly-58cf3.firebasestorage.app',
+    iosBundleId: 'com.roomly',
   );
 }

@@ -1,7 +1,4 @@
-enum ScreenRoutes {
-  mainScreen,
-  home,
-}
+enum ScreenRoutes { mainScreen, login, register, forgotPassword }
 
 enum RequestStatus { init, loading, success, error }
 

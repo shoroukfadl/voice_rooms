@@ -1,44 +1,8 @@
 import 'package:flutter/material.dart';
 
-@immutable
 class AppColors extends ThemeExtension<AppColors> {
-// ─── Dark Theme (Coral & Teal) ────────────────────────────────────────────
-  static const darkValues = AppColors(
-    background: Color(0xff0D1B24),
-    card: Color(0xff132630),
-    accent: Color(0xff669BBC),
-    accentSoft: Color(0xff1D3441),
-    secondary: Color(0xffC95C60),
-    secondarySoft: Color(0xff3A2427),
-    success: Color(0xff35D45A),
-    warning: Color(0xffFFC44D),
-    danger: Color(0xffE04A55),
-    text1: Color(0xffF1F5F7),
-    text2: Color(0xffC5D0D6),
-    text3: Color(0xff8D9AA3),
-    border: Color(0xff2A3B44),
-  );
-
-// ─── Light Theme (Coral & Teal) ───────────────────────────────────────────
-  static const lightValues = AppColors(
-      background: Color(0xffF8FAFB),
-      card: Color(0xFFFFFFFF),
-      accent: Color(0xff669BBC),
-      accentSoft: Color(0xffe6eff4),
-      secondary: Color(0xff780000),
-      secondarySoft: Color(0xffF8DDDE),
-      success: Color(0xFF0CBE30),
-      warning: Color(0xFFFFB627),
-      danger: Color(0xFFC1121F),
-      text1: Color(0xff003049),
-      text2: Color(0xff3f4661),
-      text3: Color(0xff6d7288),
-      border: Color(0xffe2e3ec));
-
-  // ─── Fields ───────────────────────────────────────────────────────────────
   final Color background;
   final Color card;
-  final Color text3;
   final Color accent;
   final Color accentSoft;
   final Color secondary;
@@ -48,78 +12,108 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color danger;
   final Color text1;
   final Color text2;
+  final Color text3;
   final Color border;
 
   const AppColors({
     required this.background,
     required this.card,
-    required this.text3,
     required this.accent,
     required this.accentSoft,
+    required this.secondary,
+    required this.secondarySoft,
     required this.success,
     required this.warning,
     required this.danger,
     required this.text1,
     required this.text2,
-    required this.secondary,
+    required this.text3,
     required this.border,
-    required this.secondarySoft,
   });
 
-  // ─── Gradient Helpers ─────────────────────────────────────────────────────
+  static const light = AppColors(
+    background: Color(0xffF7F5F0),
+    card: Color(0xFFFFFFFF),
+    accent: Color(0xffE8552F),
+    accentSoft: Color(0xffFCE7DF),
+    secondary: Color(0xff6C5CE7),
+    secondarySoft: Color(0xffEBE8FB),
+    success: Color(0xff1F9D6E),
+    warning: Color(0xFFFFB627),
+    danger: Color(0xFFE5484D),
+    text1: Color(0xff1A1712),
+    text2: Color(0xff6E6A61),
+    text3: Color(0xffA39E92),
+    border: Color(0xffE4E0D6),
+  );
 
-  // ─── copyWith ─────────────────────────────────────────────────────────────
+  static const dark = AppColors(
+    background: Color(0xFF0F1014),
+    card: Color(0xFF1A1B20),
+    accent: Color(0xFFFF7A5A),
+    accentSoft: Color(
+        0xFF311F1E), // solid equivalent of rgba(255,122,90,0.14) on dark bg
+    secondary: Color(0xFF9B8CFF),
+    secondarySoft: Color(
+        0xFF25243A), // solid equivalent of rgba(155,140,255,0.16) on dark bg
+    success: Color(0xFF3FCB93),
+    warning: Color(0xFFFFC247),
+    danger: Color(0xFFFF6369),
+    text1: Color(0xFFF2F0EA),
+    text2: Color(0xFFA8A6A0),
+    text3: Color(0xFF6E6C67),
+    border: Color(0xFF2C2E36),
+  );
+
   @override
   AppColors copyWith({
     Color? background,
-    Color? surface,
-    Color? surfaceElevated,
-    Color? text3,
+    Color? card,
     Color? accent,
     Color? accentSoft,
+    Color? secondary,
+    Color? secondarySoft,
     Color? success,
     Color? warning,
     Color? danger,
-    Color? textPrimary,
-    Color? textSecondary,
-    Color? secondary,
-    Color? secondarySoft,
+    Color? text1,
+    Color? text2,
+    Color? text3,
     Color? border,
   }) {
     return AppColors(
       background: background ?? this.background,
-      card: surface ?? card,
-      text3: text3 ?? this.text3,
+      card: card ?? this.card,
       accent: accent ?? this.accent,
       accentSoft: accentSoft ?? this.accentSoft,
+      secondary: secondary ?? this.secondary,
+      secondarySoft: secondarySoft ?? this.secondarySoft,
       success: success ?? this.success,
       warning: warning ?? this.warning,
       danger: danger ?? this.danger,
-      text1: textPrimary ?? text1,
-      text2: textSecondary ?? text2,
-      secondary: secondary ?? this.secondary,
-      secondarySoft: secondarySoft ?? this.secondarySoft,
+      text1: text1 ?? this.text1,
+      text2: text2 ?? this.text2,
+      text3: text3 ?? this.text3,
       border: border ?? this.border,
     );
   }
 
-  // ─── lerp ─────────────────────────────────────────────────────────────────
   @override
   AppColors lerp(ThemeExtension<AppColors>? other, double t) {
     if (other is! AppColors) return this;
     return AppColors(
       background: Color.lerp(background, other.background, t)!,
       card: Color.lerp(card, other.card, t)!,
-      text3: Color.lerp(text3, other.text3, t)!,
       accent: Color.lerp(accent, other.accent, t)!,
       accentSoft: Color.lerp(accentSoft, other.accentSoft, t)!,
+      secondary: Color.lerp(secondary, other.secondary, t)!,
+      secondarySoft: Color.lerp(secondarySoft, other.secondarySoft, t)!,
       success: Color.lerp(success, other.success, t)!,
       warning: Color.lerp(warning, other.warning, t)!,
       danger: Color.lerp(danger, other.danger, t)!,
       text1: Color.lerp(text1, other.text1, t)!,
       text2: Color.lerp(text2, other.text2, t)!,
-      secondary: Color.lerp(secondary, other.secondary, t)!,
-      secondarySoft: Color.lerp(secondarySoft, other.secondarySoft, t)!,
+      text3: Color.lerp(text3, other.text3, t)!,
       border: Color.lerp(border, other.border, t)!,
     );
   }
