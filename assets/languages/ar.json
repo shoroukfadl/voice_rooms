@@ -85,6 +85,6 @@
   "forgotPassword": "نسيت كلمة المرور؟",
   "signInWithGoogle": "المتابعة بحساب Google",
   "signInApple": "المتابعة بحساب Apple",
-  "dontHaveAccount": "معندكش حساب؟ سجّل دلوقتي",
-  "haveAccount": "عندك حساب بالفعل؟ سجّل دخولك"
+  "dontHaveAccount": "ليس لديك حساب؟",
+  "haveAccount": "لديك حساب بالفعل؟"
 }

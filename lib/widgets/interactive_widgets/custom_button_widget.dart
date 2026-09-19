@@ -68,7 +68,7 @@ class CustomButtonWidget extends StatelessWidget {
       child: AnimatedContainer(
         duration: Duration(milliseconds: 300),
         alignment: Alignment.center,
-        height: height ?? 48.0,
+        height: height ?? 56.0,
         width: width,
         padding: padding,
         decoration: BoxDecoration(

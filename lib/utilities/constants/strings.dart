@@ -84,7 +84,7 @@ class Strings {
   static const String loginTitle = "loginTitle";
   static const String loginSubtitle = "loginSubtitle";
   static const String login = "login";
-  static const String dontHaveAccount = "don'tHaveAccount";
+  static const String dontHaveAccount = "dontHaveAccount";
   static const String forgotPassword = "forgotPassword";
   static const String signInApple = "signInApple";
   static const String signInWithGoogle = "signInWithGoogle";

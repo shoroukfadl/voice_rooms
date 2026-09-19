@@ -8,11 +8,13 @@ class SignInWithApple extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomButtonWidget.outLined(
+    final colors = context.colors;
+    return CustomButtonWidget(
       title: Strings.signInApple.translate,
-      titleColor: Colors.black,
+      titleColor: colors.text1,
       width: double.infinity,
-      borderColor: Colors.black,
+      btnColor: colors.card,
+      borderColor: colors.border,
       onPressed: () async {},
     );
   }

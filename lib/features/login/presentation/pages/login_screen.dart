@@ -70,12 +70,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ],
               )),
-          8.0.heightBox,
           const Align(
             alignment: AlignmentDirectional.centerEnd,
             child: ForgetPasswordButton(),
           ),
-          40.0.heightBox,
+          24.0.heightBox,
           LoginButton(onPress: () {}),
           const SizedBox(height: 40),
           const LoginWithGoogleButton(),

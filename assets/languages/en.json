@@ -85,6 +85,6 @@
   "forgotPassword": "Forgot password?",
   "signInWithGoogle": "Continue with Google",
   "signInApple": "Continue with Apple",
-  "dontHaveAccount": "Don't have an account? Sign up",
-  "haveAccount": "Already have an account? Log in"
+  "dontHaveAccount": "Don't have an account?",
+  "haveAccount": "Already have an account?"
 }

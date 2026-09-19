@@ -45,8 +45,6 @@ class ResendCodeWidgetState extends State<ResendCodeWidget> {
     });
   }
 
-  /// Call this from outside (e.g. via a GlobalKey) if you need to
-  /// reset the countdown without going through the tap handler.
   void restart() => _startTimer();
 
   @override
@@ -87,35 +85,35 @@ class ResendCodeWidgetState extends State<ResendCodeWidget> {
       );
     }
 
-    return Text.rich(
-      TextSpan(
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+      Text.rich(TextSpan(
         style: TextStyle(fontSize: 12, color: colors.text2),
         children: canResend
             ? [
                 TextSpan(
                   text: Strings.resendLink.translate,
                   style:
-                      AppTextStyles.l1(context: context, color: colors.accent),
+                      AppTextStyles.h3(context: context, color: colors.accent),
                   recognizer: TapGestureRecognizer()..onTap = _handleResend,
                 ),
               ]
             : [
                 TextSpan(
-                    text: Strings.codeExpiresInText.translate,
-                    style: TextStyle(fontSize: 12, color: colors.text2)),
+                    text: Strings.codeExpiresInText.translate + '  ',
+                    style: AppTextStyles.h3(
+                        context: context, color: colors.text2)),
                 TextSpan(
                   text: _formatted,
                   style:
-                      AppTextStyles.l1(context: context, color: colors.text2),
-                ),
-                const TextSpan(text: ' · '),
-                TextSpan(
-                  text: Strings.resendLink.translate,
-                  style:
-                      AppTextStyles.l1(context: context, color: colors.text3),
+                      AppTextStyles.h4(context: context, color: colors.text2),
                 ),
               ],
-      ),
-    );
+      )),
+      if (!canResend)
+        Text(
+          Strings.resendLink.translate,
+          style: AppTextStyles.h4(context: context, color: colors.text3),
+        ),
+    ]);
   }
 }

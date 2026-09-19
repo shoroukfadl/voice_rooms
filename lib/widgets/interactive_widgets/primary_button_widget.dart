@@ -15,7 +15,7 @@ class PrimaryButtonWidget extends StatelessWidget {
     final colors = context.colors;
     return HoverWidget(
         builder: (hover) => CustomButtonWidget(
-              height: 48,
+              height: 56,
               title: title,
               onPressed: onTap,
               btnColor: hover ? colors.accentSoft : colors.accent,
