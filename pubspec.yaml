@@ -47,6 +47,7 @@ dependencies:
   flutter_animate: ^4.5.2
   flutter_native_splash: ^2.4.8
   sentry_flutter: ^9.30.0
+  pinput: ^6.0.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

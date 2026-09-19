@@ -79,12 +79,12 @@
   "codeExpiresInText": "الكود هينتهي خلال",
   "resendLink": "إعادة إرسال",
   "verifyEmailButton": "تأكيد البريد الإلكتروني",
-  "loginTitle": "مرحبا, بعودتك",
-  "loginSubtitle":"قم بتجيل الدخول الان",
+  "loginTitle": "أهلاً بيك تاني",
+  "loginSubtitle": "سجّل دخولك عشان تكمل السالفة.",
   "login": "تسجيل الدخول",
-  "don'tHaveAccount":"ليس لديك حساب ؟",
-  "forgotPassword": "هل نسيت كلمه السر ؟",
-  "signInApple":"عبر ابل",
-  "signInWithGoogle": "عبر جوجل",
-  "haveAccount": "لديك حساب ؟"
+  "forgotPassword": "نسيت كلمة المرور؟",
+  "signInWithGoogle": "المتابعة بحساب Google",
+  "signInApple": "المتابعة بحساب Apple",
+  "dontHaveAccount": "معندكش حساب؟ سجّل دلوقتي",
+  "haveAccount": "عندك حساب بالفعل؟ سجّل دخولك"
 }

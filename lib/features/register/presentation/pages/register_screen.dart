@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:voice_rooms/Utilities/Constants/constants.dart';
+import 'package:voice_rooms/features/emailVerification/presentation/pages/email_verification_screen.dart';
 import 'package:voice_rooms/features/register/presentation/widget/have_account.dart';
 import 'package:voice_rooms/features/register/presentation/widget/register_button.dart';
 import 'package:voice_rooms/features/register/presentation/widget/register_header.dart';
@@ -77,7 +79,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ],
               )),
           40.0.heightBox,
-          RegisterButton(onPress: () {}),
+          RegisterButton(onPress: () {
+            context.goNamed(EmailVerificationScreen.routeName);
+          }),
           const SizedBox(height: 24),
           const HaveAccount(),
           const SizedBox(height: 100),

@@ -1,4 +1,10 @@
-enum ScreenRoutes { mainScreen, login, register, forgotPassword }
+enum ScreenRoutes {
+  mainScreen,
+  login,
+  register,
+  forgotPassword,
+  emailVerification
+}
 
 enum RequestStatus { init, loading, success, error }
 

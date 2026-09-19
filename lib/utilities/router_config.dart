@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:voice_rooms/features/boarding/presentation/pages/boarding_screen.dart';
+import 'package:voice_rooms/features/emailVerification/presentation/pages/email_verification_screen.dart';
+import 'package:voice_rooms/features/forgotPassword/presentation/pages/forgot_password_screen.dart';
 import 'package:voice_rooms/features/login/presentation/pages/login_screen.dart';
 import 'package:voice_rooms/features/register/presentation/pages/register_screen.dart';
 
@@ -55,15 +57,26 @@ class GoRouterConfig {
         },
       ),
       GoRoute(
-        path: "/${LoginScreen.routeName}",
-        name: LoginScreen.routeName,
-        pageBuilder: (_, GoRouterState state) {
-          return getCustomTransitionPage(
-            state: state,
-            child: const LoginScreen(),
-          );
-        },
-      ),
+          path: "/${LoginScreen.routeName}",
+          name: LoginScreen.routeName,
+          pageBuilder: (_, GoRouterState state) {
+            return getCustomTransitionPage(
+              state: state,
+              child: const LoginScreen(),
+            );
+          },
+          routes: [
+            GoRoute(
+              path: ForgotPasswordScreen.routeName,
+              name: ForgotPasswordScreen.routeName,
+              pageBuilder: (_, GoRouterState state) {
+                return getCustomTransitionPage(
+                  state: state,
+                  child: const ForgotPasswordScreen(),
+                );
+              },
+            )
+          ]),
       GoRoute(
         path: "/${RegisterScreen.routeName}",
         name: RegisterScreen.routeName,
@@ -71,6 +84,16 @@ class GoRouterConfig {
           return getCustomTransitionPage(
             state: state,
             child: const RegisterScreen(),
+          );
+        },
+      ),
+      GoRoute(
+        path: "/${EmailVerificationScreen.routeName}",
+        name: EmailVerificationScreen.routeName,
+        pageBuilder: (_, GoRouterState state) {
+          return getCustomTransitionPage(
+            state: state,
+            child: const EmailVerificationScreen(),
           );
         },
       ),
