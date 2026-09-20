@@ -82,7 +82,7 @@ class CustomButtonWidget extends StatelessWidget {
             : child ??
                 Text(
                   title ?? "",
-                  style: AppTextStyles.b1(
+                  style: AppTextStyles.buttonLabelText(
                       context: context, color: titleColor ?? colors.text1),
                 ),
       ),

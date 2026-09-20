@@ -92,27 +92,28 @@ class ResendCodeWidgetState extends State<ResendCodeWidget> {
             ? [
                 TextSpan(
                   text: Strings.resendLink.translate,
-                  style:
-                      AppTextStyles.h3(context: context, color: colors.accent),
+                  style: AppTextStyles.inlineLinkText(
+                      context: context, color: colors.accent),
                   recognizer: TapGestureRecognizer()..onTap = _handleResend,
                 ),
               ]
             : [
                 TextSpan(
                     text: Strings.codeExpiresInText.translate + '  ',
-                    style: AppTextStyles.h3(
+                    style: AppTextStyles.inlineLinkText(
                         context: context, color: colors.text2)),
                 TextSpan(
                   text: _formatted,
-                  style:
-                      AppTextStyles.h4(context: context, color: colors.text2),
+                  style: AppTextStyles.inlineLinkText(
+                      context: context, color: colors.text2),
                 ),
               ],
       )),
       if (!canResend)
         Text(
           Strings.resendLink.translate,
-          style: AppTextStyles.h4(context: context, color: colors.text3),
+          style: AppTextStyles.inlineLinkText(
+              context: context, color: colors.text3),
         ),
     ]);
   }

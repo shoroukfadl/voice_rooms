@@ -34,12 +34,14 @@ class BoardingScreen extends StatelessWidget {
           const SizedBox(height: 16),
           Text(
             Strings.onboardingTitle.translate,
-            style: AppTextStyles.h1(context: context, color: colors.text1),
+            style: AppTextStyles.onboardingTitle(
+                context: context, color: colors.text1),
           ),
           const SizedBox(height: 8),
           Text(
             Strings.onboardingSubtitle.translate,
-            style: AppTextStyles.h4(context: context, color: colors.text3),
+            style: AppTextStyles.screenSubtitleText(
+                context: context, color: colors.text3),
           ),
           Spacer(),
           PrimaryButtonWidget(

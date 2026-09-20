@@ -3,7 +3,16 @@ enum ScreenRoutes {
   login,
   register,
   forgotPassword,
-  emailVerification
+  emailVerification,
+  home,
+  explore,
+  newRoom,
+  activeRoom,
+  profile,
+  settings,
+  aiSummary,
+  notifications,
+  downloads
 }
 
 enum RequestStatus { init, loading, success, error }

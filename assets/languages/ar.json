@@ -86,5 +86,15 @@
   "signInWithGoogle": "المتابعة بحساب Google",
   "signInApple": "المتابعة بحساب Apple",
   "dontHaveAccount": "ليس لديك حساب؟",
-  "haveAccount": "لديك حساب بالفعل؟"
+  "haveAccount": "لديك حساب بالفعل؟",
+  "home": "الرئيسيه",
+  "explore": "استكشف",
+  "profile": "حسابي",
+  "settings": "الاعدادات",
+  "aiSummary": "مساعدي",
+  "notifications": "الاشعارات",
+  "downloads": "التنزيلات",
+  "about": "عن",
+  "version": "نسخه {version}"
+
 }

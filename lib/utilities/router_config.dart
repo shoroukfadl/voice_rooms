@@ -4,8 +4,10 @@ import 'package:universal_html/html.dart' as html;
 import 'package:voice_rooms/features/boarding/presentation/pages/boarding_screen.dart';
 import 'package:voice_rooms/features/emailVerification/presentation/pages/email_verification_screen.dart';
 import 'package:voice_rooms/features/forgotPassword/presentation/pages/forgot_password_screen.dart';
+import 'package:voice_rooms/features/home/presentation/pages/home_screen.dart';
 import 'package:voice_rooms/features/login/presentation/pages/login_screen.dart';
 import 'package:voice_rooms/features/register/presentation/pages/register_screen.dart';
+import 'package:voice_rooms/widgets/mainLayout/main_layout_widget.dart';
 
 BuildContext? get CURRENT_CONTEXT =>
     GoRouterConfig.router.routerDelegate.navigatorKey.currentContext;
@@ -97,33 +99,25 @@ class GoRouterConfig {
           );
         },
       ),
-      // ShellRoute(
-      //     builder: (context, state, child) {
-      //       return MainLayoutWidget(
-      //         currentPath: state.fullPath,
-      //         child: child,
-      //       );
-      //     },
-      //     routes: [
-      //       // GoRoute(
-      //       //   name: HomeView.routeName,
-      //       //   path: HomeView.routeName,
-      //       //   redirect: (_, s) {
-      //       //     SeoHelper.setMetaTags(
-      //       //       title: "Shorouk Fadl | شروق فضل",
-      //       //       description:
-      //       //           "Flutter Developer With Experience in Flutter Framework , Scalable Application [Web , Ios ,Android] ",
-      //       //     );
-      //       //     return null;
-      //       //   },
-      //       //   pageBuilder: (_, GoRouterState state) {
-      //       //     return getCustomTransitionPage(
-      //       //       state: state,
-      //       //       child: const HomeView(),
-      //       //     );
-      //       //   },
-      //       // )
-      //     ]),
+      ShellRoute(
+          builder: (context, state, child) {
+            return MainLayoutWidget(
+              currentPath: state.fullPath,
+              child: child,
+            );
+          },
+          routes: [
+            GoRoute(
+              name: HomeScreen.routeName,
+              path: "/${HomeScreen.routeName}",
+              pageBuilder: (_, GoRouterState state) {
+                return getCustomTransitionPage(
+                  state: state,
+                  child: const HomeScreen(),
+                );
+              },
+            )
+          ]),
     ],
     redirect: (BuildContext context, GoRouterState state) {
       return null;

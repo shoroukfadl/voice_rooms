@@ -7,15 +7,16 @@ import 'package:voice_rooms/widgets/interactive_widgets/custom_button_widget.dar
 class PrimaryButtonWidget extends StatelessWidget {
   final String title;
   final Function() onTap;
+  final double height;
   const PrimaryButtonWidget(
-      {super.key, required this.title, required this.onTap});
+      {super.key, this.height = 56, required this.title, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
     return HoverWidget(
         builder: (hover) => CustomButtonWidget(
-              height: 56,
+              height: height,
               title: title,
               onPressed: onTap,
               btnColor: hover ? colors.accentSoft : colors.accent,

@@ -17,7 +17,8 @@ class DontHaveAccount extends StatelessWidget {
       children: [
         Text(
           Strings.dontHaveAccount.translate,
-          style: AppTextStyles.h4(context: context, color: colors.secondary),
+          style: AppTextStyles.captionText(
+              context: context, color: colors.secondary),
         ),
         InkWell(
           onTap: () {
@@ -25,7 +26,8 @@ class DontHaveAccount extends StatelessWidget {
           },
           child: Text(
             Strings.createAccountButton.translate,
-            style: AppTextStyles.h5(context: context, color: colors.text1)
+            style: AppTextStyles.inlineLinkText(
+                    context: context, color: colors.text1)
                 .copyWith(
               decoration: TextDecoration.underline,
               decorationColor: colors.text1,

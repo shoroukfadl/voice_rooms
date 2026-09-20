@@ -17,7 +17,8 @@ class GoToLogin extends StatelessWidget {
       children: [
         Text(
           Strings.rememberedPasswordText.translate,
-          style: AppTextStyles.h4(context: context, color: colors.text2),
+          style:
+              AppTextStyles.captionText(context: context, color: colors.text2),
         ),
         InkWell(
           onTap: () {
@@ -25,7 +26,8 @@ class GoToLogin extends StatelessWidget {
           },
           child: Text(
             Strings.login.translate,
-            style: AppTextStyles.h5(context: context, color: colors.secondary)
+            style: AppTextStyles.inlineLinkText(
+                    context: context, color: colors.secondary)
                 .copyWith(
               decoration: TextDecoration.underline,
               decorationColor: colors.secondary,

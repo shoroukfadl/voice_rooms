@@ -89,4 +89,13 @@ class Strings {
   static const String signInApple = "signInApple";
   static const String signInWithGoogle = "signInWithGoogle";
   static const String haveAccount = "haveAccount";
+  static const String home = "home";
+  static const String explore = "explore";
+  static const String profile = "profile";
+  static const String settings = "settings";
+  static const String aiSummary = "aiSummary";
+  static const String notifications = "notifications";
+  static const String downloads = "downloads";
+  static const String about = "about";
+  static const String version = "version";
 }

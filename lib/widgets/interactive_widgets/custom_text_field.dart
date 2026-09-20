@@ -51,7 +51,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
         children: [
           Text(
             widget.label,
-            style: AppTextStyles.h2(context: context, color: colors.text2),
+            style: AppTextStyles.fieldLabelText(
+                context: context, color: colors.text2),
           ),
           const SizedBox(height: 8),
           TextFormField(
@@ -70,7 +71,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             cursorErrorColor: colors.danger,
             decoration: InputDecoration(
               hintText: widget.hint,
-              hintStyle: AppTextStyles.l1(
+              hintStyle: AppTextStyles.formAndListText(
                 context: context,
                 color: colors.text3,
               ),

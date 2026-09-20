@@ -24,12 +24,14 @@ class EmailVerificationHeader extends StatelessWidget {
         const SizedBox(height: 16),
         Text(
           Strings.verifyEmailTitle.translate,
-          style: AppTextStyles.h1(context: context, color: colors.text1),
+          style: AppTextStyles.screenSubtitleText(
+              context: context, color: colors.text1),
         ),
         const SizedBox(height: 8),
         Text(
           Strings.verifyEmailSubtitle.translate,
-          style: AppTextStyles.h2(context: context, color: colors.text2),
+          style: AppTextStyles.screenSubtitleText(
+              context: context, color: colors.text2),
         ),
       ],
     );

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:voice_rooms/Utilities/Constants/constants.dart';
+import 'package:voice_rooms/features/home/presentation/pages/home_screen.dart';
 import 'package:voice_rooms/features/login/presentation/widget/dont_have_account.dart';
 import 'package:voice_rooms/features/login/presentation/widget/forget_password_button.dart';
 import 'package:voice_rooms/features/login/presentation/widget/login_button.dart';
@@ -75,7 +77,9 @@ class _LoginScreenState extends State<LoginScreen> {
             child: ForgetPasswordButton(),
           ),
           24.0.heightBox,
-          LoginButton(onPress: () {}),
+          LoginButton(onPress: () {
+            context.goNamed(HomeScreen.routeName);
+          }),
           const SizedBox(height: 40),
           const LoginWithGoogleButton(),
           const SizedBox(height: 24),

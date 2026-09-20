@@ -86,5 +86,14 @@
   "signInWithGoogle": "Continue with Google",
   "signInApple": "Continue with Apple",
   "dontHaveAccount": "Don't have an account?",
-  "haveAccount": "Already have an account?"
+  "haveAccount": "Already have an account?",
+  "home": "Home",
+  "explore": "Explore",
+  "profile": "Profile",
+  "settings": "Settings",
+  "aiSummary": "AI Summary",
+  "notifications": "Notifications",
+  "downloads": "Downloads",
+  "about": "About",
+  "version": "Version {version}"
 }

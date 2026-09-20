@@ -24,12 +24,14 @@ class ForgetPasswordHeader extends StatelessWidget {
         const SizedBox(height: 16),
         Text(
           Strings.forgotPasswordTitle.translate,
-          style: AppTextStyles.h1(context: context, color: colors.text1),
+          style: AppTextStyles.flowScreenTitle(
+              context: context, color: colors.text1),
         ),
         const SizedBox(height: 8),
         Text(
           Strings.forgotPasswordSubtitle.translate,
-          style: AppTextStyles.h2(context: context, color: colors.text2),
+          style: AppTextStyles.screenSubtitleText(
+              context: context, color: colors.text2),
         ),
       ],
     );

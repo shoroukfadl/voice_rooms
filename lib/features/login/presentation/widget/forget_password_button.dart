@@ -22,7 +22,7 @@ class ForgetPasswordButton extends StatelessWidget {
         },
         child: Text(
           Strings.forgotPassword.translate,
-          style: AppTextStyles.l1(
+          style: AppTextStyles.inlineLinkText(
             context: context,
             color: colors.secondary,
           ),

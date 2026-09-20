@@ -33,7 +33,8 @@ class OtpInputField extends StatelessWidget {
     final defaultPinTheme = PinTheme(
       width: 46,
       height: 52,
-      textStyle: AppTextStyles.h3(context: context, color: colors.text1),
+      textStyle:
+          AppTextStyles.otpDigitText(context: context, color: colors.text1),
       decoration: BoxDecoration(
         color: colors.card,
         borderRadius: BorderRadius.circular(10),
