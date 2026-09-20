@@ -95,5 +95,8 @@
   "notifications": "Notifications",
   "downloads": "Downloads",
   "about": "About",
-  "version": "Version {version}"
+  "version": "Version {version}",
+  "addTagTitle": "Pick a suggestion or type your own.",
+  "tagHint": "Type a tag name",
+  "suggestion": "Suggested"
 }

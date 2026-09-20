@@ -95,6 +95,9 @@
   "notifications": "الاشعارات",
   "downloads": "التنزيلات",
   "about": "عن",
-  "version": "نسخه {version}"
+  "version": "نسخه {version}",
+  "addTagTitle":"اختر من الاقتراحات او يمكنك الكتابه بنفسك",
+  "tagHint": "اكتب اسم الtag",
+  "suggestion": "مُقترح"
 
 }

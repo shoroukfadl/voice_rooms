@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:voice_rooms/features/boarding/presentation/pages/boarding_screen.dart';
+import 'package:voice_rooms/features/createRoom/presentation/pages/create_room_screen.dart';
 import 'package:voice_rooms/features/emailVerification/presentation/pages/email_verification_screen.dart';
 import 'package:voice_rooms/features/explore/presentation/pages/explore_screen.dart';
 import 'package:voice_rooms/features/forgotPassword/presentation/pages/forgot_password_screen.dart';
@@ -121,15 +122,26 @@ class GoRouterConfig {
           },
           routes: [
             GoRoute(
-              name: HomeScreen.routeName,
-              path: "/${HomeScreen.routeName}",
-              pageBuilder: (_, GoRouterState state) {
-                return getCustomTransitionPage(
-                  state: state,
-                  child: const HomeScreen(),
-                );
-              },
-            ),
+                name: HomeScreen.routeName,
+                path: "/${HomeScreen.routeName}",
+                pageBuilder: (_, GoRouterState state) {
+                  return getCustomTransitionPage(
+                    state: state,
+                    child: const HomeScreen(),
+                  );
+                },
+                routes: [
+                  GoRoute(
+                    name: CreateRoomScreen.routeName,
+                    path: CreateRoomScreen.routeName,
+                    pageBuilder: (_, GoRouterState state) {
+                      return getCustomTransitionPage(
+                        state: state,
+                        child: const CreateRoomScreen(),
+                      );
+                    },
+                  )
+                ]),
             GoRoute(
               name: ExploreScreen.routeName,
               path: "/${ExploreScreen.routeName}",

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:voice_rooms/Core/Language/app_styles.dart';
 import 'package:voice_rooms/Utilities/Constants/constants.dart';
 import 'package:voice_rooms/Utilities/extensions.dart';
-import 'package:voice_rooms/utilities/roomly.dart';
+import 'package:voice_rooms/widgets/interactive_widgets/switch_button.dart';
 
-class ResultCardWidget extends StatelessWidget {
+class NewRoomFeature extends StatelessWidget {
   final Function() onTap;
-  const ResultCardWidget({super.key, required this.onTap});
+  const NewRoomFeature({super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -16,23 +16,14 @@ class ResultCardWidget extends StatelessWidget {
       borderRadius: BorderRadius.circular(cardRadius),
       child: Container(
         decoration: BoxDecoration(
-          color: colors.surface,
+          color: colors.card,
           border: Border.all(color: colors.border),
           borderRadius: BorderRadius.circular(cardRadius),
         ),
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         child: Row(
+          spacing: 16,
           children: [
-            Container(
-              width: 38,
-              height: 38,
-              decoration: BoxDecoration(
-                color: colors.secondarySoft,
-                shape: BoxShape.circle,
-              ),
-              child: Icon(Roomly.roomly, size: 16, color: colors.secondary),
-            ),
-            const SizedBox(width: 12),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,6 +38,7 @@ class ResultCardWidget extends StatelessWidget {
                 ],
               ),
             ),
+            SwitchButton(active: false, onTap: (value) {}),
           ],
         ),
       ),

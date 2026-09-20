@@ -17,7 +17,7 @@ class ItemBarModel {
   static List<ItemBarModel> items = [
     ItemBarModel(
       title: Strings.home,
-      icon: Roomly.iconsax1,
+      icon: Roomly.roomly,
       routeName: HomeScreen.routeName,
     ),
     ItemBarModel(

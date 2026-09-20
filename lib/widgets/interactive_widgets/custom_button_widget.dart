@@ -75,7 +75,8 @@ class CustomButtonWidget extends StatelessWidget {
           boxShadow: shadow == null ? null : [shadow!],
           borderRadius: BorderRadius.circular(borderRadiusValue ?? cardRadius),
           color: btnColor ?? colors.accent,
-          border: Border.all(color: borderColor ?? Colors.transparent),
+          border:
+              Border.all(color: borderColor ?? Colors.transparent, width: 1.5),
         ),
         child: isLoading
             ? Center(child: SpinKitThreeBounce(color: colors.text2, size: 24.0))

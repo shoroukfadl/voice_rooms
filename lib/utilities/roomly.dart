@@ -13,7 +13,11 @@ class Roomly {
 
   static const String _fontFamily = 'roomly';
 
-  static const IconData iconsax1 = IconData(0xf017, fontFamily: _fontFamily);
+  static const IconData remove = IconData(0xf01f, fontFamily: _fontFamily);
+  static const IconData hand = IconData(0xf01e, fontFamily: _fontFamily);
+  static const IconData muted = IconData(0xf01d, fontFamily: _fontFamily);
+  static const IconData leave = IconData(0xf000, fontFamily: _fontFamily);
+  static const IconData roomly = IconData(0xf017, fontFamily: _fontFamily);
   static const IconData verify = IconData(0xf018, fontFamily: _fontFamily);
   static const IconData forgot = IconData(0xf019, fontFamily: _fontFamily);
   static const IconData create = IconData(0xf01a, fontFamily: _fontFamily);
@@ -28,8 +32,7 @@ class Roomly {
   static const IconData explore = IconData(0xf007, fontFamily: _fontFamily);
   static const IconData search = IconData(0xf008, fontFamily: _fontFamily);
   static const IconData profile = IconData(0xf009, fontFamily: _fontFamily);
-  static const IconData notifications =
-      IconData(0xf00a, fontFamily: _fontFamily);
+  static const IconData notifications = IconData(0xf00a, fontFamily: _fontFamily);
   static const IconData dark = IconData(0xf00b, fontFamily: _fontFamily);
   static const IconData home = IconData(0xf00c, fontFamily: _fontFamily);
   static const IconData google = IconData(0xf00d, fontFamily: _fontFamily);

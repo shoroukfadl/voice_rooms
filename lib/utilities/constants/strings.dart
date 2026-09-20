@@ -98,4 +98,7 @@ class Strings {
   static const String downloads = "downloads";
   static const String about = "about";
   static const String version = "version";
+  static const String addTagTitle = "addTagTitle";
+  static const String tagHint = "tagHint";
+  static const String suggestion = "suggestion";
 }

@@ -29,7 +29,7 @@ class BoardingScreen extends StatelessWidget {
           IconWithBackground(
               background: colors.accentSoft,
               iconColor: colors.accent,
-              icon: Roomly.iconsax1,
+              icon: Roomly.roomly,
               size: 80),
           const SizedBox(height: 16),
           Text(

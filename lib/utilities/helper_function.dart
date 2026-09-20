@@ -32,6 +32,16 @@ abstract class HelperFunctions {
         pageBuilder: (_, __, ___) => contentWidget);
   }
 
+  static Future<void> showCustomBottomSheet(
+      BuildContext context, Widget widget) {
+    return showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        builder: (context) => widget,
+        useSafeArea: true);
+  }
+
   static void showCustomToast(
     BuildContext context, {
     String? message,
