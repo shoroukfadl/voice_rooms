@@ -6,7 +6,7 @@ import 'package:voice_rooms/utilities/roomly.dart';
 
 class CustomTextField extends StatefulWidget {
   final TextEditingController controller;
-  final String label;
+  final String? label;
   final String? hint;
   final bool obscure;
   final IconData? prefixIcon;
@@ -14,16 +14,18 @@ class CustomTextField extends StatefulWidget {
   final String? Function(String?)? validator;
   final double? borderRadius, width;
   final int maxLines;
+  final Function(String)? onChanged;
 
   const CustomTextField({
     super.key,
     this.borderRadius,
     required this.controller,
-    required this.label,
+    this.label,
     this.hint,
     this.width,
     this.obscure = false,
     this.prefixIcon,
+    this.onChanged,
     this.keyboardType = TextInputType.text,
     this.validator,
     this.maxLines = 1,
@@ -49,16 +51,19 @@ class _CustomTextFieldState extends State<CustomTextField> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            widget.label,
-            style: AppTextStyles.fieldLabelText(
-                context: context, color: colors.text2),
-          ),
-          const SizedBox(height: 8),
+          if (widget.label != null) ...[
+            Text(
+              widget.label!,
+              style: AppTextStyles.fieldLabelText(
+                  context: context, color: colors.text2),
+            ),
+            const SizedBox(height: 8),
+          ],
           TextFormField(
             autocorrect: true,
             cursorRadius: Radius.circular(100),
             cursorHeight: 24,
+            onChanged: widget.onChanged,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             onTapOutside: (_) => FocusScope.of(context).unfocus(),
             textInputAction: TextInputAction.next,

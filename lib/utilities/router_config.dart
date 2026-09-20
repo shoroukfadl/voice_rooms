@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:voice_rooms/features/boarding/presentation/pages/boarding_screen.dart';
 import 'package:voice_rooms/features/emailVerification/presentation/pages/email_verification_screen.dart';
+import 'package:voice_rooms/features/explore/presentation/pages/explore_screen.dart';
 import 'package:voice_rooms/features/forgotPassword/presentation/pages/forgot_password_screen.dart';
 import 'package:voice_rooms/features/home/presentation/pages/home_screen.dart';
 import 'package:voice_rooms/features/login/presentation/pages/login_screen.dart';
@@ -128,7 +129,17 @@ class GoRouterConfig {
                   child: const HomeScreen(),
                 );
               },
-            )
+            ),
+            GoRoute(
+              name: ExploreScreen.routeName,
+              path: "/${ExploreScreen.routeName}",
+              pageBuilder: (_, GoRouterState state) {
+                return getCustomTransitionPage(
+                  state: state,
+                  child: const ExploreScreen(),
+                );
+              },
+            ),
           ]),
     ],
     redirect: (BuildContext context, GoRouterState state) {

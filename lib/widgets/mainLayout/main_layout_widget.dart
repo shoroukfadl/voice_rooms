@@ -51,7 +51,9 @@ class _MainLayoutWidgetState extends State<MainLayoutWidget> {
           const SizedBox(width: mobileHozPadding),
         ],
       ),
-      bottomNavigationBar: const BottomNavBarItems(),
+      bottomNavigationBar: BottomNavBarItems(
+        currentPath: widget.currentPath,
+      ),
       //floatingActionButton: CreateNewRoom(),
       body: AnimatedScale(
         scale: scale,

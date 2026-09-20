@@ -65,7 +65,7 @@ abstract class AppTextStyles extends ThemeExtension<AppTextStyles> {
   // notifications ("Notifications")
   static TextStyle screenTitle({Color? color, required BuildContext context}) =>
       secondaryStyle(
-        size: context.matchedSize(large: 24, medium: 20, small: 20),
+        size: context.matchedSize(large: 24, medium: 20, small: 22),
         fontWeight: FontWeight.w600,
         color: color ?? Colors.black,
       );
@@ -174,8 +174,8 @@ abstract class AppTextStyles extends ThemeExtension<AppTextStyles> {
   // topic tags on Create room ("Flutter", "Q&A")
   static TextStyle chipText({Color? color, required BuildContext context}) =>
       secondaryStyle(
-        size: context.matchedSize(large: 13, medium: 12, small: 12),
-        fontWeight: FontWeight.w400,
+        size: context.matchedSize(large: 13, medium: 12, small: 14),
+        fontWeight: FontWeight.w500,
         color: color ?? Colors.black,
       );
 
