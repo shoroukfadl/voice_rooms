@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:voice_rooms/Utilities/Constants/constants.dart';
 import 'package:voice_rooms/features/forgotPassword/presentation/widget/forgot_header.dart';
 import 'package:voice_rooms/features/forgotPassword/presentation/widget/login_widget.dart';
 import 'package:voice_rooms/features/forgotPassword/presentation/widget/reset_password.dart';
+import 'package:voice_rooms/features/resetLink/presentation/pages/reset_link_screen.dart';
 import 'package:voice_rooms/utilities/constants/enums.dart';
 import 'package:voice_rooms/utilities/constants/strings.dart';
 import 'package:voice_rooms/utilities/extensions.dart';
@@ -55,7 +57,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             ),
           ),
           40.0.heightBox,
-          ResetLinkButton(onPress: () {}),
+          ResetLinkButton(onPress: () {
+            context.goNamed(ResetLinkScreen.routeName);
+          }),
           24.0.heightBox,
           const GoToLogin(),
           const SizedBox(height: 100),

@@ -3,6 +3,7 @@ enum ScreenRoutes {
   login,
   register,
   forgotPassword,
+  resetLink,
   emailVerification,
   home,
   explore,

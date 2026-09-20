@@ -7,6 +7,7 @@ import 'package:voice_rooms/features/forgotPassword/presentation/pages/forgot_pa
 import 'package:voice_rooms/features/home/presentation/pages/home_screen.dart';
 import 'package:voice_rooms/features/login/presentation/pages/login_screen.dart';
 import 'package:voice_rooms/features/register/presentation/pages/register_screen.dart';
+import 'package:voice_rooms/features/resetLink/presentation/pages/reset_link_screen.dart';
 import 'package:voice_rooms/widgets/mainLayout/main_layout_widget.dart';
 
 BuildContext? get CURRENT_CONTEXT =>
@@ -69,15 +70,26 @@ class GoRouterConfig {
           },
           routes: [
             GoRoute(
-              path: ForgotPasswordScreen.routeName,
-              name: ForgotPasswordScreen.routeName,
-              pageBuilder: (_, GoRouterState state) {
-                return getCustomTransitionPage(
-                  state: state,
-                  child: const ForgotPasswordScreen(),
-                );
-              },
-            )
+                path: ForgotPasswordScreen.routeName,
+                name: ForgotPasswordScreen.routeName,
+                pageBuilder: (_, GoRouterState state) {
+                  return getCustomTransitionPage(
+                    state: state,
+                    child: const ForgotPasswordScreen(),
+                  );
+                },
+                routes: [
+                  GoRoute(
+                    path: ResetLinkScreen.routeName,
+                    name: ResetLinkScreen.routeName,
+                    pageBuilder: (_, GoRouterState state) {
+                      return getCustomTransitionPage(
+                        state: state,
+                        child: const ResetLinkScreen(),
+                      );
+                    },
+                  ),
+                ])
           ]),
       GoRoute(
         path: "/${RegisterScreen.routeName}",

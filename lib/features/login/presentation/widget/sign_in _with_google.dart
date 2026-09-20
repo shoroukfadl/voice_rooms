@@ -13,7 +13,7 @@ class LoginWithGoogleButton extends StatelessWidget {
       title: Strings.signInWithGoogle.translate,
       titleColor: colors.text1,
       width: double.infinity,
-      btnColor: colors.card,
+      btnColor: colors.surface,
       borderColor: colors.border,
       onPressed: () async {},
     );

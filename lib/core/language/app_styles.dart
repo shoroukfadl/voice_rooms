@@ -7,7 +7,7 @@ abstract class AppTextStyles extends ThemeExtension<AppTextStyles> {
   // ─── Base font families ───────────────────────────────────────────────────
   static TextStyle get baseFamily => GoogleFonts.sora();
 
-  static TextStyle get secondaryFamily => GoogleFonts.manrope();
+  static TextStyle get secondaryFamily => GoogleFonts.inter();
 
   /// -------------------------------- Basic Function -----------------------------------------
   static TextStyle baseStyle(

@@ -13,7 +13,7 @@ class SignInWithApple extends StatelessWidget {
       title: Strings.signInApple.translate,
       titleColor: colors.text1,
       width: double.infinity,
-      btnColor: colors.card,
+      btnColor: colors.surface,
       borderColor: colors.border,
       onPressed: () async {},
     );

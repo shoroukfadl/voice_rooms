@@ -21,7 +21,7 @@ class IconWithBackground extends StatelessWidget {
         borderRadius: BorderRadius.circular(cardRadius),
       ),
       child: Padding(
-        padding: EdgeInsets.all(8),
+        padding: EdgeInsets.all(16),
         child: Icon(
           icon,
           color: iconColor,

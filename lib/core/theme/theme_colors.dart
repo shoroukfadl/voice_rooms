@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class AppColors extends ThemeExtension<AppColors> {
   final Color background;
   final Color card;
+  final Color surface;
   final Color accent;
   final Color accentSoft;
   final Color secondary;
@@ -29,15 +30,17 @@ class AppColors extends ThemeExtension<AppColors> {
     required this.text2,
     required this.text3,
     required this.border,
+    required this.surface,
   });
 
   static const light = AppColors(
     background: Color(0xffF7F5F0),
     card: Color(0xFFFFFFFF),
+    surface: Color(0xFFF0EDE6),
     accent: Color(0xffE8552F),
     accentSoft: Color(0xffFCE7DF),
-    secondary: Color(0xff6C5CE7),
-    secondarySoft: Color(0xffEBE8FB),
+    secondary: Color(0xFF1090A4),
+    secondarySoft: Color(0xffB6E2E9),
     success: Color(0xff1F9D6E),
     warning: Color(0xFFFFB627),
     danger: Color(0xFFE5484D),
@@ -50,12 +53,11 @@ class AppColors extends ThemeExtension<AppColors> {
   static const dark = AppColors(
     background: Color(0xFF0F1014),
     card: Color(0xFF1A1B20),
+    surface: Color(0xFF121316),
     accent: Color(0xFFFF7A5A),
-    accentSoft: Color(
-        0xFF311F1E), // solid equivalent of rgba(255,122,90,0.14) on dark bg
-    secondary: Color(0xFF9B8CFF),
-    secondarySoft: Color(
-        0xFF25243A), // solid equivalent of rgba(155,140,255,0.16) on dark bg
+    accentSoft: Color(0xFF311F1E),
+    secondary: Color(0xFF4DD9E8),
+    secondarySoft: Color(0xFF1B3A40),
     success: Color(0xFF3FCB93),
     warning: Color(0xFFFFC247),
     danger: Color(0xFFFF6369),
@@ -80,6 +82,7 @@ class AppColors extends ThemeExtension<AppColors> {
     Color? text2,
     Color? text3,
     Color? border,
+    Color? surface,
   }) {
     return AppColors(
       background: background ?? this.background,
@@ -95,6 +98,7 @@ class AppColors extends ThemeExtension<AppColors> {
       text2: text2 ?? this.text2,
       text3: text3 ?? this.text3,
       border: border ?? this.border,
+      surface: surface ?? this.surface,
     );
   }
 
@@ -114,6 +118,7 @@ class AppColors extends ThemeExtension<AppColors> {
       text1: Color.lerp(text1, other.text1, t)!,
       text2: Color.lerp(text2, other.text2, t)!,
       text3: Color.lerp(text3, other.text3, t)!,
+      surface: Color.lerp(surface, other.surface, t)!,
       border: Color.lerp(border, other.border, t)!,
     );
   }
