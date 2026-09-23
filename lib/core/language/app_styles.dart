@@ -244,7 +244,7 @@ abstract class AppTextStyles extends ThemeExtension<AppTextStyles> {
   static TextStyle navBarTitleText(
           {Color? color, required BuildContext context}) =>
       baseStyle(
-        size: context.matchedSize(large: 14, medium: 13, small: 14),
+        size: context.matchedSize(large: 14, medium: 13, small: 13),
         fontWeight: FontWeight.w600,
         color: color ?? Colors.black,
       );
