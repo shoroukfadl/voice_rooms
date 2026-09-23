@@ -13,6 +13,8 @@ class Roomly {
 
   static const String _fontFamily = 'roomly';
 
+  static const IconData mic = IconData(0xf021, fontFamily: _fontFamily);
+  static const IconData headPhone = IconData(0xf020, fontFamily: _fontFamily);
   static const IconData remove = IconData(0xf01f, fontFamily: _fontFamily);
   static const IconData hand = IconData(0xf01e, fontFamily: _fontFamily);
   static const IconData muted = IconData(0xf01d, fontFamily: _fontFamily);
@@ -32,7 +34,8 @@ class Roomly {
   static const IconData explore = IconData(0xf007, fontFamily: _fontFamily);
   static const IconData search = IconData(0xf008, fontFamily: _fontFamily);
   static const IconData profile = IconData(0xf009, fontFamily: _fontFamily);
-  static const IconData notifications = IconData(0xf00a, fontFamily: _fontFamily);
+  static const IconData notifications =
+      IconData(0xf00a, fontFamily: _fontFamily);
   static const IconData dark = IconData(0xf00b, fontFamily: _fontFamily);
   static const IconData home = IconData(0xf00c, fontFamily: _fontFamily);
   static const IconData google = IconData(0xf00d, fontFamily: _fontFamily);

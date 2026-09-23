@@ -40,7 +40,7 @@ class AppColors extends ThemeExtension<AppColors> {
     accent: Color(0xffE8552F),
     accentSoft: Color(0xffFCE7DF),
     secondary: Color(0xFF1090A4),
-    secondarySoft: Color(0xffB6E2E9),
+    secondarySoft: Color(0xffD4E9DE),
     success: Color(0xff1F9D6E),
     warning: Color(0xFFFFB627),
     danger: Color(0xFFE5484D),

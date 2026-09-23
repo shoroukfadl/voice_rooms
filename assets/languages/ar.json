@@ -98,6 +98,10 @@
   "version": "نسخه {version}",
   "addTagTitle":"اختر من الاقتراحات او يمكنك الكتابه بنفسك",
   "tagHint": "اكتب اسم الtag",
-  "suggestion": "مُقترح"
+  "suggestion": "مُقترح",
+  "raiseHand": "التلويح",
+  "mute": "كتم",
+  "unmute": "الغاء الكتم",
+  "leave": "المغادره"
 
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:voice_rooms/Utilities/Constants/constants.dart';
 import 'package:voice_rooms/Utilities/extensions.dart';
+import 'package:voice_rooms/features/activeRoom/presentation/pages/active_room_screen.dart';
 import 'package:voice_rooms/features/createRoom/presentation/widget/feature.dart';
 import 'package:voice_rooms/features/createRoom/presentation/widget/header.dart';
 import 'package:voice_rooms/features/createRoom/presentation/widget/tag.dart';
@@ -118,7 +120,9 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
           sliver: SliverToBoxAdapter(
               child: PrimaryButtonWidget(
             title: Strings.goLiveButton.translate,
-            onTap: () {},
+            onTap: () {
+              context.goNamed(ActiveRoomScreen.routeName);
+            },
           )),
         ),
       ],

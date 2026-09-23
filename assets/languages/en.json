@@ -98,5 +98,9 @@
   "version": "Version {version}",
   "addTagTitle": "Pick a suggestion or type your own.",
   "tagHint": "Type a tag name",
-  "suggestion": "Suggested"
+  "suggestion": "Suggested",
+  "raiseHand":"Raise hand",
+  "mute": "Mute",
+  "unmute": "Unmute",
+  "leave": "Leave"
 }

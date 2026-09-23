@@ -101,4 +101,8 @@ class Strings {
   static const String addTagTitle = "addTagTitle";
   static const String tagHint = "tagHint";
   static const String suggestion = "suggestion";
+  static const String raiseHand = "raiseHand";
+  static const String mute = "mute";
+  static const String unmute = "unmute";
+  static const String leave = "leave";
 }

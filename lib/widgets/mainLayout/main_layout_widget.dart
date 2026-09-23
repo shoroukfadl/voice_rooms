@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:voice_rooms/Utilities/Constants/constants.dart';
 import 'package:voice_rooms/utilities/extensions.dart';
-import 'package:voice_rooms/utilities/roomly.dart';
+import 'package:voice_rooms/utilities/router_config.dart';
 import 'package:voice_rooms/widgets/mainLayout/BottomNavBar/bottom_nav_bar_items.dart';
-import 'package:voice_rooms/widgets/mainLayout/appBar/user_widget.dart';
 
 import '../../Utilities/Constants/global_keys.dart';
 
@@ -30,36 +28,23 @@ class _MainLayoutWidgetState extends State<MainLayoutWidget> {
         ? (screenWidth / _designWidth).clamp(0.5, 1.0)
         : 1.0;
 
+    final hideBottomNav =
+        preventedRoutes.contains(widget.currentPath?.replaceAll("/", "") ?? "");
     return Scaffold(
-      key: GlobalKeys.scaffoldKey,
-      backgroundColor: colors.background,
-      appBar: AppBar(
+        key: GlobalKeys.scaffoldKey,
         backgroundColor: colors.background,
-        elevation: 0,
-        leadingWidth: 80,
-        leading: const UserWidget(),
-        actions: [
-          CircleAvatar(
-            radius: 26,
-            backgroundColor: colors.border,
-            child: Icon(
-              Roomly.search,
-              color: colors.text2,
-              size: 24,
-            ),
+        bottomNavigationBar: hideBottomNav
+            ? null
+            : BottomNavBarItems(
+                currentPath: widget.currentPath,
+              ),
+        //floatingActionButton: CreateNewRoom(),
+        body: SafeArea(
+          child: AnimatedScale(
+            scale: scale,
+            duration: const Duration(milliseconds: 400),
+            child: widget.child,
           ),
-          const SizedBox(width: mobileHozPadding),
-        ],
-      ),
-      bottomNavigationBar: BottomNavBarItems(
-        currentPath: widget.currentPath,
-      ),
-      //floatingActionButton: CreateNewRoom(),
-      body: AnimatedScale(
-        scale: scale,
-        duration: const Duration(milliseconds: 400),
-        child: widget.child,
-      ),
-    );
+        ));
   }
 }

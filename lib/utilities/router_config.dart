@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:universal_html/html.dart' as html;
+import 'package:voice_rooms/features/activeRoom/presentation/pages/active_room_screen.dart';
 import 'package:voice_rooms/features/boarding/presentation/pages/boarding_screen.dart';
 import 'package:voice_rooms/features/createRoom/presentation/pages/create_room_screen.dart';
 import 'package:voice_rooms/features/emailVerification/presentation/pages/email_verification_screen.dart';
@@ -10,6 +11,7 @@ import 'package:voice_rooms/features/home/presentation/pages/home_screen.dart';
 import 'package:voice_rooms/features/login/presentation/pages/login_screen.dart';
 import 'package:voice_rooms/features/register/presentation/pages/register_screen.dart';
 import 'package:voice_rooms/features/resetLink/presentation/pages/reset_link_screen.dart';
+import 'package:voice_rooms/utilities/constants/enums.dart';
 import 'package:voice_rooms/widgets/mainLayout/main_layout_widget.dart';
 
 BuildContext? get CURRENT_CONTEXT =>
@@ -152,6 +154,16 @@ class GoRouterConfig {
                 );
               },
             ),
+            GoRoute(
+              name: ActiveRoomScreen.routeName,
+              path: "/${ActiveRoomScreen.routeName}",
+              pageBuilder: (_, GoRouterState state) {
+                return getCustomTransitionPage(
+                  state: state,
+                  child: const ActiveRoomScreen(),
+                );
+              },
+            ),
           ]),
     ],
     redirect: (BuildContext context, GoRouterState state) {
@@ -177,3 +189,5 @@ class GoRouterConfig {
     );
   }
 }
+
+List<String> preventedRoutes = [ScreenRoutes.activeRoom.name];

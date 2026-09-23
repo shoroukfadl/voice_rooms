@@ -113,7 +113,7 @@ abstract class AppTextStyles extends ThemeExtension<AppTextStyles> {
   static TextStyle liveBadgeText(
           {Color? color, required BuildContext context}) =>
       secondaryStyle(
-        size: context.matchedSize(large: 13, medium: 11, small: 12),
+        size: context.matchedSize(large: 13, medium: 11, small: 14),
         fontWeight: FontWeight.w600,
         color: color ?? Colors.black,
       );
