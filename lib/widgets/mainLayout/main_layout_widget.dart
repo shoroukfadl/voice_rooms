@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:voice_rooms/features/activeRoom/presentation/widget/controllers.dart';
+import 'package:voice_rooms/utilities/constants/enums.dart';
 import 'package:voice_rooms/utilities/extensions.dart';
 import 'package:voice_rooms/utilities/router_config.dart';
 import 'package:voice_rooms/widgets/mainLayout/BottomNavBar/bottom_nav_bar_items.dart';
@@ -30,14 +32,23 @@ class _MainLayoutWidgetState extends State<MainLayoutWidget> {
 
     final hideBottomNav =
         preventedRoutes.contains(widget.currentPath?.replaceAll("/", "") ?? "");
+    final activeRoom =
+        widget.currentPath?.replaceAll("/", "") == ScreenRoutes.activeRoom.name;
     return Scaffold(
         key: GlobalKeys.scaffoldKey,
         backgroundColor: colors.background,
-        bottomNavigationBar: hideBottomNav
-            ? null
-            : BottomNavBarItems(
-                currentPath: widget.currentPath,
-              ),
+        bottomNavigationBar: activeRoom
+            ? ActiveRoomControls(
+                isSelfMuted: false,
+                onLeave: () {},
+                onRaiseHand: () {},
+                onToggleMute: () {},
+              )
+            : hideBottomNav
+                ? null
+                : BottomNavBarItems(
+                    currentPath: widget.currentPath,
+                  ),
         //floatingActionButton: CreateNewRoom(),
         body: SafeArea(
           child: AnimatedScale(

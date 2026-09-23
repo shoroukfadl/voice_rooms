@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:voice_rooms/Utilities/Constants/constants.dart';
 import 'package:voice_rooms/features/activeRoom/presentation/widget/ai_summery.dart';
-import 'package:voice_rooms/features/activeRoom/presentation/widget/controllers.dart';
 import 'package:voice_rooms/features/activeRoom/presentation/widget/header.dart';
 import 'package:voice_rooms/features/activeRoom/presentation/widget/listeners_section.dart';
 import 'package:voice_rooms/features/activeRoom/presentation/widget/room_stats_widget.dart';
 import 'package:voice_rooms/features/activeRoom/presentation/widget/speakers/speakers_section.dart';
+import 'package:voice_rooms/features/aiSummary/presentation/pages/ai_summary_screen.dart';
 import 'package:voice_rooms/features/home/presentation/widget/live_badg.dart';
 import 'package:voice_rooms/utilities/constants/enums.dart';
 import 'package:voice_rooms/widgets/mainLayout/screen_layout_widget.dart';
@@ -72,21 +73,13 @@ class _ActiveRoomScreenState extends State<ActiveRoomScreen> {
         SliverPadding(
             padding: EdgeInsetsGeometry.symmetric(horizontal: mobileHozPadding),
             sliver: SliverToBoxAdapter(
-              child: AiSummaryCard(preview: 'AI summary'),
+              child: AiSummaryCard(
+                preview: 'AI summary',
+                onTap: () {
+                  context.goNamed(AiSummaryScreen.routeName);
+                },
+              ),
             )),
-        SliverPadding(
-          padding: EdgeInsetsGeometry.symmetric(horizontal: mobileHozPadding),
-          sliver: SliverToBoxAdapter(
-              child: Align(
-            alignment: Alignment.bottomCenter,
-            child: ActiveRoomControls(
-              isSelfMuted: false,
-              onLeave: () {},
-              onRaiseHand: () {},
-              onToggleMute: () {},
-            ),
-          )),
-        ),
       ],
     );
   }

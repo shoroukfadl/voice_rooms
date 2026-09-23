@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:voice_rooms/Core/Language/app_styles.dart';
 import 'package:voice_rooms/Utilities/extensions.dart';
-import 'package:voice_rooms/features/explore/presentation/widget/filter_bar.dart';
 import 'package:voice_rooms/utilities/constants/strings.dart';
 
-class TopicTags extends StatelessWidget {
-  const TopicTags({super.key});
+class MentionedLinks extends StatelessWidget {
+  const MentionedLinks({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: 8,
       children: [
@@ -19,21 +17,13 @@ class TopicTags extends StatelessWidget {
           style: AppTextStyles.fieldLabelText(
               context: context, color: context.colors.text2),
         ),
-        Wrap(
-          spacing: 8,
-          runSpacing: 8,
-          children: [
-            ...List.generate(
-              3,
-              (i) => FilterChipWidget(
-                onTap: () {},
-                height: 32,
-                label: 'Topic $i',
-                isActive: false,
-              ),
-            ),
-          ],
-        )
+        ...List.generate(
+            3,
+            (index) => Text(
+                  'Link $index',
+                  style: AppTextStyles.inlineLinkText(
+                      context: context, color: context.colors.text3),
+                )),
       ],
     );
   }

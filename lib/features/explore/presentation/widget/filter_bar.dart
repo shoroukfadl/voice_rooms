@@ -30,11 +30,13 @@ class FilterChipWidget extends StatelessWidget {
     required this.label,
     required this.isActive,
     required this.onTap,
+    this.height,
   });
 
   final String label;
   final bool isActive;
   final VoidCallback onTap;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +44,7 @@ class FilterChipWidget extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: AnimatedContainer(
+        height: height,
         duration: const Duration(milliseconds: 150),
         alignment: Alignment.center,
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),

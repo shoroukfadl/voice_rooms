@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:voice_rooms/features/activeRoom/presentation/pages/active_room_screen.dart';
+import 'package:voice_rooms/features/aiSummary/presentation/pages/ai_summary_screen.dart';
 import 'package:voice_rooms/features/boarding/presentation/pages/boarding_screen.dart';
 import 'package:voice_rooms/features/createRoom/presentation/pages/create_room_screen.dart';
 import 'package:voice_rooms/features/emailVerification/presentation/pages/email_verification_screen.dart';
@@ -155,15 +156,26 @@ class GoRouterConfig {
               },
             ),
             GoRoute(
-              name: ActiveRoomScreen.routeName,
-              path: "/${ActiveRoomScreen.routeName}",
-              pageBuilder: (_, GoRouterState state) {
-                return getCustomTransitionPage(
-                  state: state,
-                  child: const ActiveRoomScreen(),
-                );
-              },
-            ),
+                name: ActiveRoomScreen.routeName,
+                path: "/${ActiveRoomScreen.routeName}",
+                pageBuilder: (_, GoRouterState state) {
+                  return getCustomTransitionPage(
+                    state: state,
+                    child: const ActiveRoomScreen(),
+                  );
+                },
+                routes: [
+                  GoRoute(
+                    name: AiSummaryScreen.routeName,
+                    path: AiSummaryScreen.routeName,
+                    pageBuilder: (_, GoRouterState state) {
+                      return getCustomTransitionPage(
+                        state: state,
+                        child: const AiSummaryScreen(),
+                      );
+                    },
+                  )
+                ]),
           ]),
     ],
     redirect: (BuildContext context, GoRouterState state) {
@@ -190,4 +202,7 @@ class GoRouterConfig {
   }
 }
 
-List<String> preventedRoutes = [ScreenRoutes.activeRoom.name];
+List<String> preventedRoutes = [
+  ScreenRoutes.activeRoom.name,
+  ScreenRoutes.aiSummary.name
+];

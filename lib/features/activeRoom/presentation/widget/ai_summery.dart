@@ -32,7 +32,7 @@ class AiSummaryCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Icon(Roomly.ai, size: 16, color: colors.secondary),
-                    Text(Strings.aiSummary.translate,
+                    Text(Strings.aiSummaryToggleTitle.translate,
                         style: AppTextStyles.boldInlineText(
                             context: context, color: colors.secondary)),
                   ],
