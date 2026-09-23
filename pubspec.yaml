@@ -48,6 +48,8 @@ dependencies:
   flutter_native_splash: ^2.4.8
   sentry_flutter: ^9.30.0
   pinput: ^6.0.2
+  cloud_firestore: ^6.10.0
+  hive_flutter: ^1.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

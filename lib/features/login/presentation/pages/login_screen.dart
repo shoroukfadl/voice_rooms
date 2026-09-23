@@ -41,15 +41,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.colors;
     return Scaffold(
-        body: Padding(
-      padding: EdgeInsetsGeometry.symmetric(
-        horizontal: mobileHozPadding,
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        body: SafeArea(
+      minimum: EdgeInsets.symmetric(horizontal: mobileHozPadding, vertical: 40),
+      child: ListView(
         children: [
           const LoginHeader(),
           40.0.heightBox,

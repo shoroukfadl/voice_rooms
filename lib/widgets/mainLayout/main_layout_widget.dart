@@ -51,6 +51,9 @@ class _MainLayoutWidgetState extends State<MainLayoutWidget> {
                   ),
         //floatingActionButton: CreateNewRoom(),
         body: SafeArea(
+          minimum: EdgeInsets.symmetric(
+            vertical: 40,
+          ),
           child: AnimatedScale(
             scale: scale,
             duration: const Duration(milliseconds: 400),

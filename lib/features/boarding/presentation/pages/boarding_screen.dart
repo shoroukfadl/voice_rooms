@@ -17,20 +17,20 @@ class BoardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     return Scaffold(
-        bottomNavigationBar: PrimaryButtonWidget(
-            title: Strings.continueButton.translate,
-            onTap: () {
-              context.goNamed(LoginScreen.routeName);
-            }),
-        body: Padding(
-          padding: EdgeInsetsGeometry.symmetric(
-            horizontal: mobileHozPadding,
-          ),
+        bottomNavigationBar: SafeArea(
+            minimum: EdgeInsets.symmetric(
+                horizontal: mobileHozPadding, vertical: 40),
+            child: PrimaryButtonWidget(
+                title: Strings.continueButton.translate,
+                onTap: () {
+                  context.goNamed(LoginScreen.routeName);
+                })),
+        body: SafeArea(
+          minimum:
+              EdgeInsets.symmetric(horizontal: mobileHozPadding, vertical: 40),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Spacer(),
               IconWithBackground(
                   background: colors.accentSoft,
                   iconColor: colors.accent,
