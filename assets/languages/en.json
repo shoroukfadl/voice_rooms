@@ -102,5 +102,13 @@
   "raiseHand":"Raise hand",
   "mute": "Mute",
   "unmute": "Unmute",
-  "leave": "Leave"
+  "leave": "Leave",
+  "changePassword": "Change password",
+  "removeAccount": "Remove account",
+  "logout": "Logout",
+  "theme": "Theme",
+  "language": "Language",
+  "light": "Light",
+  "dark": "Dark",
+  "system": "System"
 }

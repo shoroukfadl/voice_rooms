@@ -21,6 +21,7 @@ class ResultCardWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(cardRadius),
         ),
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+        margin: EdgeInsetsGeometry.symmetric(horizontal: mobileHozPadding),
         child: Row(
           children: [
             Container(

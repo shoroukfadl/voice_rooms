@@ -13,6 +13,9 @@ class Roomly {
 
   static const String _fontFamily = 'roomly';
 
+  static const IconData system = IconData(0xf023, fontFamily: _fontFamily);
+  static const IconData changePassword =
+      IconData(0xf022, fontFamily: _fontFamily);
   static const IconData mic = IconData(0xf021, fontFamily: _fontFamily);
   static const IconData headPhone = IconData(0xf020, fontFamily: _fontFamily);
   static const IconData remove = IconData(0xf01f, fontFamily: _fontFamily);

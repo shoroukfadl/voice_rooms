@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:voice_rooms/Utilities/Constants/constants.dart';
 import 'package:voice_rooms/features/activeRoom/presentation/widget/ai_summery.dart';
 import 'package:voice_rooms/features/activeRoom/presentation/widget/header.dart';
 import 'package:voice_rooms/features/activeRoom/presentation/widget/listeners_section.dart';
@@ -9,6 +8,8 @@ import 'package:voice_rooms/features/activeRoom/presentation/widget/speakers/spe
 import 'package:voice_rooms/features/aiSummary/presentation/pages/ai_summary_screen.dart';
 import 'package:voice_rooms/features/home/presentation/widget/live_badg.dart';
 import 'package:voice_rooms/utilities/constants/enums.dart';
+import 'package:voice_rooms/utilities/extensions.dart';
+import 'package:voice_rooms/widgets/helper/screen_spacer.dart';
 import 'package:voice_rooms/widgets/mainLayout/screen_layout_widget.dart';
 
 class ActiveRoomScreen extends StatefulWidget {
@@ -24,62 +25,25 @@ class _ActiveRoomScreenState extends State<ActiveRoomScreen> {
   Widget build(BuildContext context) {
     return ScreenLayoutWidget(
       children: [
-        SliverPadding(
-            padding: EdgeInsetsGeometry.symmetric(horizontal: mobileHozPadding),
-            sliver: SliverToBoxAdapter(
-              child: LiveBadg(),
-            )),
-        const SliverToBoxAdapter(
-          child: ActiveRoomHeader(
-            roomName: 'Flutter devs Egypt',
-            subtitle: "Talking about state management",
-          ),
-        ),
-        const SliverToBoxAdapter(
-          child: SizedBox(
-            height: smallSectionSpacing,
-          ),
-        ),
-        SliverPadding(
-            padding: EdgeInsetsGeometry.symmetric(horizontal: mobileHozPadding),
-            sliver: SliverToBoxAdapter(
-              child: RoomStatsRow(
-                  liveMinutes: 20, listenersCount: 10, speakingCount: 2),
-            )),
-        const SliverToBoxAdapter(
-          child: SizedBox(
-            height: smallSectionSpacing,
-          ),
-        ),
-        SliverPadding(
-            padding: EdgeInsetsGeometry.symmetric(horizontal: mobileHozPadding),
-            sliver: SliverToBoxAdapter(
-              child: SpeakersSection(),
-            )),
-        const SliverToBoxAdapter(
-          child: SizedBox(
-            height: smallSectionSpacing,
-          ),
-        ),
-        SliverPadding(
-            padding: EdgeInsetsGeometry.symmetric(horizontal: mobileHozPadding),
-            sliver: SliverToBoxAdapter(
-                child: ListenersSection(listenersCount: 10))),
-        const SliverToBoxAdapter(
-          child: SizedBox(
-            height: smallSectionSpacing,
-          ),
-        ),
-        SliverPadding(
-            padding: EdgeInsetsGeometry.symmetric(horizontal: mobileHozPadding),
-            sliver: SliverToBoxAdapter(
-              child: AiSummaryCard(
-                preview: 'AI summary',
-                onTap: () {
-                  context.goNamed(AiSummaryScreen.routeName);
-                },
-              ),
-            )),
+        LiveBadg().asPaddedSliver(),
+        ActiveRoomHeader(
+          roomName: 'Flutter devs Egypt',
+          subtitle: "Talking about state management",
+        ).asSliver(),
+        ScreenSpacer(),
+        RoomStatsRow(liveMinutes: 20, listenersCount: 10, speakingCount: 2)
+            .asPaddedSliver(),
+        ScreenSpacer(),
+        SpeakersSection().asPaddedSliver(),
+        ScreenSpacer(),
+        ListenersSection(listenersCount: 10).asPaddedSliver(),
+        ScreenSpacer(),
+        AiSummaryCard(
+          preview: 'AI summary',
+          onTap: () {
+            context.goNamed(AiSummaryScreen.routeName);
+          },
+        ).asPaddedSliver(),
       ],
     );
   }

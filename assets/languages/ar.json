@@ -102,6 +102,14 @@
   "raiseHand": "التلويح",
   "mute": "كتم",
   "unmute": "الغاء الكتم",
-  "leave": "المغادره"
+  "leave": "المغادره",
+  "changePassword": "تغيير كلمه المرور",
+  "removeAccount":"حذف الحساب",
+  "logout": "تسجيل الخروج",
+  "theme":"المظهر",
+  "language": "اللغه",
+  "light":"مُضئ",
+  "dark": "مُظلم",
+  "system":"النظام"
 
 }

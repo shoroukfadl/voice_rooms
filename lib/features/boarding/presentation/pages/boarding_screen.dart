@@ -17,41 +17,39 @@ class BoardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     return Scaffold(
+        bottomNavigationBar: PrimaryButtonWidget(
+            title: Strings.continueButton.translate,
+            onTap: () {
+              context.goNamed(LoginScreen.routeName);
+            }),
         body: Padding(
-      padding: EdgeInsetsGeometry.symmetric(
-        horizontal: mobileHozPadding,
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Spacer(),
-          IconWithBackground(
-              background: colors.accentSoft,
-              iconColor: colors.accent,
-              icon: Roomly.roomly,
-              size: 80),
-          const SizedBox(height: 16),
-          Text(
-            Strings.onboardingTitle.translate,
-            style: AppTextStyles.onboardingTitle(
-                context: context, color: colors.text1),
+          padding: EdgeInsetsGeometry.symmetric(
+            horizontal: mobileHozPadding,
           ),
-          const SizedBox(height: 8),
-          Text(
-            Strings.onboardingSubtitle.translate,
-            style: AppTextStyles.screenSubtitleText(
-                context: context, color: colors.text3),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Spacer(),
+              IconWithBackground(
+                  background: colors.accentSoft,
+                  iconColor: colors.accent,
+                  icon: Roomly.roomly,
+                  size: 80),
+              const SizedBox(height: 16),
+              Text(
+                Strings.onboardingTitle.translate,
+                style: AppTextStyles.onboardingTitle(
+                    context: context, color: colors.text1),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                Strings.onboardingSubtitle.translate,
+                style: AppTextStyles.screenSubtitleText(
+                    context: context, color: colors.text3),
+              ),
+            ],
           ),
-          Spacer(),
-          PrimaryButtonWidget(
-              title: Strings.continueButton.translate,
-              onTap: () {
-                context.goNamed(LoginScreen.routeName);
-              }),
-          const SizedBox(height: 40),
-        ],
-      ),
-    ));
+        ));
   }
 }

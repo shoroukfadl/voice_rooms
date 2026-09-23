@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:voice_rooms/Utilities/Constants/constants.dart';
 import 'package:voice_rooms/core/Language/locales.dart';
 
 import '../Core/Theme/theme_colors.dart';
@@ -11,7 +12,27 @@ extension StringExtensions on String {
   }
 }
 
+extension SliverWidgetExtension on Widget {
+  Widget asPaddedSliver() {
+    return SliverPadding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: mobileHozPadding,
+      ),
+      sliver: SliverToBoxAdapter(
+        child: this,
+      ),
+    );
+  }
+
+  Widget asSliver() {
+    return SliverToBoxAdapter(
+      child: this,
+    );
+  }
+}
+
 extension WidgetsExtensions on Widget {
+  /// Widgets
   Widget align(AlignmentDirectional position) => Align(
         alignment: position,
         child: this,

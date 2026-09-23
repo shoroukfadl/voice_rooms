@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:voice_rooms/features/explore/presentation/pages/explore_screen.dart';
 import 'package:voice_rooms/features/home/presentation/pages/home_screen.dart';
 import 'package:voice_rooms/features/notifications/presentation/pages/notification_screen.dart';
+import 'package:voice_rooms/features/profile/presentation/pages/profile_screen.dart';
 import 'package:voice_rooms/utilities/constants/strings.dart';
 import 'package:voice_rooms/utilities/roomly.dart';
 
@@ -34,7 +35,7 @@ class ItemBarModel {
     ItemBarModel(
       title: Strings.profile,
       icon: Roomly.profile,
-      routeName: '',
+      routeName: ProfileScreen.routeName,
     ),
   ];
 }

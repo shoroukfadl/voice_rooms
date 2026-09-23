@@ -105,4 +105,12 @@ class Strings {
   static const String mute = "mute";
   static const String unmute = "unmute";
   static const String leave = "leave";
+  static const String logout = "logout";
+  static const String removeAccount = "removeAccount";
+  static const String changePassword = "changePassword";
+  static const String theme = "theme";
+  static const String language = "language";
+  static const String light = "light";
+  static const String dark = "dark";
+  static const String system = "system";
 }
