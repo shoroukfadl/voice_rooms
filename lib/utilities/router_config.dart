@@ -10,6 +10,7 @@ import 'package:voice_rooms/features/explore/presentation/pages/explore_screen.d
 import 'package:voice_rooms/features/forgotPassword/presentation/pages/forgot_password_screen.dart';
 import 'package:voice_rooms/features/home/presentation/pages/home_screen.dart';
 import 'package:voice_rooms/features/login/presentation/pages/login_screen.dart';
+import 'package:voice_rooms/features/notifications/presentation/pages/notification_screen.dart';
 import 'package:voice_rooms/features/register/presentation/pages/register_screen.dart';
 import 'package:voice_rooms/features/resetLink/presentation/pages/reset_link_screen.dart';
 import 'package:voice_rooms/utilities/constants/enums.dart';
@@ -176,6 +177,16 @@ class GoRouterConfig {
                     },
                   )
                 ]),
+            GoRoute(
+              name: NotificationScreen.routeName,
+              path: "/${NotificationScreen.routeName}",
+              pageBuilder: (_, GoRouterState state) {
+                return getCustomTransitionPage(
+                  state: state,
+                  child: const NotificationScreen(),
+                );
+              },
+            ),
           ]),
     ],
     redirect: (BuildContext context, GoRouterState state) {
