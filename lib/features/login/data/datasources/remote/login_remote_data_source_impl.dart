@@ -16,18 +16,21 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
     required String email,
     required String password,
   }) async {
-    return ExceptionHelper.guard(() async {
+    try {
       final credential = await firebaseAuth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
+
       return Either.right(UserModel.fromFirebaseUser(credential.user!));
-    });
+    } catch (e) {
+      return Either.left(FirebaseExceptionHelper.handle(e));
+    }
   }
 
   @override
   Future<Either<AppException, UserModel>> loginWithGoogle() async {
-    return ExceptionHelper.guard(() async {
+    try {
       final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
       if (googleUser == null) {
         throw AppException(
@@ -48,34 +51,38 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
       final userCredential =
           await firebaseAuth.signInWithCredential(credential);
       return Either.right(UserModel.fromFirebaseUser(userCredential.user!));
-    });
+    } catch (e) {
+      return Either.left(FirebaseExceptionHelper.handle(e));
+    }
   }
 
   @override
   Future<Either<AppException, void>> logout() async {
-    return ExceptionHelper.guard(() async {
-      await firebaseAuth.signOut();
-      await googleSignIn.signOut();
-      return Either.right(null);
-    });
+    await firebaseAuth.signOut();
+    await googleSignIn.signOut();
+    return Either.right(null);
   }
 
   @override
   Future<Either<AppException, UserModel?>> getCurrentUser() async {
-    return ExceptionHelper.guard(() async {
+    try {
       final user = firebaseAuth.currentUser;
       if (user == null) return Either.right(null);
       return Either.right(UserModel.fromFirebaseUser(user));
-    });
+    } catch (e) {
+      return Either.left(FirebaseExceptionHelper.handle(e));
+    }
   }
 
   @override
   Future<Either<AppException, void>> sendPasswordResetEmail({
     required String email,
   }) async {
-    return ExceptionHelper.guard(() async {
+    try {
       await firebaseAuth.sendPasswordResetEmail(email: email);
       return Either.right(null);
-    });
+    } catch (e) {
+      return Either.left(FirebaseExceptionHelper.handle(e));
+    }
   }
 }

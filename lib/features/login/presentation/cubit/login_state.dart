@@ -1,64 +1,35 @@
-import 'package:equatable/equatable.dart';
-import 'package:voice_rooms/features/register/domain/entities/user_entity.dart';
+part of 'login_cubit.dart';
 
-abstract class LoginState extends Equatable {
-  const LoginState();
+class LoginState extends Equatable {
+  final RequestStatus loginStatus;
+  final RequestStatus logoutStatus;
+  final RequestStatus passwordResetStatus;
+  final UserEntity? user;
 
-  @override
-  List<Object?> get props => [];
-}
+  const LoginState({
+    this.loginStatus = const RequestInitial(),
+    this.logoutStatus = const RequestInitial(),
+    this.passwordResetStatus = const RequestInitial(),
+    this.user,
+  });
 
-class LoginInitial extends LoginState {}
-
-class LoginLoading extends LoginState {}
-
-class LoginSuccess extends LoginState {
-  final UserEntity user;
-
-  const LoginSuccess(this.user);
-
-  @override
-  List<Object?> get props => [user];
-}
-
-class LoginFailure extends LoginState {
-  final String message;
-
-  const LoginFailure(this.message);
-
-  @override
-  List<Object?> get props => [message];
-}
-
-class LogoutLoading extends LoginState {}
-
-class LogoutSuccess extends LoginState {}
-
-class LogoutFailure extends LoginState {
-  final String message;
-
-  const LogoutFailure(this.message);
+  LoginState copyWithMethod({
+    RequestStatus? loginStatus,
+    RequestStatus? logoutStatus,
+    RequestStatus? passwordResetStatus,
+    UserEntity? user,
+  }) => LoginState(
+        loginStatus: loginStatus ?? this.loginStatus,
+        logoutStatus: logoutStatus ?? this.logoutStatus,
+        passwordResetStatus: passwordResetStatus ?? this.passwordResetStatus,
+        user: user ?? this.user,
+      );
 
   @override
-  List<Object?> get props => [message];
-}
-
-class PasswordResetLoading extends LoginState {}
-
-class PasswordResetSuccess extends LoginState {
-  final String message;
-
-  const PasswordResetSuccess(this.message);
-
-  @override
-  List<Object?> get props => [message];
-}
-
-class PasswordResetFailure extends LoginState {
-  final String message;
-
-  const PasswordResetFailure(this.message);
-
-  @override
-  List<Object?> get props => [message];
+  List<Object?> get props => [
+        loginStatus,
+        logoutStatus,
+        passwordResetStatus,
+        user,
+      ];
 }

@@ -310,13 +310,4 @@ class ExceptionHelper {
       stackTrace: st,
     );
   }
-
-  /// Wraps any Future and converts errors to AppException automatically
-  static Future<T> guard<T>(Future<T> Function() action) async {
-    try {
-      return await action();
-    } catch (e, st) {
-      throw handle(e, st);
-    }
-  }
 }

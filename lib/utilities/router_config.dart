@@ -12,6 +12,7 @@ import 'package:voice_rooms/features/emailVerification/presentation/pages/email_
 import 'package:voice_rooms/features/explore/presentation/pages/explore_screen.dart';
 import 'package:voice_rooms/features/forgotPassword/presentation/pages/forgot_password_screen.dart';
 import 'package:voice_rooms/features/home/presentation/pages/home_screen.dart';
+import 'package:voice_rooms/features/login/presentation/cubit/login_cubit.dart';
 import 'package:voice_rooms/features/login/presentation/pages/login_screen.dart';
 import 'package:voice_rooms/features/notifications/presentation/pages/notification_screen.dart';
 import 'package:voice_rooms/features/profile/presentation/pages/profile_screen.dart';
@@ -77,7 +78,8 @@ class GoRouterConfig {
           pageBuilder: (_, GoRouterState state) {
             return getCustomTransitionPage(
               state: state,
-              child: const LoginScreen(),
+              child: BlocProvider<LoginCubit>(
+                  create: (c) => sl<LoginCubit>(), child: const LoginScreen()),
             );
           },
           routes: [
