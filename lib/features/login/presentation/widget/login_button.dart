@@ -5,13 +5,15 @@ import 'package:voice_rooms/widgets/interactive_widgets/primary_button_widget.da
 
 class LoginButton extends StatelessWidget {
   final Function() onPress;
-  const LoginButton({super.key, required this.onPress});
+  final bool isLoading;
+  const LoginButton({super.key, required this.onPress, this.isLoading = false});
 
   @override
   Widget build(BuildContext context) {
     return PrimaryButtonWidget(
       title: Strings.login.translate,
       onTap: onPress,
+      loading: isLoading,
     );
   }
 }

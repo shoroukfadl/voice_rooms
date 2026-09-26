@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:universal_html/html.dart' as html;
+import 'package:voice_rooms/features/VerificationLink/presentation/cubit/link_cubit.dart';
+import 'package:voice_rooms/features/VerificationLink/presentation/pages/email_verification_link_screen.dart';
 import 'package:voice_rooms/features/activeRoom/presentation/pages/active_room_screen.dart';
 import 'package:voice_rooms/features/aiSummary/presentation/pages/ai_summary_screen.dart';
 import 'package:voice_rooms/features/boarding/presentation/pages/boarding_screen.dart';
@@ -12,9 +15,11 @@ import 'package:voice_rooms/features/home/presentation/pages/home_screen.dart';
 import 'package:voice_rooms/features/login/presentation/pages/login_screen.dart';
 import 'package:voice_rooms/features/notifications/presentation/pages/notification_screen.dart';
 import 'package:voice_rooms/features/profile/presentation/pages/profile_screen.dart';
+import 'package:voice_rooms/features/register/presentation/cubit/register_cubit.dart';
 import 'package:voice_rooms/features/register/presentation/pages/register_screen.dart';
 import 'package:voice_rooms/features/resetLink/presentation/pages/reset_link_screen.dart';
 import 'package:voice_rooms/utilities/constants/enums.dart';
+import 'package:voice_rooms/utilities/git_it.dart';
 import 'package:voice_rooms/widgets/mainLayout/main_layout_widget.dart';
 
 BuildContext? get CURRENT_CONTEXT =>
@@ -99,15 +104,31 @@ class GoRouterConfig {
                 ])
           ]),
       GoRoute(
-        path: "/${RegisterScreen.routeName}",
-        name: RegisterScreen.routeName,
-        pageBuilder: (_, GoRouterState state) {
-          return getCustomTransitionPage(
-            state: state,
-            child: const RegisterScreen(),
-          );
-        },
-      ),
+          path: "/${RegisterScreen.routeName}",
+          name: RegisterScreen.routeName,
+          pageBuilder: (_, GoRouterState state) {
+            return getCustomTransitionPage(
+              state: state,
+              child: BlocProvider<RegisterCubit>(
+                create: (c) => sl<RegisterCubit>(),
+                child: RegisterScreen(),
+              ),
+            );
+          },
+          routes: [
+            GoRoute(
+              path: EmailVerificationLinkScreen.routeName,
+              name: EmailVerificationLinkScreen.routeName,
+              pageBuilder: (_, GoRouterState state) {
+                return getCustomTransitionPage(
+                  state: state,
+                  child: BlocProvider<LinkCubit>(
+                      create: (c) => sl<LinkCubit>(),
+                      child: EmailVerificationLinkScreen()),
+                );
+              },
+            ),
+          ]),
       GoRoute(
         path: "/${EmailVerificationScreen.routeName}",
         name: EmailVerificationScreen.routeName,

@@ -4,7 +4,8 @@ import 'package:voice_rooms/utilities/constants/strings.dart';
 import 'package:voice_rooms/widgets/interactive_widgets/custom_button_widget.dart';
 
 class LoginWithGoogleButton extends StatelessWidget {
-  const LoginWithGoogleButton({super.key});
+  final Function()? onPressed;
+  const LoginWithGoogleButton({super.key, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class LoginWithGoogleButton extends StatelessWidget {
       width: double.infinity,
       btnColor: colors.surface,
       borderColor: colors.border,
-      onPressed: () async {},
+      onPressed: onPressed ?? () async {},
     );
   }
 }

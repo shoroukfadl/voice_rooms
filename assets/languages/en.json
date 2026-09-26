@@ -110,5 +110,11 @@
   "language": "Language",
   "light": "Light",
   "dark": "Dark",
-  "system": "System"
+  "system": "System",
+  "emailVerificationLink": "Email verification Link Sent to email ",
+  "emailRequired": "Email is required",
+  "invalidEmail": "Please enter a valid email",
+  "passwordRequired": "Password is required",
+  "passwordTooShort": "Password must be at least 6 characters",
+  "loading": "Loading..."
 }

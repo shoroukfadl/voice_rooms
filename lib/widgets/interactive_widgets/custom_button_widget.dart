@@ -79,7 +79,9 @@ class CustomButtonWidget extends StatelessWidget {
               Border.all(color: borderColor ?? Colors.transparent, width: 1.5),
         ),
         child: isLoading
-            ? Center(child: SpinKitThreeBounce(color: colors.text2, size: 24.0))
+            ? Center(
+                child:
+                    SpinKitThreeBounce(color: colors.secondarySoft, size: 24.0))
             : child ??
                 Text(
                   title ?? "",

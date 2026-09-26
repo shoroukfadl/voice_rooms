@@ -1,7 +1,10 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:voice_rooms/utilities/shared_preferences.dart';
+import 'package:voice_rooms/core/localStorage/boxes.dart';
+import 'package:voice_rooms/core/localStorage/hive_helper.dart';
+import 'package:voice_rooms/core/localStorage/hive_manager.dart';
+import 'package:voice_rooms/utilities/git_it.dart';
 
 
 enum Languages { en, ar }
@@ -19,7 +22,10 @@ class AppLanguage extends Cubit<Languages> {
   Languages get appLang => _appLanguage;
 
   Future fetchLocale(BuildContext context) async {
-    if (SharedPref.getLanguage() == null) {
+    final hive = HiveHelper<String>(
+        hiveManager: sl<HiveManager>(), boxName: HiveBox.user);
+    final language = await hive.get('language');
+    if (language == null) {
       _appLanguage = Languages.values.firstWhereOrNull((lang) =>
               View.of(context)
                   .platformDispatcher
@@ -29,7 +35,7 @@ class AppLanguage extends Cubit<Languages> {
           _appLanguage;
     } else {
       _appLanguage = Languages.values
-          .firstWhere((lang) => lang.name == SharedPref.getLanguage());
+          .firstWhere((lang) => lang.name == language);
     }
   }
 
@@ -48,7 +54,9 @@ class AppLanguage extends Cubit<Languages> {
             _appLanguage == Languages.ar ? Languages.en : Languages.ar;
         break;
     }
-    await SharedPref.setLanguage(lang: _appLanguage.name);
+    final hive = HiveHelper<String>(
+        hiveManager: sl<HiveManager>(), boxName: HiveBox.user);
+    await hive.put(key: 'language', value: _appLanguage.name);
     Future.delayed(const Duration(milliseconds: 100)).then((e) {
       emit(state);
     });

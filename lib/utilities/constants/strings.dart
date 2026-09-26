@@ -112,5 +112,6 @@ class Strings {
   static const String language = "language";
   static const String light = "light";
   static const String dark = "dark";
+  static const String emailVerificationLink = "emailVerificationLink";
   static const String system = "system";
 }

@@ -1,7 +1,14 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:go_router/go_router.dart';
 import 'package:voice_rooms/Core/Language/app_styles.dart';
+import 'package:voice_rooms/features/VerificationLink/presentation/cubit/link_cubit.dart';
+import 'package:voice_rooms/features/login/presentation/pages/login_screen.dart';
 import 'package:voice_rooms/utilities/constants/strings.dart';
 import 'package:voice_rooms/utilities/extensions.dart';
+import 'package:voice_rooms/utilities/helper_function.dart';
 
 class ResendEmailWidget extends StatelessWidget {
   const ResendEmailWidget({super.key});
@@ -19,17 +26,31 @@ class ResendEmailWidget extends StatelessWidget {
               AppTextStyles.captionText(context: context, color: colors.text2),
         ),
         InkWell(
-          onTap: () {},
-          child: Text(
-            Strings.resendEmailLink.translate,
-            style: AppTextStyles.inlineLinkText(
-                    context: context, color: colors.secondary)
-                .copyWith(
-              decoration: TextDecoration.underline,
-              decorationColor: colors.secondary,
-            ),
-          ),
-        ),
+            onTap: () async {
+              await context.read<LinkCubit>().link();
+            },
+            child: BlocConsumer<LinkCubit, LinkState>(builder: (c, st) {
+              return st.linkStatus.isLoading
+                  ? Center(
+                      child: SpinKitThreeBounce(
+                          color: colors.secondarySoft, size: 24.0))
+                  : Text(
+                      Strings.resendEmailLink.translate,
+                      style: AppTextStyles.inlineLinkText(
+                              context: context, color: colors.secondary)
+                          .copyWith(
+                        decoration: TextDecoration.underline,
+                        decorationColor: colors.secondary,
+                      ),
+                    );
+            }, listener: (c, s) {
+              if (s.linkStatus.isFailure) {
+                HelperFunctions.showCustomToast(context,
+                    message: s.linkStatus.message, type: ContentType.failure);
+              } else if (s.linkStatus.isSuccess) {
+                context.goNamed(LoginScreen.routeName);
+              }
+            })),
       ],
     );
   }

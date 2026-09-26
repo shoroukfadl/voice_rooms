@@ -5,6 +5,7 @@ enum ScreenRoutes {
   forgotPassword,
   resetLink,
   emailVerification,
+  verifyEmail,
   home,
   explore,
   newRoom,
@@ -16,20 +17,8 @@ enum ScreenRoutes {
   downloads
 }
 
-enum RequestStatus { init, loading, success, error }
+enum AppLanguage { en, ar }
 
-enum PreviewType { mobile, web }
+enum AppThemeMode { light, dark, system }
 
-enum BadgeType { app, web, ecomm, health, enterprise }
-
-enum PlatformType { web, ios, android }
-
-enum HomeSection {
-  about,
-  education,
-  skills,
-  experience,
-  projects,
-  certifications,
-  contact,
-}
+enum AuthProvider { email, google, apple }

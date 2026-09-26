@@ -1,11 +1,3 @@
-// Place fonts/roomly.otf in your fonts/ directory and
-// add the following to your pubspec.yaml
-//
-// flutter:
-//   fonts:
-//    - family: roomly
-//      fonts:
-//       - asset: fonts/roomly.otf
 import 'package:flutter/widgets.dart';
 
 class Roomly {
@@ -13,6 +5,8 @@ class Roomly {
 
   static const String _fontFamily = 'roomly';
 
+  static const IconData emailVerification =
+      IconData(0xf024, fontFamily: _fontFamily);
   static const IconData system = IconData(0xf023, fontFamily: _fontFamily);
   static const IconData changePassword =
       IconData(0xf022, fontFamily: _fontFamily);

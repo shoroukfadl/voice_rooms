@@ -1,46 +1,11 @@
-// ============================================================
-// USER DOCUMENT — Firestore shape
-// Collection: users/{uid}
-// ============================================================
+// lib/features/user/data/models/user_model.dart
 //
-// {
-//   "uid": "9f3a1c2e-8b4d-4a91-9c2f-1e7d5b6a0c33",
-//   "email": "mostafa@email.com",
-//   "emailVerified": true,
-//   "authProvider": "email",              // "email" | "google" | "apple"
-//
-//   "name": "Mostafa Adel",
-//   "username": "mostafa.adel",
-//   "bio": "Flutter engineer. Building Voice Rooms on the side.",
-//   "avatarUrl": "https://.../avatars/9f3a1c2e.jpg",
-//
-//   "stats": {
-//     "roomsHosted": 18,
-//     "followers": 1200,
-//     "following": 96
-//   },
-//
-//   "settings": {
-//     "notificationsEnabled": true,
-//     "aiSummaryEnabled": true,
-//     "twoFactorEnabled": false,
-//     "language": "en",                   // "en" | "ar"
-//     "theme": "system"                   // "light" | "dark" | "system"
-//   },
-//
-//   "presence": {
-//     "isOnline": false,
-//     "currentRoomId": null,
-//     "lastSeenAt": "2026-09-23T10:42:00Z"
-//   },
-//
-//   "fcmTokens": ["dK7f...", "aP2q..."],   // one per device, for push
-//
-//   "createdAt": "2026-06-01T08:15:00Z",
-//   "updatedAt": "2026-09-23T10:42:00Z"
-// }
-//
-// ============================================================
+// Data layer. Enums (AppLanguage, AppThemeMode, AuthProvider) now live in
+// the entity file, so they are no longer declared here.
+
+import 'package:voice_rooms/utilities/constants/enums.dart';
+
+import '../../domain/entities/user_entity.dart';
 
 /// Aggregated counters shown on the Profile screen.
 class UserStats {
@@ -60,11 +25,23 @@ class UserStats {
         following: json['following'] ?? 0,
       );
 
+  factory UserStats.fromEntity(UserStatsEntity entity) => UserStats(
+        roomsHosted: entity.roomsHosted,
+        followers: entity.followers,
+        following: entity.following,
+      );
+
   Map<String, dynamic> toJson() => {
         'roomsHosted': roomsHosted,
         'followers': followers,
         'following': following,
       };
+
+  UserStatsEntity toEntity() => UserStatsEntity(
+        roomsHosted: roomsHosted,
+        followers: followers,
+        following: following,
+      );
 
   UserStats copyWith({int? roomsHosted, int? followers, int? following}) =>
       UserStats(
@@ -73,10 +50,6 @@ class UserStats {
         following: following ?? this.following,
       );
 }
-
-enum AppLanguage { en, ar }
-
-enum AppThemeMode { light, dark, system }
 
 /// Everything set on the Settings screen (notifications, AI summary,
 /// security, language, theme).
@@ -109,6 +82,14 @@ class UserSettings {
         ),
       );
 
+  factory UserSettings.fromEntity(UserSettingsEntity entity) => UserSettings(
+        notificationsEnabled: entity.notificationsEnabled,
+        aiSummaryEnabled: entity.aiSummaryEnabled,
+        twoFactorEnabled: entity.twoFactorEnabled,
+        language: entity.language,
+        theme: entity.theme,
+      );
+
   Map<String, dynamic> toJson() => {
         'notificationsEnabled': notificationsEnabled,
         'aiSummaryEnabled': aiSummaryEnabled,
@@ -116,6 +97,14 @@ class UserSettings {
         'language': language.name,
         'theme': theme.name,
       };
+
+  UserSettingsEntity toEntity() => UserSettingsEntity(
+        notificationsEnabled: notificationsEnabled,
+        aiSummaryEnabled: aiSummaryEnabled,
+        twoFactorEnabled: twoFactorEnabled,
+        language: language,
+        theme: theme,
+      );
 
   UserSettings copyWith({
     bool? notificationsEnabled,
@@ -133,7 +122,7 @@ class UserSettings {
       );
 }
 
-/// Lightweight presence info — who's online and which room they're in,
+/// Lightweight presence info: who's online and which room they're in,
 /// so Home/Explore can show "your friend is live" style hints later.
 class UserPresence {
   const UserPresence({
@@ -154,14 +143,24 @@ class UserPresence {
             : null,
       );
 
+  factory UserPresence.fromEntity(UserPresenceEntity entity) => UserPresence(
+        isOnline: entity.isOnline,
+        currentRoomId: entity.currentRoomId,
+        lastSeenAt: entity.lastSeenAt,
+      );
+
   Map<String, dynamic> toJson() => {
         'isOnline': isOnline,
         'currentRoomId': currentRoomId,
         'lastSeenAt': lastSeenAt?.toIso8601String(),
       };
-}
 
-enum AuthProvider { email, google, apple }
+  UserPresenceEntity toEntity() => UserPresenceEntity(
+        isOnline: isOnline,
+        currentRoomId: currentRoomId,
+        lastSeenAt: lastSeenAt,
+      );
+}
 
 /// The full user document: `users/{uid}` in Firestore.
 class UserModel {
@@ -216,8 +215,42 @@ class UserModel {
         settings: UserSettings.fromJson(json['settings'] ?? {}),
         presence: UserPresence.fromJson(json['presence'] ?? {}),
         fcmTokens: List<String>.from(json['fcmTokens'] ?? []),
-        createdAt: DateTime.parse(json['createdAt']),
-        updatedAt: DateTime.parse(json['updatedAt']),
+        createdAt: json['createdAt'] != null
+            ? DateTime.parse(json['createdAt'])
+            : null,
+        updatedAt: json['updatedAt'] != null
+            ? DateTime.parse(json['updatedAt'])
+            : null,
+      );
+
+  /// Entity -> Model (use before saving to Firestore).
+  factory UserModel.fromEntity(UserEntity entity) => UserModel(
+        uid: entity.uid,
+        email: entity.email,
+        emailVerified: entity.emailVerified,
+        authProvider: entity.authProvider,
+        name: entity.name,
+        username: entity.username,
+        bio: entity.bio,
+        avatarUrl: entity.avatarUrl,
+        stats: UserStats.fromEntity(entity.stats),
+        settings: UserSettings.fromEntity(entity.settings),
+        presence: UserPresence.fromEntity(entity.presence),
+        fcmTokens: entity.fcmTokens,
+        createdAt: entity.createdAt,
+        updatedAt: entity.updatedAt,
+      );
+
+  /// Firebase User -> Model (use after authentication).
+  factory UserModel.fromFirebaseUser(dynamic firebaseUser) => UserModel(
+        uid: firebaseUser.uid,
+        email: firebaseUser.email,
+        emailVerified: firebaseUser.emailVerified,
+        authProvider: AuthProvider.email,
+        name: firebaseUser.displayName,
+        username: firebaseUser.displayName,
+        avatarUrl: firebaseUser.photoURL,
+        createdAt: firebaseUser.metadata?.creationTime,
       );
 
   Map<String, dynamic> toJson() => {
@@ -236,6 +269,23 @@ class UserModel {
         'createdAt': createdAt?.toIso8601String(),
         'updatedAt': updatedAt?.toIso8601String(),
       };
+
+  UserEntity toEntity() => UserEntity(
+        uid: uid ?? '',
+        email: email ?? '',
+        emailVerified: emailVerified,
+        authProvider: authProvider ?? AuthProvider.email,
+        name: name ?? '',
+        username: username ?? '',
+        bio: bio ?? '',
+        avatarUrl: avatarUrl,
+        stats: stats?.toEntity() ?? const UserStatsEntity(),
+        settings: settings?.toEntity() ?? const UserSettingsEntity(),
+        presence: presence?.toEntity() ?? const UserPresenceEntity(),
+        fcmTokens: List<String>.unmodifiable(fcmTokens),
+        createdAt: createdAt,
+        updatedAt: updatedAt,
+      );
 
   UserModel copyWith({
     String? name,
