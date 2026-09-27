@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
-import 'package:voice_rooms/Core/Language/app_styles.dart';
-import 'package:voice_rooms/features/VerificationLink/presentation/cubit/link_cubit.dart';
-import 'package:voice_rooms/features/login/presentation/pages/login_screen.dart';
-import 'package:voice_rooms/utilities/constants/strings.dart';
-import 'package:voice_rooms/utilities/extensions.dart';
-import 'package:voice_rooms/utilities/helper_function.dart';
+import 'package:roomly/Core/Language/app_styles.dart';
+import 'package:roomly/features/VerificationLink/presentation/cubit/link_cubit.dart';
+import 'package:roomly/features/login/presentation/pages/login_screen.dart';
+import 'package:roomly/utilities/constants/strings.dart';
+import 'package:roomly/utilities/extensions.dart';
+import 'package:roomly/utilities/helper_function.dart';
 
 class ResendEmailWidget extends StatelessWidget {
   const ResendEmailWidget({super.key});

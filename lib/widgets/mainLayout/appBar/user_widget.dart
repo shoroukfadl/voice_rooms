@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:voice_rooms/Core/Language/app_styles.dart';
-import 'package:voice_rooms/Utilities/Constants/constants.dart';
-import 'package:voice_rooms/Utilities/extensions.dart';
+import 'package:roomly/Core/Language/app_styles.dart';
+import 'package:roomly/Utilities/Constants/constants.dart';
+import 'package:roomly/Utilities/extensions.dart';
 
 class UserWidget extends StatelessWidget {
   const UserWidget({super.key});

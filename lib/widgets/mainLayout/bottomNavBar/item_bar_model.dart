@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'package:voice_rooms/features/explore/presentation/pages/explore_screen.dart';
-import 'package:voice_rooms/features/home/presentation/pages/home_screen.dart';
-import 'package:voice_rooms/features/notifications/presentation/pages/notification_screen.dart';
-import 'package:voice_rooms/features/profile/presentation/pages/profile_screen.dart';
-import 'package:voice_rooms/utilities/constants/strings.dart';
-import 'package:voice_rooms/utilities/roomly.dart';
+import 'package:roomly/features/explore/presentation/pages/explore_screen.dart';
+import 'package:roomly/features/home/presentation/pages/home_screen.dart';
+import 'package:roomly/features/notifications/presentation/pages/notification_screen.dart';
+import 'package:roomly/features/profile/presentation/pages/profile_screen.dart';
+import 'package:roomly/utilities/constants/strings.dart';
+import 'package:roomly/utilities/roomly.dart';
 
 class ItemBarModel {
   final String title;
@@ -19,7 +19,7 @@ class ItemBarModel {
   static List<ItemBarModel> items = [
     ItemBarModel(
       title: Strings.home,
-      icon: Roomly.roomly,
+      icon: Roomly.home,
       routeName: HomeScreen.routeName,
     ),
     ItemBarModel(

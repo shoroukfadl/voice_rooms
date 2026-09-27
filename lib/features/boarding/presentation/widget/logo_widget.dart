@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:voice_rooms/Utilities/Constants/constants.dart';
-import 'package:voice_rooms/Utilities/extensions.dart';
-import 'package:voice_rooms/generated/assets.dart';
+import 'package:roomly/Utilities/Constants/constants.dart';
+import 'package:roomly/Utilities/extensions.dart';
+import 'package:roomly/generated/assets.dart';
 
 class LogoWidget extends StatelessWidget {
   const LogoWidget({super.key});

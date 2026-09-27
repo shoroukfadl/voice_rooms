@@ -1,6 +1,6 @@
 {
-    "name": "voice_rooms",
-    "short_name": "voice_rooms",
+    "name": "roomly",
+    "short_name": "roomly",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#FFFFFF",

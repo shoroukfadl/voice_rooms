@@ -9,12 +9,14 @@ enum ScreenRoutes {
   home,
   explore,
   newRoom,
-  activeRoom,
+  chat,
   profile,
   settings,
   aiSummary,
   notifications,
-  downloads
+  downloads,
+  contacts,
+  newGroups,
 }
 
 enum AppLanguage { en, ar }

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:voice_rooms/Utilities/Constants/constants.dart';
-import 'package:voice_rooms/features/register/presentation/cubit/register_cubit.dart';
-import 'package:voice_rooms/features/register/presentation/widget/have_account.dart';
-import 'package:voice_rooms/features/register/presentation/widget/register_button.dart';
-import 'package:voice_rooms/features/register/presentation/widget/register_header.dart';
-import 'package:voice_rooms/utilities/constants/enums.dart';
-import 'package:voice_rooms/utilities/constants/strings.dart';
-import 'package:voice_rooms/utilities/extensions.dart';
-import 'package:voice_rooms/utilities/validator.dart';
-import 'package:voice_rooms/widgets/interactive_widgets/custom_text_field.dart';
+import 'package:roomly/Utilities/Constants/constants.dart';
+import 'package:roomly/features/register/presentation/cubit/register_cubit.dart';
+import 'package:roomly/features/register/presentation/widget/have_account.dart';
+import 'package:roomly/features/register/presentation/widget/register_button.dart';
+import 'package:roomly/features/register/presentation/widget/register_header.dart';
+import 'package:roomly/utilities/constants/enums.dart';
+import 'package:roomly/utilities/constants/strings.dart';
+import 'package:roomly/utilities/extensions.dart';
+import 'package:roomly/utilities/validator.dart';
+import 'package:roomly/widgets/interactive_widgets/custom_text_field.dart';
 
 class RegisterScreen extends StatefulWidget {
   static String routeName = ScreenRoutes.register.name;

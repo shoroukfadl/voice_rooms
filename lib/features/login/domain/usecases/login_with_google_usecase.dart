@@ -1,7 +1,7 @@
-import 'package:voice_rooms/core/either.dart';
-import 'package:voice_rooms/core/error/failures.dart';
-import 'package:voice_rooms/features/login/domain/repository/login_repository.dart';
-import 'package:voice_rooms/features/register/domain/entities/user_entity.dart';
+import 'package:roomly/core/either.dart';
+import 'package:roomly/core/error/failures.dart';
+import 'package:roomly/features/login/domain/repository/login_repository.dart';
+import 'package:roomly/features/register/domain/entities/user_entity.dart';
 
 class LoginWithGoogleUseCase {
   final LoginRepository repository;

@@ -1,10 +1,10 @@
-import 'package:voice_rooms/core/error/failures.dart';
-import 'package:voice_rooms/core/localStorage/boxes.dart';
-import 'package:voice_rooms/core/localStorage/hive_helper.dart';
-import 'package:voice_rooms/core/localStorage/hive_manager.dart';
-import 'package:voice_rooms/core/network/custom_either.dart';
-import 'package:voice_rooms/features/register/data/model/user_model.dart';
-import 'package:voice_rooms/utilities/git_it.dart';
+import 'package:roomly/core/error/failures.dart';
+import 'package:roomly/core/localStorage/boxes.dart';
+import 'package:roomly/core/localStorage/hive_helper.dart';
+import 'package:roomly/core/localStorage/hive_manager.dart';
+import 'package:roomly/core/network/custom_either.dart';
+import 'package:roomly/features/register/data/model/user_model.dart';
+import 'package:roomly/utilities/git_it.dart';
 
 import '../local/register_local_data_source.dart';
 

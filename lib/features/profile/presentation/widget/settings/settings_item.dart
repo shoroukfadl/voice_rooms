@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:voice_rooms/Core/Language/app_styles.dart';
-import 'package:voice_rooms/Utilities/extensions.dart';
-import 'package:voice_rooms/widgets/interactive_widgets/segmented_button.dart';
+import 'package:roomly/Core/Language/app_styles.dart';
+import 'package:roomly/Utilities/extensions.dart';
+import 'package:roomly/widgets/interactive_widgets/segmented_button.dart';
 
 class SettingsItem extends StatelessWidget {
   final IconData icon;

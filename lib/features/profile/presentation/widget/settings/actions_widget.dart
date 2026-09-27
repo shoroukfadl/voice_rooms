@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:voice_rooms/Utilities/extensions.dart';
-import 'package:voice_rooms/features/profile/presentation/widget/settings/settings_item.dart';
-import 'package:voice_rooms/utilities/constants/constants.dart';
-import 'package:voice_rooms/utilities/constants/strings.dart';
-import 'package:voice_rooms/utilities/roomly.dart';
+import 'package:roomly/Utilities/extensions.dart';
+import 'package:roomly/features/profile/presentation/widget/settings/settings_item.dart';
+import 'package:roomly/utilities/constants/constants.dart';
+import 'package:roomly/utilities/constants/strings.dart';
+import 'package:roomly/utilities/roomly.dart';
 
 class ActionsCard extends StatelessWidget {
   const ActionsCard({super.key});

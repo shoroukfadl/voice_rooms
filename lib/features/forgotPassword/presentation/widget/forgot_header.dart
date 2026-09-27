@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import 'package:voice_rooms/Core/Language/app_styles.dart';
-import 'package:voice_rooms/Utilities/extensions.dart';
-import 'package:voice_rooms/utilities/constants/strings.dart';
-import 'package:voice_rooms/utilities/roomly.dart';
-import 'package:voice_rooms/widgets/helper/icon_with_background.dart';
+import 'package:roomly/Core/Language/app_styles.dart';
+import 'package:roomly/Utilities/extensions.dart';
+import 'package:roomly/utilities/constants/strings.dart';
+import 'package:roomly/utilities/roomly.dart';
+import 'package:roomly/widgets/helper/icon_with_background.dart';
 
 class ForgetPasswordHeader extends StatelessWidget {
   const ForgetPasswordHeader({

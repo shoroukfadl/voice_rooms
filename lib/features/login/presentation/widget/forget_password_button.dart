@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:voice_rooms/Core/Language/app_styles.dart';
-import 'package:voice_rooms/Utilities/extensions.dart';
-import 'package:voice_rooms/features/forgotPassword/presentation/pages/forgot_password_screen.dart';
-import 'package:voice_rooms/utilities/constants/strings.dart';
-import 'package:voice_rooms/widgets/interactive_widgets/custom_button_widget.dart';
+import 'package:roomly/Core/Language/app_styles.dart';
+import 'package:roomly/Utilities/extensions.dart';
+import 'package:roomly/features/forgotPassword/presentation/pages/forgot_password_screen.dart';
+import 'package:roomly/utilities/constants/strings.dart';
+import 'package:roomly/widgets/interactive_widgets/custom_button_widget.dart';
 
 class ForgetPasswordButton extends StatelessWidget {
   const ForgetPasswordButton({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:voice_rooms/Utilities/extensions.dart';
+import 'package:roomly/Utilities/extensions.dart';
 
 class HozDivider extends StatelessWidget {
   const HozDivider({super.key});

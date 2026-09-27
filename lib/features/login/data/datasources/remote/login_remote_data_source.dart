@@ -1,6 +1,6 @@
-import 'package:voice_rooms/core/either.dart';
-import 'package:voice_rooms/core/error/failures.dart';
-import 'package:voice_rooms/features/register/data/model/user_model.dart';
+import 'package:roomly/core/either.dart';
+import 'package:roomly/core/error/failures.dart';
+import 'package:roomly/features/register/data/model/user_model.dart';
 
 abstract class LoginRemoteDataSource {
   Future<Either<AppException, UserModel>> loginWithEmailPassword({

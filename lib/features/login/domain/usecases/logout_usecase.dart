@@ -1,6 +1,6 @@
-import 'package:voice_rooms/core/either.dart';
-import 'package:voice_rooms/core/error/failures.dart';
-import 'package:voice_rooms/features/login/domain/repository/login_repository.dart';
+import 'package:roomly/core/either.dart';
+import 'package:roomly/core/error/failures.dart';
+import 'package:roomly/features/login/domain/repository/login_repository.dart';
 
 class LogoutUseCase {
   final LoginRepository repository;

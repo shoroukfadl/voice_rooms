@@ -3,7 +3,7 @@
 // Data layer. Enums (AppLanguage, AppThemeMode, AuthProvider) now live in
 // the entity file, so they are no longer declared here.
 
-import 'package:voice_rooms/utilities/constants/enums.dart';
+import 'package:roomly/utilities/constants/enums.dart';
 
 import '../../domain/entities/user_entity.dart';
 

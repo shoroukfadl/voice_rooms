@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:roomly/features/VerificationLink/presentation/cubit/link_cubit.dart';
+import 'package:roomly/features/VerificationLink/presentation/pages/email_verification_link_screen.dart';
+import 'package:roomly/features/aiSummary/presentation/pages/ai_summary_screen.dart';
+import 'package:roomly/features/boarding/presentation/pages/boarding_screen.dart';
+import 'package:roomly/features/chat/presentation/pages/chat_screen.dart';
+import 'package:roomly/features/createChat/presentation/pages/create_room_screen.dart';
+import 'package:roomly/features/emailVerification/presentation/pages/email_verification_screen.dart';
+import 'package:roomly/features/explore/presentation/pages/explore_screen.dart';
+import 'package:roomly/features/forgotPassword/presentation/pages/forgot_password_screen.dart';
+import 'package:roomly/features/home/presentation/pages/home_screen.dart';
+import 'package:roomly/features/login/presentation/cubit/login_cubit.dart';
+import 'package:roomly/features/login/presentation/pages/login_screen.dart';
+import 'package:roomly/features/notifications/presentation/pages/notification_screen.dart';
+import 'package:roomly/features/profile/presentation/pages/profile_screen.dart';
+import 'package:roomly/features/register/presentation/cubit/register_cubit.dart';
+import 'package:roomly/features/register/presentation/pages/register_screen.dart';
+import 'package:roomly/features/resetLink/presentation/pages/reset_link_screen.dart';
+import 'package:roomly/utilities/constants/enums.dart';
+import 'package:roomly/utilities/git_it.dart';
+import 'package:roomly/widgets/mainLayout/main_layout_widget.dart';
 import 'package:universal_html/html.dart' as html;
-import 'package:voice_rooms/features/VerificationLink/presentation/cubit/link_cubit.dart';
-import 'package:voice_rooms/features/VerificationLink/presentation/pages/email_verification_link_screen.dart';
-import 'package:voice_rooms/features/activeRoom/presentation/pages/active_room_screen.dart';
-import 'package:voice_rooms/features/aiSummary/presentation/pages/ai_summary_screen.dart';
-import 'package:voice_rooms/features/boarding/presentation/pages/boarding_screen.dart';
-import 'package:voice_rooms/features/createRoom/presentation/pages/create_room_screen.dart';
-import 'package:voice_rooms/features/emailVerification/presentation/pages/email_verification_screen.dart';
-import 'package:voice_rooms/features/explore/presentation/pages/explore_screen.dart';
-import 'package:voice_rooms/features/forgotPassword/presentation/pages/forgot_password_screen.dart';
-import 'package:voice_rooms/features/home/presentation/pages/home_screen.dart';
-import 'package:voice_rooms/features/login/presentation/cubit/login_cubit.dart';
-import 'package:voice_rooms/features/login/presentation/pages/login_screen.dart';
-import 'package:voice_rooms/features/notifications/presentation/pages/notification_screen.dart';
-import 'package:voice_rooms/features/profile/presentation/pages/profile_screen.dart';
-import 'package:voice_rooms/features/register/presentation/cubit/register_cubit.dart';
-import 'package:voice_rooms/features/register/presentation/pages/register_screen.dart';
-import 'package:voice_rooms/features/resetLink/presentation/pages/reset_link_screen.dart';
-import 'package:voice_rooms/utilities/constants/enums.dart';
-import 'package:voice_rooms/utilities/git_it.dart';
-import 'package:voice_rooms/widgets/mainLayout/main_layout_widget.dart';
 
 BuildContext? get CURRENT_CONTEXT =>
     GoRouterConfig.router.routerDelegate.navigatorKey.currentContext;
@@ -183,12 +183,12 @@ class GoRouterConfig {
               },
             ),
             GoRoute(
-                name: ActiveRoomScreen.routeName,
-                path: "/${ActiveRoomScreen.routeName}",
+                name: ChatScreen.routeName,
+                path: "/${ChatScreen.routeName}",
                 pageBuilder: (_, GoRouterState state) {
                   return getCustomTransitionPage(
                     state: state,
-                    child: const ActiveRoomScreen(),
+                    child: const ChatScreen(),
                   );
                 },
                 routes: [
@@ -250,6 +250,6 @@ class GoRouterConfig {
 }
 
 List<String> preventedRoutes = [
-  ScreenRoutes.activeRoom.name,
+  ScreenRoutes.chat.name,
   ScreenRoutes.aiSummary.name
 ];

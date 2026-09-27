@@ -1,6 +1,6 @@
-import 'package:voice_rooms/core/error/failures.dart';
-import 'package:voice_rooms/core/network/custom_either.dart';
-import 'package:voice_rooms/features/VerificationLink/domain/repository/link_repo.dart';
+import 'package:roomly/core/error/failures.dart';
+import 'package:roomly/core/network/custom_either.dart';
+import 'package:roomly/features/VerificationLink/domain/repository/link_repo.dart';
 
 class LinkUseCase {
   final LinkRep repo;

@@ -1,4 +1,4 @@
-# voice_rooms
+# roomly
 
 Voice Rooms New Flutter App
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:voice_rooms/Core/Language/app_styles.dart';
-import 'package:voice_rooms/Utilities/Constants/constants.dart';
-import 'package:voice_rooms/Utilities/extensions.dart';
-import 'package:voice_rooms/utilities/roomly.dart';
+import 'package:roomly/Core/Language/app_styles.dart';
+import 'package:roomly/Utilities/Constants/constants.dart';
+import 'package:roomly/Utilities/extensions.dart';
+import 'package:roomly/utilities/roomly.dart';
 
 class ResultCardWidget extends StatelessWidget {
   final Function() onTap;

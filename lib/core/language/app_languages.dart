@@ -1,11 +1,10 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:voice_rooms/core/localStorage/boxes.dart';
-import 'package:voice_rooms/core/localStorage/hive_helper.dart';
-import 'package:voice_rooms/core/localStorage/hive_manager.dart';
-import 'package:voice_rooms/utilities/git_it.dart';
-
+import 'package:roomly/core/localStorage/boxes.dart';
+import 'package:roomly/core/localStorage/hive_helper.dart';
+import 'package:roomly/core/localStorage/hive_manager.dart';
+import 'package:roomly/utilities/git_it.dart';
 
 enum Languages { en, ar }
 
@@ -34,8 +33,8 @@ class AppLanguage extends Cubit<Languages> {
                   .contains(lang.name)) ??
           _appLanguage;
     } else {
-      _appLanguage = Languages.values
-          .firstWhere((lang) => lang.name == language);
+      _appLanguage =
+          Languages.values.firstWhere((lang) => lang.name == language);
     }
   }
 

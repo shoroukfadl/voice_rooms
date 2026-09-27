@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:voice_rooms/features/VerificationLink/domain/useCases/link_useCase.dart';
-import 'package:voice_rooms/utilities/request_status.dart';
+import 'package:roomly/features/VerificationLink/domain/useCases/link_useCase.dart';
+import 'package:roomly/utilities/request_status.dart';
 
 part 'link_state.dart';
 

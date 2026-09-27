@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:voice_rooms/Utilities/Constants/constants.dart';
-import 'package:voice_rooms/features/forgotPassword/presentation/widget/forgot_header.dart';
-import 'package:voice_rooms/features/forgotPassword/presentation/widget/login_widget.dart';
-import 'package:voice_rooms/features/forgotPassword/presentation/widget/reset_password.dart';
-import 'package:voice_rooms/features/resetLink/presentation/pages/reset_link_screen.dart';
-import 'package:voice_rooms/utilities/constants/enums.dart';
-import 'package:voice_rooms/utilities/constants/strings.dart';
-import 'package:voice_rooms/utilities/extensions.dart';
-import 'package:voice_rooms/widgets/interactive_widgets/custom_text_field.dart';
+import 'package:roomly/Utilities/Constants/constants.dart';
+import 'package:roomly/features/forgotPassword/presentation/widget/forgot_header.dart';
+import 'package:roomly/features/forgotPassword/presentation/widget/login_widget.dart';
+import 'package:roomly/features/forgotPassword/presentation/widget/reset_password.dart';
+import 'package:roomly/features/resetLink/presentation/pages/reset_link_screen.dart';
+import 'package:roomly/utilities/constants/enums.dart';
+import 'package:roomly/utilities/constants/strings.dart';
+import 'package:roomly/utilities/extensions.dart';
+import 'package:roomly/widgets/interactive_widgets/custom_text_field.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   static String routeName = ScreenRoutes.forgotPassword.name;

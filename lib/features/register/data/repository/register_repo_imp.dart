@@ -1,9 +1,9 @@
-import 'package:voice_rooms/core/error/failures.dart';
-import 'package:voice_rooms/core/network/custom_either.dart';
-import 'package:voice_rooms/features/register/data/datasources/local/register_local_data_source.dart';
-import 'package:voice_rooms/features/register/data/datasources/remote/register_remote_data_source.dart';
-import 'package:voice_rooms/features/register/domain/entities/user_entity.dart';
-import 'package:voice_rooms/features/register/domain/repository/register_repo.dart';
+import 'package:roomly/core/error/failures.dart';
+import 'package:roomly/core/network/custom_either.dart';
+import 'package:roomly/features/register/data/datasources/local/register_local_data_source.dart';
+import 'package:roomly/features/register/data/datasources/remote/register_remote_data_source.dart';
+import 'package:roomly/features/register/domain/entities/user_entity.dart';
+import 'package:roomly/features/register/domain/repository/register_repo.dart';
 
 class RegisterRepoImp implements RegisterRep {
   final RegisterRemoteDataSource remoteDataSource;

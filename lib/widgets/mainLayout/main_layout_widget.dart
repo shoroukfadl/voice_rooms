@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:voice_rooms/features/activeRoom/presentation/widget/controllers.dart';
-import 'package:voice_rooms/utilities/constants/enums.dart';
-import 'package:voice_rooms/utilities/extensions.dart';
-import 'package:voice_rooms/utilities/router_config.dart';
-import 'package:voice_rooms/widgets/mainLayout/BottomNavBar/bottom_nav_bar_items.dart';
+import 'package:roomly/features/chat/presentation/widget/controllers.dart';
+import 'package:roomly/utilities/constants/enums.dart';
+import 'package:roomly/utilities/extensions.dart';
+import 'package:roomly/utilities/router_config.dart';
+import 'package:roomly/widgets/mainLayout/BottomNavBar/bottom_nav_bar_items.dart';
 
 import '../../Utilities/Constants/global_keys.dart';
 
@@ -33,7 +33,7 @@ class _MainLayoutWidgetState extends State<MainLayoutWidget> {
     final hideBottomNav =
         preventedRoutes.contains(widget.currentPath?.replaceAll("/", "") ?? "");
     final activeRoom =
-        widget.currentPath?.replaceAll("/", "") == ScreenRoutes.activeRoom.name;
+        widget.currentPath?.replaceAll("/", "") == ScreenRoutes.chat.name;
     return Scaffold(
         key: GlobalKeys.scaffoldKey,
         backgroundColor: colors.background,

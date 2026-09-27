@@ -1,4 +1,4 @@
-import 'package:voice_rooms/core/firebase/firestoreHelper/firebase_query_operator.dart';
+import 'package:roomly/core/firebase/firestoreHelper/firebase_query_operator.dart';
 
 class FirebaseQuery {
   final List<FirebaseQueryFilter> filters;

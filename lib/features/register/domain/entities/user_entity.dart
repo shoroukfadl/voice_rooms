@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:voice_rooms/utilities/constants/enums.dart';
+import 'package:roomly/utilities/constants/enums.dart';
 
 class UserStatsEntity extends Equatable {
   const UserStatsEntity({

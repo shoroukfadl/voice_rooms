@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:voice_rooms/Utilities/extensions.dart';
-import 'package:voice_rooms/core/Language/app_styles.dart';
+import 'package:roomly/Utilities/extensions.dart';
+import 'package:roomly/core/Language/app_styles.dart';
 
 class Name extends StatelessWidget {
   const Name({super.key});

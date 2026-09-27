@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:voice_rooms/Utilities/Constants/constants.dart';
-import 'package:voice_rooms/Utilities/extensions.dart';
-import 'package:voice_rooms/widgets/helper/hover_widget.dart';
-import 'package:voice_rooms/widgets/interactive_widgets/custom_button_widget.dart';
+import 'package:roomly/Utilities/Constants/constants.dart';
+import 'package:roomly/Utilities/extensions.dart';
+import 'package:roomly/widgets/helper/hover_widget.dart';
+import 'package:roomly/widgets/interactive_widgets/custom_button_widget.dart';
 
 class SecondaryButtonWidget extends StatelessWidget {
   final String title;

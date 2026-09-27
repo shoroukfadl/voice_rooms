@@ -1,5 +1,5 @@
-name: voice_rooms
-description: "Voice Rooms New Flutter App"
+name: roomly
+description: "Rooms New Flutter App"
 publish_to: "none"
 
 version: 1.0.0+1

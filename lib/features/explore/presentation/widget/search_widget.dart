@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:voice_rooms/Utilities/extensions.dart';
-import 'package:voice_rooms/utilities/roomly.dart';
-import 'package:voice_rooms/widgets/interactive_widgets/custom_text_field.dart';
+import 'package:roomly/Utilities/extensions.dart';
+import 'package:roomly/utilities/roomly.dart';
+import 'package:roomly/widgets/interactive_widgets/custom_text_field.dart';
 
 class SearchWidget extends StatelessWidget {
   const SearchWidget({

@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:voice_rooms/core/either.dart';
-import 'package:voice_rooms/core/error/failures.dart';
-import 'package:voice_rooms/core/network/network.dart';
-import 'package:voice_rooms/features/login/data/datasources/remote/login_remote_data_source.dart';
-import 'package:voice_rooms/features/register/data/model/user_model.dart';
+import 'package:roomly/core/either.dart';
+import 'package:roomly/core/error/failures.dart';
+import 'package:roomly/core/network/network.dart';
+import 'package:roomly/features/login/data/datasources/remote/login_remote_data_source.dart';
+import 'package:roomly/features/register/data/model/user_model.dart';
 
 class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
   final FirebaseAuth firebaseAuth;

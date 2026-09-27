@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:voice_rooms/utilities/extensions.dart';
+import 'package:roomly/utilities/extensions.dart';
 
 @immutable
 abstract class AppTextStyles extends ThemeExtension<AppTextStyles> {

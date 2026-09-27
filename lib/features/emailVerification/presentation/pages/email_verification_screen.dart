@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:voice_rooms/Utilities/Constants/constants.dart';
-import 'package:voice_rooms/features/emailVerification/presentation/widget/email_verification_header.dart';
-import 'package:voice_rooms/features/emailVerification/presentation/widget/otp_widget.dart';
-import 'package:voice_rooms/features/emailVerification/presentation/widget/resend_Code_widget.dart';
-import 'package:voice_rooms/features/emailVerification/presentation/widget/verify.dart';
-import 'package:voice_rooms/utilities/constants/enums.dart';
-import 'package:voice_rooms/utilities/extensions.dart';
+import 'package:roomly/Utilities/Constants/constants.dart';
+import 'package:roomly/features/emailVerification/presentation/widget/email_verification_header.dart';
+import 'package:roomly/features/emailVerification/presentation/widget/otp_widget.dart';
+import 'package:roomly/features/emailVerification/presentation/widget/resend_Code_widget.dart';
+import 'package:roomly/features/emailVerification/presentation/widget/verify.dart';
+import 'package:roomly/utilities/constants/enums.dart';
+import 'package:roomly/utilities/extensions.dart';
 
 class EmailVerificationScreen extends StatefulWidget {
   static String routeName = ScreenRoutes.emailVerification.name;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:voice_rooms/Core/Language/app_styles.dart';
-import 'package:voice_rooms/utilities/constants/strings.dart';
-import 'package:voice_rooms/utilities/extensions.dart';
+import 'package:roomly/Core/Language/app_styles.dart';
+import 'package:roomly/utilities/constants/strings.dart';
+import 'package:roomly/utilities/extensions.dart';
 
 class ResendEmailVerificationWidget extends StatelessWidget {
   const ResendEmailVerificationWidget({super.key});

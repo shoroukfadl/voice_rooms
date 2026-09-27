@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:voice_rooms/Utilities/extensions.dart';
-import 'package:voice_rooms/core/language/app_styles.dart';
-import 'package:voice_rooms/utilities/constants/strings.dart';
+import 'package:roomly/Utilities/extensions.dart';
+import 'package:roomly/core/language/app_styles.dart';
+import 'package:roomly/utilities/constants/strings.dart';
 
 class ResendCodeWidget extends StatefulWidget {
   const ResendCodeWidget({

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:voice_rooms/Core/Language/app_styles.dart';
-import 'package:voice_rooms/Utilities/extensions.dart';
-import 'package:voice_rooms/widgets/mainLayout/BottomNavBar/item_bar_model.dart';
+import 'package:roomly/Utilities/extensions.dart';
+import 'package:roomly/widgets/mainLayout/BottomNavBar/item_bar_model.dart';
 
 class BottomNavBarItems extends StatelessWidget {
   final String? currentPath;
@@ -36,84 +35,71 @@ class NotchedBottomNav extends StatelessWidget {
     this.items = const [],
   });
 
-  static const double _height = 78;
+  static const double _barHeight = 68;
+  static const double _fabSize = 56;
+  static const double _fabTopOffset = -14;
+  static const double _notchDepth = 24;
+  static const int _fabIndex = 2;
+
+  bool get _hasFab => items.length > _fabIndex;
 
   @override
   Widget build(BuildContext context) {
     final bottomInset = MediaQuery.of(context).padding.bottom;
     final colors = context.colors;
+    final totalHeight = _barHeight + bottomInset;
 
     return LayoutBuilder(
       builder: (context, constraints) {
         final width = constraints.maxWidth;
-        final centerX = width / 2;
+        final centerX = _hasFab ? width / 2 : -1.0;
 
         return SizedBox(
-          height: _height + bottomInset,
+          height: totalHeight,
           child: Stack(
             clipBehavior: Clip.none,
             children: [
-              // Background with notch painter
               Positioned.fill(
                 child: CustomPaint(
                   painter: _NotchPainter(
                     notchX: centerX,
-                    depth: 26,
+                    depth: _notchDepth,
                     color: colors.card,
+                    showNotch: _hasFab,
                   ),
                 ),
               ),
-              // Content Row for items
               Positioned(
+                top: 0,
                 left: 0,
                 right: 0,
-                bottom: 0,
-                height: _height,
-                child: Padding(
-                  padding: EdgeInsets.only(bottom: bottomInset),
-                  child: Row(
-                    children: [
-                      if (items.isNotEmpty) _buildNavItem(context, 0, colors),
-                      if (items.length > 1) _buildNavItem(context, 1, colors),
-                      // Spacer for center FAB
-                      const Expanded(child: SizedBox()),
-                      if (items.length > 3)
-                        _buildNavItem(context, 3, colors)
-                      else if (items.length > 2)
-                        _buildNavItem(context, 3, colors),
-                    ],
-                  ),
+                height: _barHeight,
+                child: Row(
+                  children: [
+                    for (int i = 0; i < items.length; i++)
+                      if (i == _fabIndex)
+                        // Reserve the center gap only when there really is
+                        // a FAB item — with 1 or 2 items the row now uses
+                        // the full width instead of leaving a dead gap.
+                        const Expanded(child: SizedBox())
+                      else
+                        _buildNavItem(context, i, colors).expand,
+                  ],
                 ),
               ),
-              // Center Floating Action Button for the 3rd item (index 2)
-              if (items.length > 2)
+              if (_hasFab)
                 Positioned(
-                  left: centerX - 28,
-                  top: -16,
-                  child: GestureDetector(
-                    behavior: HitTestBehavior.opaque,
-                    onTap: () => onTap(2),
-                    child: Container(
-                      width: 56,
-                      height: 56,
-                      decoration: BoxDecoration(
-                        color: currentIndex == 2 ? colors.accent : colors.card,
-                        shape: BoxShape.circle,
-                        border: Border.all(color: colors.border, width: 0.5),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.12),
-                            blurRadius: 8,
-                            offset: const Offset(0, 3),
-                          ),
-                        ],
-                      ),
-                      child: Icon(
-                        items[2].icon,
-                        color: currentIndex == 2 ? Colors.white : colors.text1,
-                        size: 26,
-                      ),
-                    ),
+                  left: centerX - _fabSize / 2,
+                  top: _fabTopOffset,
+                  child: _FabItem(
+                    selected: currentIndex == _fabIndex,
+                    icon: items[_fabIndex].icon,
+                    size: _fabSize,
+                    accent: colors.accent,
+                    card: colors.card,
+                    border: colors.border,
+                    unselectedIconColor: colors.text2,
+                    onTap: () => onTap(_fabIndex),
                   ),
                 ),
             ],
@@ -128,25 +114,87 @@ class NotchedBottomNav extends StatelessWidget {
     final item = items[i];
     final color = selected ? colors.accent : colors.text2;
 
-    return Expanded(
-      child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTap: () => onTap(i),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              item.icon,
-              size: 24,
-              color: color,
-            ),
-            const SizedBox(height: 4),
-            Text(
-              item.title.translate,
-              style:
-                  AppTextStyles.navBarTitleText(context: context, color: color),
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () => onTap(i),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          AnimatedScale(
+            duration: const Duration(milliseconds: 150),
+            scale: selected ? 1.1 : 1.0,
+            child: Icon(item.icon, size: 28, color: color),
+          ),
+          // const SizedBox(height: 4),
+          // AnimatedDefaultTextStyle(
+          //   duration: const Duration(milliseconds: 150),
+          //   style:
+          //       AppTextStyles.navBarTitleText(context: context, color: color),
+          //   child: Text(item.title.translate),
+          // ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Center floating action item (index 2), extracted so its selected/
+/// unselected look is defined in one place instead of being duplicated
+/// inline inside the Stack.
+class _FabItem extends StatelessWidget {
+  final bool selected;
+  final IconData icon;
+  final double size;
+  final Color accent;
+  final Color card;
+  final Color border;
+  final Color unselectedIconColor;
+  final VoidCallback onTap;
+
+  const _FabItem({
+    required this.selected,
+    required this.icon,
+    required this.size,
+    required this.accent,
+    required this.card,
+    required this.border,
+    required this.unselectedIconColor,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeOut,
+        width: size,
+        height: size,
+        decoration: BoxDecoration(
+          color: selected ? accent : card,
+          shape: BoxShape.circle,
+          border: Border.all(color: border, width: 0.5),
+          boxShadow: [
+            BoxShadow(
+              // Shadow tints toward the accent color once selected instead
+              // of staying flat black, so the "selected" state reads more
+              // clearly at a glance.
+              color: (selected ? accent : Colors.black)
+                  .withOpacity(selected ? 0.28 : 0.12),
+              blurRadius: 10,
+              offset: const Offset(0, 3),
             ),
           ],
+        ),
+        // Unselected icon now matches the same `text2` color used by the
+        // other nav items instead of a separate `text1`, so the visual
+        // language is consistent across all items.
+        child: Icon(
+          icon,
+          color: selected ? Colors.white : unselectedIconColor,
+          size: 26,
         ),
       ),
     );
@@ -157,21 +205,37 @@ class _NotchPainter extends CustomPainter {
   final double notchX;
   final double depth;
   final Color color;
+  final bool showNotch;
 
-  _NotchPainter(
-      {required this.notchX, required this.depth, required this.color});
+  _NotchPainter({
+    required this.notchX,
+    required this.depth,
+    required this.color,
+    required this.showNotch,
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
-    const half = 36.0; // half-width of the notch
-    final path = Path()
-      ..moveTo(0, 0)
-      ..lineTo(notchX - half, 0)
-      ..cubicTo(
-          notchX - half * 0.5, 0, notchX - half * 0.55, depth, notchX, depth)
-      ..cubicTo(
-          notchX + half * 0.55, depth, notchX + half * 0.5, 0, notchX + half, 0)
-      ..lineTo(size.width, 0)
+    final path = Path();
+
+    if (showNotch && notchX >= 0) {
+      const half = 36.0; // half-width of the notch
+      path
+        ..moveTo(0, 0)
+        ..lineTo(notchX - half, 0)
+        ..cubicTo(
+            notchX - half * 0.5, 0, notchX - half * 0.55, depth, notchX, depth)
+        ..cubicTo(notchX + half * 0.55, depth, notchX + half * 0.5, 0,
+            notchX + half, 0)
+        ..lineTo(size.width, 0);
+    } else {
+      // No FAB (e.g. only 1-2 nav items) -> plain flat top edge, no notch.
+      path
+        ..moveTo(0, 0)
+        ..lineTo(size.width, 0);
+    }
+
+    path
       ..lineTo(size.width, size.height)
       ..lineTo(0, size.height)
       ..close();
@@ -182,5 +246,8 @@ class _NotchPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_NotchPainter old) =>
-      old.notchX != notchX || old.depth != depth || old.color != color;
+      old.notchX != notchX ||
+      old.depth != depth ||
+      old.color != color ||
+      old.showNotch != showNotch;
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:voice_rooms/Core/Language/app_styles.dart';
-import 'package:voice_rooms/Utilities/extensions.dart';
-import 'package:voice_rooms/features/activeRoom/presentation/widget/speakers/speaker_avatar.dart';
-import 'package:voice_rooms/utilities/constants/strings.dart';
+import 'package:roomly/Core/Language/app_styles.dart';
+import 'package:roomly/Utilities/extensions.dart';
+import 'package:roomly/features/chat/presentation/widget/speakers/speaker_avatar.dart';
+import 'package:roomly/utilities/constants/strings.dart';
 
 class SpeakersSection extends StatelessWidget {
   const SpeakersSection({

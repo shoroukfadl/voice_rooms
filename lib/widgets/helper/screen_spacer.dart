@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:voice_rooms/Utilities/Constants/constants.dart';
+import 'package:roomly/Utilities/Constants/constants.dart';
 
 class ScreenSpacer extends StatelessWidget {
   const ScreenSpacer({super.key});

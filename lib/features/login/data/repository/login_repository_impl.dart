@@ -1,10 +1,10 @@
-import 'package:voice_rooms/core/either.dart';
-import 'package:voice_rooms/core/error/failures.dart';
-import 'package:voice_rooms/features/login/data/datasources/local/login_local_data_source.dart';
-import 'package:voice_rooms/features/login/data/datasources/remote/login_remote_data_source.dart';
-import 'package:voice_rooms/features/login/domain/repository/login_repository.dart';
-import 'package:voice_rooms/features/register/data/model/user_model.dart';
-import 'package:voice_rooms/features/register/domain/entities/user_entity.dart';
+import 'package:roomly/core/either.dart';
+import 'package:roomly/core/error/failures.dart';
+import 'package:roomly/features/login/data/datasources/local/login_local_data_source.dart';
+import 'package:roomly/features/login/data/datasources/remote/login_remote_data_source.dart';
+import 'package:roomly/features/login/domain/repository/login_repository.dart';
+import 'package:roomly/features/register/data/model/user_model.dart';
+import 'package:roomly/features/register/domain/entities/user_entity.dart';
 
 class LoginRepositoryImpl implements LoginRepository {
   final LoginRemoteDataSource remoteDataSource;

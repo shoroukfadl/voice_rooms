@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:voice_rooms/utilities/extensions.dart';
-import 'package:voice_rooms/widgets/media/rounded_image_widget.dart';
+import 'package:roomly/utilities/extensions.dart';
+import 'package:roomly/widgets/media/rounded_image_widget.dart';
 
 class ProfileAvatar extends StatelessWidget {
   const ProfileAvatar({super.key});

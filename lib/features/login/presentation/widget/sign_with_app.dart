@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:voice_rooms/utilities/constants/strings.dart';
-import 'package:voice_rooms/utilities/extensions.dart';
-import 'package:voice_rooms/widgets/interactive_widgets/custom_button_widget.dart';
+import 'package:roomly/utilities/constants/strings.dart';
+import 'package:roomly/utilities/extensions.dart';
+import 'package:roomly/widgets/interactive_widgets/custom_button_widget.dart';
 
 class SignInWithApple extends StatelessWidget {
   const SignInWithApple({super.key});

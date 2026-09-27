@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:voice_rooms/Utilities/extensions.dart';
-import 'package:voice_rooms/features/profile/presentation/widget/profile/avatar.dart';
-import 'package:voice_rooms/features/profile/presentation/widget/profile/name.dart';
-import 'package:voice_rooms/features/profile/presentation/widget/profile/profile_stats.dart';
-import 'package:voice_rooms/utilities/constants/constants.dart';
+import 'package:roomly/Utilities/extensions.dart';
+import 'package:roomly/features/profile/presentation/widget/profile/avatar.dart';
+import 'package:roomly/features/profile/presentation/widget/profile/name.dart';
+import 'package:roomly/features/profile/presentation/widget/profile/profile_stats.dart';
+import 'package:roomly/utilities/constants/constants.dart';
 
 class ProfileCard extends StatelessWidget {
   const ProfileCard({super.key});

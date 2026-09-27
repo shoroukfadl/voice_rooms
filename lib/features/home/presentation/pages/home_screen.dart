@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
-import 'package:voice_rooms/features/explore/presentation/widget/search_widget.dart';
-import 'package:voice_rooms/features/home/presentation/widget/chat_card.dart';
-import 'package:voice_rooms/features/home/presentation/widget/header.dart';
-import 'package:voice_rooms/utilities/constants/enums.dart';
-import 'package:voice_rooms/utilities/extensions.dart';
-import 'package:voice_rooms/widgets/helper/screen_spacer.dart';
-import 'package:voice_rooms/widgets/mainLayout/screen_layout_widget.dart';
+import 'package:roomly/features/explore/presentation/widget/search_widget.dart';
+import 'package:roomly/features/home/presentation/widget/chat_card.dart';
+import 'package:roomly/features/home/presentation/widget/header.dart';
+import 'package:roomly/utilities/constants/enums.dart';
+import 'package:roomly/utilities/extensions.dart';
+import 'package:roomly/widgets/helper/screen_spacer.dart';
+import 'package:roomly/widgets/mainLayout/screen_layout_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   static String routeName = ScreenRoutes.home.name;

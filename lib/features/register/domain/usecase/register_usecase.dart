@@ -1,7 +1,7 @@
-import 'package:voice_rooms/core/error/failures.dart';
-import 'package:voice_rooms/core/network/custom_either.dart';
-import 'package:voice_rooms/features/register/domain/entities/user_entity.dart';
-import 'package:voice_rooms/features/register/domain/repository/register_repo.dart';
+import 'package:roomly/core/error/failures.dart';
+import 'package:roomly/core/network/custom_either.dart';
+import 'package:roomly/features/register/domain/entities/user_entity.dart';
+import 'package:roomly/features/register/domain/repository/register_repo.dart';
 
 class RegisterUseCase {
   final RegisterRep registerRep;

@@ -1,8 +1,8 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
-import 'package:voice_rooms/Core/Language/app_styles.dart';
-import 'package:voice_rooms/Utilities/Constants/constants.dart';
-import 'package:voice_rooms/utilities/extensions.dart';
+import 'package:roomly/Core/Language/app_styles.dart';
+import 'package:roomly/Utilities/Constants/constants.dart';
+import 'package:roomly/utilities/extensions.dart';
 
 abstract class HelperFunctions {
   static Future<void> showDialogHelper(BuildContext context,

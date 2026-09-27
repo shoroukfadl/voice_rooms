@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:voice_rooms/Utilities/Constants/constants.dart';
-import 'package:voice_rooms/core/Language/app_styles.dart';
-import 'package:voice_rooms/features/login/presentation/pages/login_screen.dart';
-import 'package:voice_rooms/generated/assets.dart';
-import 'package:voice_rooms/utilities/constants/strings.dart';
-import 'package:voice_rooms/utilities/extensions.dart';
-import 'package:voice_rooms/widgets/interactive_widgets/primary_button_widget.dart';
-import 'package:voice_rooms/widgets/media/rounded_image_widget.dart';
+import 'package:roomly/Utilities/Constants/constants.dart';
+import 'package:roomly/core/Language/app_styles.dart';
+import 'package:roomly/features/home/presentation/pages/home_screen.dart';
+import 'package:roomly/generated/assets.dart';
+import 'package:roomly/utilities/constants/strings.dart';
+import 'package:roomly/utilities/extensions.dart';
+import 'package:roomly/widgets/interactive_widgets/primary_button_widget.dart';
+import 'package:roomly/widgets/media/rounded_image_widget.dart';
 
 class BoardingScreen extends StatelessWidget {
   static String routeName = '/';
@@ -23,7 +23,7 @@ class BoardingScreen extends StatelessWidget {
             child: PrimaryButtonWidget(
                 title: Strings.continueButton.translate,
                 onTap: () {
-                  context.goNamed(LoginScreen.routeName);
+                  context.goNamed(HomeScreen.routeName);
                 })),
         body: SafeArea(
           minimum:

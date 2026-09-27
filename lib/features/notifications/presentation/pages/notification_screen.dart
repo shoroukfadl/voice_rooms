@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'package:voice_rooms/features/notifications/presentation/widget/header.dart';
-import 'package:voice_rooms/features/notifications/presentation/widget/notification_card.dart';
-import 'package:voice_rooms/utilities/constants/enums.dart';
-import 'package:voice_rooms/utilities/extensions.dart';
-import 'package:voice_rooms/widgets/helper/screen_spacer.dart';
-import 'package:voice_rooms/widgets/mainLayout/screen_layout_widget.dart';
+import 'package:roomly/features/notifications/presentation/widget/header.dart';
+import 'package:roomly/features/notifications/presentation/widget/notification_card.dart';
+import 'package:roomly/utilities/constants/enums.dart';
+import 'package:roomly/utilities/extensions.dart';
+import 'package:roomly/widgets/helper/screen_spacer.dart';
+import 'package:roomly/widgets/mainLayout/screen_layout_widget.dart';
 
 class NotificationScreen extends StatelessWidget {
   static String routeName = ScreenRoutes.notifications.name;

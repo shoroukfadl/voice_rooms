@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:voice_rooms/Utilities/Constants/constants.dart';
-import 'package:voice_rooms/features/VerificationLink/presentation/widget/header.dart';
-import 'package:voice_rooms/features/resetLink/presentation/widget/login.dart';
-import 'package:voice_rooms/features/resetLink/presentation/widget/resend_email.dart';
-import 'package:voice_rooms/utilities/constants/enums.dart';
+import 'package:roomly/Utilities/Constants/constants.dart';
+import 'package:roomly/features/VerificationLink/presentation/widget/header.dart';
+import 'package:roomly/features/resetLink/presentation/widget/login.dart';
+import 'package:roomly/features/resetLink/presentation/widget/resend_email.dart';
+import 'package:roomly/utilities/constants/enums.dart';
 
 class EmailVerificationLinkScreen extends StatefulWidget {
   static String routeName = ScreenRoutes.verifyEmail.name;

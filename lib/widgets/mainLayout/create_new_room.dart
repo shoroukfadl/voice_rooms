@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:voice_rooms/Utilities/extensions.dart';
-import 'package:voice_rooms/utilities/roomly.dart';
+import 'package:roomly/Utilities/extensions.dart';
+import 'package:roomly/utilities/roomly.dart';
 
 class CreateNewRoom extends StatelessWidget {
   const CreateNewRoom({super.key});

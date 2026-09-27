@@ -3,13 +3,13 @@ import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:voice_rooms/features/login/domain/usecases/get_current_user_usecase.dart';
-import 'package:voice_rooms/features/login/domain/usecases/login_with_email_password_usecase.dart';
-import 'package:voice_rooms/features/login/domain/usecases/login_with_google_usecase.dart';
-import 'package:voice_rooms/features/login/domain/usecases/logout_usecase.dart';
-import 'package:voice_rooms/features/login/domain/usecases/send_password_reset_email_usecase.dart';
-import 'package:voice_rooms/features/register/domain/entities/user_entity.dart';
-import 'package:voice_rooms/utilities/request_status.dart';
+import 'package:roomly/features/login/domain/usecases/get_current_user_usecase.dart';
+import 'package:roomly/features/login/domain/usecases/login_with_email_password_usecase.dart';
+import 'package:roomly/features/login/domain/usecases/login_with_google_usecase.dart';
+import 'package:roomly/features/login/domain/usecases/logout_usecase.dart';
+import 'package:roomly/features/login/domain/usecases/send_password_reset_email_usecase.dart';
+import 'package:roomly/features/register/domain/entities/user_entity.dart';
+import 'package:roomly/utilities/request_status.dart';
 
 part 'login_state.dart';
 
@@ -45,18 +45,19 @@ class LoginCubit extends Cubit<LoginState> {
     final hasConnection = await _checkConnectivity();
     if (!hasConnection) {
       emit(state.copyWithMethod(
-        loginStatus: RequestFailure('No internet connection. Please check your network.'),
+        loginStatus: RequestFailure(
+            'No internet connection. Please check your network.'),
       ));
       return;
     }
 
     emit(state.copyWithMethod(loginStatus: const RequestLoading()));
-    
+
     final result = await loginWithEmailPasswordUseCase(
       email: email,
       password: password,
     );
-    
+
     if (!isClosed) {
       result.fold(
         (failure) => emit(state.copyWithMethod(
@@ -74,15 +75,16 @@ class LoginCubit extends Cubit<LoginState> {
     final hasConnection = await _checkConnectivity();
     if (!hasConnection) {
       emit(state.copyWithMethod(
-        googleLoginStatus: RequestFailure('No internet connection. Please check your network.'),
+        googleLoginStatus: RequestFailure(
+            'No internet connection. Please check your network.'),
       ));
       return;
     }
 
     emit(state.copyWithMethod(googleLoginStatus: const RequestLoading()));
-    
+
     final result = await loginWithGoogleUseCase();
-    
+
     if (!isClosed) {
       result.fold(
         (failure) => emit(state.copyWithMethod(
@@ -137,15 +139,16 @@ class LoginCubit extends Cubit<LoginState> {
     final hasConnection = await _checkConnectivity();
     if (!hasConnection) {
       emit(state.copyWithMethod(
-        passwordResetStatus: RequestFailure('No internet connection. Please check your network.'),
+        passwordResetStatus: RequestFailure(
+            'No internet connection. Please check your network.'),
       ));
       return;
     }
 
     emit(state.copyWithMethod(passwordResetStatus: const RequestLoading()));
-    
+
     final result = await sendPasswordResetEmailUseCase(email: email);
-    
+
     if (!isClosed) {
       result.fold(
         (failure) => emit(state.copyWithMethod(

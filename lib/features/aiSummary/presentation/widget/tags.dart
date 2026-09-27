@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:voice_rooms/features/explore/presentation/widget/filter_bar.dart';
+import 'package:roomly/features/explore/presentation/widget/filter_bar.dart';
 
 class TopicTags extends StatelessWidget {
   const TopicTags({super.key});

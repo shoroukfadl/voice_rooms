@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:voice_rooms/core/Theme/theme_colors.dart';
+import 'package:roomly/core/Theme/theme_colors.dart';
 
 class AppTheme {
   static final light = ThemeData(

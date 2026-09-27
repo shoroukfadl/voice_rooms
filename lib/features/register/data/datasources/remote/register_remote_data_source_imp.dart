@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:voice_rooms/core/error/failures.dart';
-import 'package:voice_rooms/core/network/custom_either.dart';
-import 'package:voice_rooms/features/register/data/model/user_model.dart';
+import 'package:roomly/core/error/failures.dart';
+import 'package:roomly/core/network/custom_either.dart';
+import 'package:roomly/features/register/data/model/user_model.dart';
 
 import 'register_remote_data_source.dart';
 

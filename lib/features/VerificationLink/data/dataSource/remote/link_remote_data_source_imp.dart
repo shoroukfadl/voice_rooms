@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:voice_rooms/core/error/failures.dart';
-import 'package:voice_rooms/core/network/custom_either.dart';
+import 'package:roomly/core/error/failures.dart';
+import 'package:roomly/core/network/custom_either.dart';
 
 import 'link_remote_data_source.dart';
 

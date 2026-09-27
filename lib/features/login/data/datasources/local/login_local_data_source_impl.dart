@@ -1,13 +1,13 @@
 import 'dart:convert';
 
-import 'package:voice_rooms/core/either.dart';
-import 'package:voice_rooms/core/error/failures.dart';
-import 'package:voice_rooms/core/localStorage/boxes.dart';
-import 'package:voice_rooms/core/localStorage/hive_helper.dart';
-import 'package:voice_rooms/core/localStorage/hive_manager.dart';
-import 'package:voice_rooms/features/login/data/datasources/local/login_local_data_source.dart';
-import 'package:voice_rooms/features/register/data/model/user_model.dart';
-import 'package:voice_rooms/utilities/git_it.dart';
+import 'package:roomly/core/either.dart';
+import 'package:roomly/core/error/failures.dart';
+import 'package:roomly/core/localStorage/boxes.dart';
+import 'package:roomly/core/localStorage/hive_helper.dart';
+import 'package:roomly/core/localStorage/hive_manager.dart';
+import 'package:roomly/features/login/data/datasources/local/login_local_data_source.dart';
+import 'package:roomly/features/register/data/model/user_model.dart';
+import 'package:roomly/utilities/git_it.dart';
 
 class LoginLocalDataSourceImpl implements LoginLocalDataSource {
   static const String _userKey = 'cached_user';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:voice_rooms/Core/Language/app_styles.dart';
-import 'package:voice_rooms/Utilities/extensions.dart';
-import 'package:voice_rooms/features/activeRoom/presentation/widget/speakers/mic_widget.dart';
+import 'package:roomly/Core/Language/app_styles.dart';
+import 'package:roomly/Utilities/extensions.dart';
+import 'package:roomly/features/chat/presentation/widget/speakers/mic_widget.dart';
 
 class SpeakerAvatar extends StatelessWidget {
   const SpeakerAvatar({super.key});

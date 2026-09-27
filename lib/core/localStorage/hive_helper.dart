@@ -1,5 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:voice_rooms/core/localStorage/hive_manager.dart';
+import 'package:roomly/core/localStorage/hive_manager.dart';
 
 import 'boxes.dart';
 
