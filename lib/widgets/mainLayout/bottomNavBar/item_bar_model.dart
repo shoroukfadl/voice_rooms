@@ -23,9 +23,14 @@ class ItemBarModel {
       routeName: HomeScreen.routeName,
     ),
     ItemBarModel(
-      title: Strings.explore,
-      icon: Roomly.explore,
+      title: Strings.groupsStatLabel,
+      icon: Roomly.groups,
       routeName: ExploreScreen.routeName,
+    ),
+    ItemBarModel(
+      title: 'chat',
+      icon: Roomly.createChat,
+      routeName: 'New Room',
     ),
     ItemBarModel(
       title: Strings.notifications,

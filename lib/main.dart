@@ -15,6 +15,7 @@ import 'package:voice_rooms/core/Language/locales.dart';
 import 'package:voice_rooms/core/Theme/theme_cubit.dart';
 import 'package:voice_rooms/core/Theme/theme_state.dart';
 import 'package:voice_rooms/core/error/errorWidget/custom_error_widget.dart';
+import 'package:voice_rooms/core/network/network.dart';
 import 'package:voice_rooms/firebase_options.dart';
 import 'package:voice_rooms/utilities/app_themes.dart';
 import 'package:voice_rooms/utilities/git_it.dart';
@@ -29,6 +30,7 @@ Future<void> main() async {
     );
 
     await GitIt.initGitIt();
+    ConnectivityService.instance.initialize();
 
     setPathUrlStrategy();
 

@@ -11,7 +11,7 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     return Text(
-      Strings.homeTitle.translate,
+      Strings.chatsListTitle.translate,
       style: AppTextStyles.screenTitle(context: context, color: colors.text1),
     ).paddingSymmetric(horizontal: mobileHozPadding);
   }

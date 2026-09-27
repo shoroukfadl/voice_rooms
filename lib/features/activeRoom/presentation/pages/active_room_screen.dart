@@ -6,7 +6,7 @@ import 'package:voice_rooms/features/activeRoom/presentation/widget/listeners_se
 import 'package:voice_rooms/features/activeRoom/presentation/widget/room_stats_widget.dart';
 import 'package:voice_rooms/features/activeRoom/presentation/widget/speakers/speakers_section.dart';
 import 'package:voice_rooms/features/aiSummary/presentation/pages/ai_summary_screen.dart';
-import 'package:voice_rooms/features/home/presentation/widget/live_badg.dart';
+import 'package:voice_rooms/features/home/presentation/widget/unreaded_messages.dart';
 import 'package:voice_rooms/utilities/constants/enums.dart';
 import 'package:voice_rooms/utilities/extensions.dart';
 import 'package:voice_rooms/widgets/helper/screen_spacer.dart';
@@ -25,7 +25,7 @@ class _ActiveRoomScreenState extends State<ActiveRoomScreen> {
   Widget build(BuildContext context) {
     return ScreenLayoutWidget(
       children: [
-        LiveBadg().asPaddedSliver(),
+        UnReadedMessages().asPaddedSliver(),
         ActiveRoomHeader(
           roomName: 'Flutter devs Egypt',
           subtitle: "Talking about state management",

@@ -19,7 +19,7 @@ class SearchWidget extends StatelessWidget {
       prefixIcon: Roomly.search,
       controller: controller,
       onChanged: onChanged,
-      hint: 'Search rooms, topics, people',
+      hint: 'Search Chats',
     );
   }
 }

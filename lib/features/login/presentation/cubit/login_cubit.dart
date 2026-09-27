@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_rooms/features/login/domain/usecases/get_current_user_usecase.dart';
@@ -16,6 +19,9 @@ class LoginCubit extends Cubit<LoginState> {
   final LogoutUseCase logoutUseCase;
   final GetCurrentUserUseCase getCurrentUserUseCase;
   final SendPasswordResetEmailUseCase sendPasswordResetEmailUseCase;
+  final Connectivity _connectivity;
+
+  final List<StreamSubscription> _subscriptions = [];
 
   LoginCubit({
     required this.loginWithEmailPasswordUseCase,
@@ -23,40 +29,71 @@ class LoginCubit extends Cubit<LoginState> {
     required this.logoutUseCase,
     required this.getCurrentUserUseCase,
     required this.sendPasswordResetEmailUseCase,
-  }) : super(const LoginState());
+    Connectivity? connectivity,
+  })  : _connectivity = connectivity ?? Connectivity(),
+        super(const LoginState());
+
+  Future<bool> _checkConnectivity() async {
+    final result = await _connectivity.checkConnectivity();
+    return result != ConnectivityResult.none;
+  }
 
   Future<void> loginWithEmailPassword({
     required String email,
     required String password,
   }) async {
+    final hasConnection = await _checkConnectivity();
+    if (!hasConnection) {
+      emit(state.copyWithMethod(
+        loginStatus: RequestFailure('No internet connection. Please check your network.'),
+      ));
+      return;
+    }
+
     emit(state.copyWithMethod(loginStatus: const RequestLoading()));
+    
     final result = await loginWithEmailPasswordUseCase(
       email: email,
       password: password,
     );
-    result.fold(
-      (failure) => emit(state.copyWithMethod(
-        loginStatus: RequestFailure(failure.message),
-      )),
-      (user) => emit(state.copyWithMethod(
-        loginStatus: const RequestSuccess(),
-        user: user,
-      )),
-    );
+    
+    if (!isClosed) {
+      result.fold(
+        (failure) => emit(state.copyWithMethod(
+          loginStatus: RequestFailure(failure.message),
+        )),
+        (user) => emit(state.copyWithMethod(
+          loginStatus: const RequestSuccess(),
+          user: user,
+        )),
+      );
+    }
   }
 
   Future<void> loginWithGoogle() async {
-    emit(state.copyWithMethod(loginStatus: const RequestLoading()));
+    final hasConnection = await _checkConnectivity();
+    if (!hasConnection) {
+      emit(state.copyWithMethod(
+        googleLoginStatus: RequestFailure('No internet connection. Please check your network.'),
+      ));
+      return;
+    }
+
+    emit(state.copyWithMethod(googleLoginStatus: const RequestLoading()));
+    
     final result = await loginWithGoogleUseCase();
-    result.fold(
-      (failure) => emit(state.copyWithMethod(
-        loginStatus: RequestFailure(failure.message),
-      )),
-      (user) => emit(state.copyWithMethod(
-        loginStatus: const RequestSuccess(),
-        user: user,
-      )),
-    );
+    
+    if (!isClosed) {
+      result.fold(
+        (failure) => emit(state.copyWithMethod(
+          googleLoginStatus: RequestFailure(failure.message),
+        )),
+        (user) => emit(state.copyWithMethod(
+          googleLoginStatus: const RequestSuccess(),
+          user: user,
+        )),
+      );
+    }
   }
 
   Future<void> logout() async {
@@ -97,20 +134,41 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   Future<void> sendPasswordResetEmail({required String email}) async {
+    final hasConnection = await _checkConnectivity();
+    if (!hasConnection) {
+      emit(state.copyWithMethod(
+        passwordResetStatus: RequestFailure('No internet connection. Please check your network.'),
+      ));
+      return;
+    }
+
     emit(state.copyWithMethod(passwordResetStatus: const RequestLoading()));
+    
     final result = await sendPasswordResetEmailUseCase(email: email);
-    result.fold(
-      (failure) => emit(state.copyWithMethod(
-        passwordResetStatus: RequestFailure(failure.message),
-      )),
-      (_) => emit(state.copyWithMethod(
-        passwordResetStatus:
-            const RequestSuccess('Password reset email sent successfully'),
-      )),
-    );
+    
+    if (!isClosed) {
+      result.fold(
+        (failure) => emit(state.copyWithMethod(
+          passwordResetStatus: RequestFailure(failure.message),
+        )),
+        (_) => emit(state.copyWithMethod(
+          passwordResetStatus:
+              const RequestSuccess('Password reset email sent successfully'),
+        )),
+      );
+    }
   }
 
   void resetState() {
     emit(const LoginState());
+  }
+
+  @override
+  Future<void> close() {
+    for (final subscription in _subscriptions) {
+      subscription.cancel();
+    }
+    _subscriptions.clear();
+    return super.close();
   }
 }

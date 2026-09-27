@@ -1,8 +1,12 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:voice_rooms/Utilities/extensions.dart';
+import 'package:voice_rooms/features/home/presentation/pages/home_screen.dart';
 import 'package:voice_rooms/features/login/presentation/cubit/login_cubit.dart';
 import 'package:voice_rooms/utilities/constants/strings.dart';
+import 'package:voice_rooms/utilities/helper_function.dart';
 import 'package:voice_rooms/widgets/interactive_widgets/custom_button_widget.dart';
 
 class LoginWithGoogleButton extends StatelessWidget {
@@ -14,7 +18,7 @@ class LoginWithGoogleButton extends StatelessWidget {
     final colors = context.colors;
     return BlocConsumer<LoginCubit, LoginState>(
       builder: (context, state) {
-        final isLoading = state.loginStatus.isLoading;
+        final isLoading = state.googleLoginStatus.isLoading;
         return CustomButtonWidget(
           title: Strings.signInWithGoogle.translate,
           titleColor: colors.text1,
@@ -25,16 +29,17 @@ class LoginWithGoogleButton extends StatelessWidget {
         );
       },
       listener: (context, state) {
-        state.loginStatus.when(
-          initial: () {},
-          loading: () {},
-          success: () {},
-          failure: (message, error) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(message)),
-            );
-          },
-        );
+        if (state.googleLoginStatus.isFailure) {
+          HelperFunctions.showCustomToast(
+            context,
+            type: ContentType.failure,
+            message: state.googleLoginStatus.message,
+          );
+        } else if (state.googleLoginStatus.isSuccess) {
+          if (state.user != null) {
+            context.goNamed(HomeScreen.routeName);
+          }
+        }
       },
     );
   }

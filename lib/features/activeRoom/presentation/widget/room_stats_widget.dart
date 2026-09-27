@@ -19,7 +19,7 @@ class RoomStatsRow extends StatelessWidget {
       spacing: 14,
       children: [
         RoomStatPill(
-            icon: Roomly.headPhone,
+            icon: Roomly.language,
             label: '$listenersCount ${Strings.listenersLabel.translate}'),
         RoomStatPill(
             icon: Roomly.mic,

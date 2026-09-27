@@ -4,7 +4,6 @@ import 'package:voice_rooms/Utilities/Constants/constants.dart';
 import 'package:voice_rooms/Utilities/extensions.dart';
 import 'package:voice_rooms/features/explore/presentation/widget/filter_bar.dart';
 import 'package:voice_rooms/utilities/constants/strings.dart';
-import 'package:voice_rooms/widgets/interactive_widgets/custom_text_field.dart';
 import 'package:voice_rooms/widgets/interactive_widgets/primary_button_widget.dart';
 
 class AddTagSheet extends StatefulWidget {
@@ -80,19 +79,19 @@ class _AddTagSheetState extends State<AddTagSheet> {
             ),
             const SizedBox(height: 4),
             Text(
-              Strings.addTagTitle.translate,
+              Strings.addTag.translate,
               style: AppTextStyles.cardSubtitleText(
                   context: context, color: colors.text2),
             ),
             const SizedBox(height: 16),
-            CustomTextField(
-              controller: _controller,
-              hint: Strings.tagHint.translate,
-              onChanged: (_) {
-                if (_errorText != null) setState(() => _errorText = null);
-              },
-              //  onSubmitted: (_) => _submitTyped(),
-            ),
+            // CustomTextField(
+            //   controller: _controller,
+            //   hint: Strings.tagHint.translate,
+            //   onChanged: (_) {
+            //     if (_errorText != null) setState(() => _errorText = null);
+            //   },
+            //   //  onSubmitted: (_) => _submitTyped(),
+            // ),
             const SizedBox(height: 16),
             if (visibleSuggestions.isNotEmpty) ...[
               Text(

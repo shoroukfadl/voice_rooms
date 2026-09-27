@@ -79,7 +79,9 @@ class GoRouterConfig {
             return getCustomTransitionPage(
               state: state,
               child: BlocProvider<LoginCubit>(
-                  create: (c) => sl<LoginCubit>(), child: const LoginScreen()),
+                  create: (c) => sl<LoginCubit>(),
+                  // dispse: (c, cubit) => cubit.close(),
+                  child: const LoginScreen()),
             );
           },
           routes: [

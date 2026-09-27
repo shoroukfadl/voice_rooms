@@ -14,8 +14,6 @@ class $AssetsImagesGen {
   const $AssetsImagesGen();
 
   final AssetGenImage logo = const AssetGenImage('assets/images/logo.png');
-  final AssetGenImage logoWaveform =
-      const AssetGenImage('assets/images/logo_waveform.gif');
 }
 
 class $AssetsLanguagesGen {

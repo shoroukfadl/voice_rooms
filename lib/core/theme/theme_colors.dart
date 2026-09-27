@@ -34,20 +34,20 @@ class AppColors extends ThemeExtension<AppColors> {
   });
 
   static const light = AppColors(
-    background: Color(0xffF7F5F0),
+    background: Color(0xffF6F6F7),
     card: Color(0xFFFFFFFF),
-    surface: Color(0xFFF0EDE6),
-    accent: Color(0xffE8552F),
-    accentSoft: Color(0xffFCE7DF),
-    secondary: Color(0xFF1090A4),
-    secondarySoft: Color(0xffD4E9DE),
+    surface: Color(0xFFEDEDEF),
+    accent: Color(0xff33353A),
+    accentSoft: Color(0xffE5E5E7),
+    secondary: Color(0xFF6B6D73),
+    secondarySoft: Color(0xffEBEBED),
     success: Color(0xff1F9D6E),
     warning: Color(0xFFFFB627),
     danger: Color(0xFFE5484D),
-    text1: Color(0xff1A1712),
-    text2: Color(0xff6E6A61),
-    text3: Color(0xffA39E92),
-    border: Color(0xffE4E0D6),
+    text1: Color(0xff17181B),
+    text2: Color(0xff6B6D73),
+    text3: Color(0xffA0A2A8),
+    border: Color(0xffE0E0E3),
   );
 
   static const dark = AppColors(

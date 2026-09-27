@@ -37,11 +37,11 @@ class SettingsCard extends StatelessWidget {
               label: Strings.securityTwoFactor.translate),
           SettingsItem(
               onTap: () {},
-              icon: Roomly.ai,
+              icon: Roomly.explore,
               label: Strings.aiSummaryPreferences.translate),
           SettingsItem(
               onTap: () {},
-              icon: Roomly.storage,
+              icon: Roomly.secuirty,
               isLast: true,
               label: Strings.downloadsAndStorage.translate),
         ],

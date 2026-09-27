@@ -2,14 +2,33 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:voice_rooms/core/either.dart';
 import 'package:voice_rooms/core/error/failures.dart';
+import 'package:voice_rooms/core/network/network.dart';
 import 'package:voice_rooms/features/login/data/datasources/remote/login_remote_data_source.dart';
 import 'package:voice_rooms/features/register/data/model/user_model.dart';
 
 class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
   final FirebaseAuth firebaseAuth;
   final GoogleSignIn googleSignIn;
+  final ConnectivityService connectivityService;
 
-  LoginRemoteDataSourceImpl(this.firebaseAuth, this.googleSignIn);
+  LoginRemoteDataSourceImpl(
+    this.firebaseAuth,
+    this.googleSignIn, {
+    ConnectivityService? connectivityService,
+  }) : connectivityService =
+            connectivityService ?? ConnectivityService.instance;
+
+  Future<Either<AppException, void>> _ensureConnected() async {
+    final isOnline = await connectivityService.checkConnection();
+    if (!isOnline) {
+      return Either.left(AppException(
+        message: 'No internet connection',
+        code: 'no-internet',
+        source: ErrorSource.network,
+      ));
+    }
+    return Either.right(null);
+  }
 
   @override
   Future<Either<AppException, UserModel>> loginWithEmailPassword({
@@ -17,6 +36,8 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
     required String password,
   }) async {
     try {
+      await _ensureConnected();
+
       final credential = await firebaseAuth.signInWithEmailAndPassword(
         email: email,
         password: password,
@@ -24,6 +45,7 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
 
       return Either.right(UserModel.fromFirebaseUser(credential.user!));
     } catch (e) {
+      if (e is AppException) return Either.left(e);
       return Either.left(FirebaseExceptionHelper.handle(e));
     }
   }
@@ -31,13 +53,15 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
   @override
   Future<Either<AppException, UserModel>> loginWithGoogle() async {
     try {
+      await _ensureConnected();
+
       final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
       if (googleUser == null) {
-        throw AppException(
+        return Either.left(AppException(
           message: 'Google sign-in was cancelled',
           code: 'cancelled',
           source: ErrorSource.firebaseAuth,
-        );
+        ));
       }
 
       final GoogleSignInAuthentication googleAuth =
@@ -52,20 +76,29 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
           await firebaseAuth.signInWithCredential(credential);
       return Either.right(UserModel.fromFirebaseUser(userCredential.user!));
     } catch (e) {
+      if (e is AppException) return Either.left(e);
       return Either.left(FirebaseExceptionHelper.handle(e));
     }
   }
 
   @override
   Future<Either<AppException, void>> logout() async {
-    await firebaseAuth.signOut();
-    await googleSignIn.signOut();
-    return Either.right(null);
+    try {
+      await _ensureConnected();
+
+      await firebaseAuth.signOut();
+      await googleSignIn.signOut();
+      return Either.right(null);
+    } catch (e) {
+      if (e is AppException) return Either.left(e);
+      return Either.left(FirebaseExceptionHelper.handle(e));
+    }
   }
 
   @override
   Future<Either<AppException, UserModel?>> getCurrentUser() async {
     try {
+      await _ensureConnected();
       final user = firebaseAuth.currentUser;
       if (user == null) return Either.right(null);
       return Either.right(UserModel.fromFirebaseUser(user));
@@ -79,9 +112,12 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
     required String email,
   }) async {
     try {
+      await _ensureConnected();
+
       await firebaseAuth.sendPasswordResetEmail(email: email);
       return Either.right(null);
     } catch (e) {
+      if (e is AppException) return Either.left(e);
       return Either.left(FirebaseExceptionHelper.handle(e));
     }
   }

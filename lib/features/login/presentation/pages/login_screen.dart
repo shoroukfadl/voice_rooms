@@ -44,9 +44,10 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-      minimum: EdgeInsets.symmetric(horizontal: mobileHozPadding, vertical: 40),
+      minimum: EdgeInsets.symmetric(horizontal: mobileHozPadding, vertical: 0),
       child: ListView(
         children: [
+          40.0.heightBox,
           const LoginHeader(),
           40.0.heightBox,
           Form(

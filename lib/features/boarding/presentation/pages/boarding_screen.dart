@@ -3,11 +3,11 @@ import 'package:go_router/go_router.dart';
 import 'package:voice_rooms/Utilities/Constants/constants.dart';
 import 'package:voice_rooms/core/Language/app_styles.dart';
 import 'package:voice_rooms/features/login/presentation/pages/login_screen.dart';
+import 'package:voice_rooms/generated/assets.dart';
 import 'package:voice_rooms/utilities/constants/strings.dart';
 import 'package:voice_rooms/utilities/extensions.dart';
-import 'package:voice_rooms/utilities/roomly.dart';
-import 'package:voice_rooms/widgets/helper/icon_with_background.dart';
 import 'package:voice_rooms/widgets/interactive_widgets/primary_button_widget.dart';
+import 'package:voice_rooms/widgets/media/rounded_image_widget.dart';
 
 class BoardingScreen extends StatelessWidget {
   static String routeName = '/';
@@ -31,11 +31,13 @@ class BoardingScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              IconWithBackground(
-                  background: colors.accentSoft,
-                  iconColor: colors.accent,
-                  icon: Roomly.roomly,
-                  size: 80),
+              RoundedImage(
+                imagePath: Assets.images.logo.path,
+                width: 240,
+                height: 240,
+                fit: BoxFit.contain,
+                backgroundColor: Colors.transparent,
+              ),
               const SizedBox(height: 16),
               Text(
                 Strings.onboardingTitle.translate,

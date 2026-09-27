@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -42,6 +43,9 @@ class GitIt {
 
     final googleSignIn = GoogleSignIn();
     sl.registerLazySingleton<GoogleSignIn>(() => googleSignIn);
+
+    final connectivity = Connectivity();
+    sl.registerLazySingleton<Connectivity>(() => connectivity);
 
     _initGitIt();
 
@@ -98,6 +102,7 @@ class GitIt {
           logoutUseCase: sl(),
           getCurrentUserUseCase: sl(),
           sendPasswordResetEmailUseCase: sl(),
+          connectivity: sl(),
         ));
     sl.registerLazySingleton(() => LoginWithEmailPasswordUseCase(sl()));
     sl.registerLazySingleton(() => LoginWithGoogleUseCase(sl()));
@@ -113,7 +118,10 @@ class GitIt {
 
     //! Data Sources
     sl.registerLazySingleton<LoginRemoteDataSource>(
-      () => LoginRemoteDataSourceImpl(sl(), sl()),
+      () => LoginRemoteDataSourceImpl(
+        sl(),
+        sl(),
+      ),
     );
     sl.registerLazySingleton<LoginLocalDataSource>(
       () => LoginLocalDataSourceImpl(),

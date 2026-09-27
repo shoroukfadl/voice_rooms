@@ -19,7 +19,7 @@ class RegisterHeader extends StatelessWidget {
         IconWithBackground(
             background: colors.accentSoft,
             iconColor: colors.accent,
-            icon: Roomly.create,
+            icon: Roomly.secuirty,
             size: 48),
         const SizedBox(height: 16),
         Text(

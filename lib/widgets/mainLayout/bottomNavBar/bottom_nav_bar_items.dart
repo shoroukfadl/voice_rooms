@@ -46,64 +46,109 @@ class NotchedBottomNav extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final width = constraints.maxWidth;
-        final itemWidth = width / items.length;
-        final targetX = itemWidth * (currentIndex + 0.5);
+        final centerX = width / 2;
 
-        return Container(
+        return SizedBox(
           height: _height + bottomInset,
-          color: colors.card,
-          child: TweenAnimationBuilder<double>(
-            tween: Tween<double>(end: targetX),
-            duration: const Duration(milliseconds: 350),
-            curve: Curves.easeOutCubic,
-            builder: (context, notchX, _) {
-              return Row(
-                children: List.generate(items.length, (i) {
-                  final selected = i == currentIndex;
-                  final item = items[i];
-                  final color = selected ? colors.accent : colors.text2;
-                  final iconBg = selected ? colors.accentSoft : colors.card;
-                  return Expanded(
-                    child: GestureDetector(
-                      behavior: HitTestBehavior.opaque,
-                      onTap: () => onTap(i),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          AnimatedSwitcher(
-                              duration: const Duration(milliseconds: 200),
-                              transitionBuilder: (child, anim) =>
-                                  ScaleTransition(scale: anim, child: child),
-                              child: Card(
-                                elevation: 0,
-                                color: iconBg,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(4),
-                                ),
-                                child: Icon(
-                                  item.icon,
-                                  key: ValueKey('$i-$selected'),
-                                  size: 24,
-                                  color: color,
-                                ).paddingAll(padding: 8),
-                              )),
-                          const SizedBox(height: 4),
-                          AnimatedDefaultTextStyle(
-                            duration: const Duration(milliseconds: 200),
-                            style: AppTextStyles.navBarTitleText(
-                                context: context, color: color),
-                            child: Text(item.title.translate),
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              // Background with notch painter
+              Positioned.fill(
+                child: CustomPaint(
+                  painter: _NotchPainter(
+                    notchX: centerX,
+                    depth: 26,
+                    color: colors.card,
+                  ),
+                ),
+              ),
+              // Content Row for items
+              Positioned(
+                left: 0,
+                right: 0,
+                bottom: 0,
+                height: _height,
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: bottomInset),
+                  child: Row(
+                    children: [
+                      if (items.isNotEmpty) _buildNavItem(context, 0, colors),
+                      if (items.length > 1) _buildNavItem(context, 1, colors),
+                      // Spacer for center FAB
+                      const Expanded(child: SizedBox()),
+                      if (items.length > 3)
+                        _buildNavItem(context, 3, colors)
+                      else if (items.length > 2)
+                        _buildNavItem(context, 3, colors),
+                    ],
+                  ),
+                ),
+              ),
+              // Center Floating Action Button for the 3rd item (index 2)
+              if (items.length > 2)
+                Positioned(
+                  left: centerX - 28,
+                  top: -16,
+                  child: GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () => onTap(2),
+                    child: Container(
+                      width: 56,
+                      height: 56,
+                      decoration: BoxDecoration(
+                        color: currentIndex == 2 ? colors.accent : colors.card,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: colors.border, width: 0.5),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.12),
+                            blurRadius: 8,
+                            offset: const Offset(0, 3),
                           ),
                         ],
                       ),
+                      child: Icon(
+                        items[2].icon,
+                        color: currentIndex == 2 ? Colors.white : colors.text1,
+                        size: 26,
+                      ),
                     ),
-                  );
-                }),
-              );
-            },
+                  ),
+                ),
+            ],
           ),
         );
       },
+    );
+  }
+
+  Widget _buildNavItem(BuildContext context, int i, dynamic colors) {
+    final selected = i == currentIndex;
+    final item = items[i];
+    final color = selected ? colors.accent : colors.text2;
+
+    return Expanded(
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () => onTap(i),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              item.icon,
+              size: 24,
+              color: color,
+            ),
+            const SizedBox(height: 4),
+            Text(
+              item.title.translate,
+              style:
+                  AppTextStyles.navBarTitleText(context: context, color: color),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -118,7 +163,7 @@ class _NotchPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    const half = 40.0; // half-width of the notch
+    const half = 36.0; // half-width of the notch
     final path = Path()
       ..moveTo(0, 0)
       ..lineTo(notchX - half, 0)

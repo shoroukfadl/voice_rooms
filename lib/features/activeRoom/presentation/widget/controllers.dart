@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:voice_rooms/Core/Language/app_styles.dart';
 import 'package:voice_rooms/Utilities/extensions.dart';
-import 'package:voice_rooms/utilities/constants/strings.dart';
-import 'package:voice_rooms/utilities/roomly.dart';
 
 class ActiveRoomControls extends StatelessWidget {
   final bool isSelfMuted;
@@ -28,32 +26,32 @@ class ActiveRoomControls extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          RoomControlButton(
-            icon: Roomly.roomly,
-            label: Strings.raiseHand.translate,
-            background: colors.card,
-            iconColor: colors.text2,
-            border: colors.border,
-            size: 42,
-            onTap: onRaiseHand,
-          ),
-          RoomControlButton(
-            icon: isSelfMuted ? Roomly.muted : Roomly.mic,
-            label:
-                isSelfMuted ? Strings.unmute.translate : Strings.mute.translate,
-            background: colors.success,
-            iconColor: colors.secondarySoft,
-            size: 48,
-            onTap: onToggleMute,
-          ),
-          RoomControlButton(
-            icon: Roomly.leave,
-            label: Strings.leave.translate,
-            background: colors.danger,
-            iconColor: Colors.white,
-            size: 42,
-            onTap: onLeave,
-          ),
+          // RoomControlButton(
+          //   icon: Roomly.roomly,
+          //   label: Strings.raiseHand.translate,
+          //   background: colors.card,
+          //   iconColor: colors.text2,
+          //   border: colors.border,
+          //   size: 42,
+          //   onTap: onRaiseHand,
+          // ),
+          // RoomControlButton(
+          //   icon: isSelfMuted ? Roomly.muted : Roomly.mic,
+          //   label:
+          //       isSelfMuted ? Strings.unmute.translate : Strings.mute.translate,
+          //   background: colors.success,
+          //   iconColor: colors.secondarySoft,
+          //   size: 48,
+          //   onTap: onToggleMute,
+          // ),
+          // RoomControlButton(
+          //   icon: Roomly.leave,
+          //   label: Strings.leave.translate,
+          //   background: colors.danger,
+          //   iconColor: Colors.white,
+          //   size: 42,
+          //   onTap: onLeave,
+          // ),
         ],
       ).paddingSymmetric(vertical: 14),
     );
