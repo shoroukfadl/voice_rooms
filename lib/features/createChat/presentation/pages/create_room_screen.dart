@@ -1,71 +1,95 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:roomly/Utilities/Constants/constants.dart';
-import 'package:roomly/features/chat/presentation/pages/chat_screen.dart';
-import 'package:roomly/features/createChat/presentation/widget/feature.dart';
-import 'package:roomly/features/createChat/presentation/widget/header.dart';
-import 'package:roomly/utilities/constants/enums.dart';
-import 'package:roomly/utilities/constants/strings.dart';
-import 'package:roomly/utilities/extensions.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:roomly/Core/Language/app_styles.dart';
+import 'package:roomly/Utilities/Constants/enums.dart';
+import 'package:roomly/Utilities/extensions.dart';
+import 'package:roomly/features/createChat/presentation/widget/contact_tile.dart';
+import 'package:roomly/features/createChat/presentation/widget/contacts_search_field.dart';
+import 'package:roomly/widgets/helper/divider.dart';
 import 'package:roomly/widgets/helper/screen_spacer.dart';
-import 'package:roomly/widgets/interactive_widgets/custom_text_field.dart';
-import 'package:roomly/widgets/interactive_widgets/primary_button_widget.dart';
 import 'package:roomly/widgets/mainLayout/screen_layout_widget.dart';
 
-class CreateRoomScreen extends StatefulWidget {
+class CreateChatScreen extends StatefulWidget {
   static String routeName = ScreenRoutes.newRoom.name;
-  const CreateRoomScreen({super.key});
+  const CreateChatScreen({super.key});
 
   @override
-  State<CreateRoomScreen> createState() => _CreateRoomScreenState();
+  State<CreateChatScreen> createState() => _CreateChatScreenState();
 }
 
-class _CreateRoomScreenState extends State<CreateRoomScreen> {
-  late TextEditingController roomNameController;
-  final GlobalKey formKey = GlobalKey<FormState>();
-  @override
-  void initState() {
-    super.initState();
-    roomNameController = TextEditingController();
-  }
+class _CreateChatScreenState extends State<CreateChatScreen> {
+  final List<Map<String, dynamic>> _online = const [
+    {
+      'name': 'Salma Nour',
+      'status': 'Active now',
+      'isOnline': true,
+      'color': CupertinoColors.systemGrey,
+    },
+    {
+      'name': 'Omar Tarek',
+      'status': 'Active now',
+      'isOnline': true,
+      'color': CupertinoColors.systemGreen,
+    },
+  ];
 
-  @override
-  void dispose() {
-    roomNameController.dispose();
-    super.dispose();
-  }
+  final List<Map<String, dynamic>> _all = const [
+    {
+      'name': 'Rana Khaled',
+      'status': 'Last seen 2h ago',
+      'isOnline': false,
+      'color': CupertinoColors.systemGrey3,
+    },
+    {
+      'name': 'Mostafa Adel',
+      'status': 'Last seen yesterday',
+      'isOnline': false,
+      'color': CupertinoColors.black,
+    },
+    {
+      'name': 'Nour Fathy',
+      'status': 'Last seen 3d ago',
+      'isOnline': false,
+      'color': CupertinoColors.systemGrey2,
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.colors;
+
     return ScreenLayoutWidget(
       children: [
-        CreateRoomHeader().asSliver(),
         ScreenSpacer(),
-        Form(
-          key: formKey,
-          child: CustomTextField(
-            controller: roomNameController,
-            label: Strings.roomTitleLabel.translate,
+        Text(
+          "  Strings.contactsTitle.translate",
+          style:
+              AppTextStyles.screenTitle(context: context, color: colors.text1),
+        ).asPaddedSliver(),
+        ScreenSpacer(),
+        ContactSearch(controller: TextEditingController()).asPaddedSliver(),
+        ScreenSpacer(),
+        _buildTileList(_online).asPaddedSliver(),
+        ScreenSpacer(),
+        HozDivider().asPaddedSliver(),
+        ScreenSpacer(),
+        _buildTileList(_all).asPaddedSliver(),
+      ],
+    );
+  }
+
+  Widget _buildTileList(List<Map<String, dynamic>> contacts) {
+    return Column(
+      spacing: 16,
+      children: [
+        for (final contact in contacts) ...[
+          ContactTile(
+            name: contact['name'] as String,
+            statusLabel: contact['status'] as String,
+            isOnline: contact['isOnline'] as bool,
+            avatarColor: contact['color'] as Color,
           ),
-        ).asPaddedSliver(),
-        ScreenSpacer(),
-        ScreenSpacer(),
-        SliverList.separated(
-                itemBuilder: (c, i) => NewRoomFeature(onTap: () {}),
-                separatorBuilder: (c, i) => const SizedBox(
-                      height: 16,
-                    ),
-                itemCount: 2)
-            .asPaddedSliver(),
-        SizedBox(
-          height: smallSectionSpacing * 2,
-        ).asSliver(),
-        PrimaryButtonWidget(
-          title: Strings.goLiveButton.translate,
-          onTap: () {
-            context.goNamed(ChatScreen.routeName);
-          },
-        ).asPaddedSliver(),
+          if (contact != contacts.last) HozDivider(),
+        ],
       ],
     );
   }

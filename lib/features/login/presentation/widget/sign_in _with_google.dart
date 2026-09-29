@@ -1,11 +1,8 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:roomly/Utilities/extensions.dart';
-import 'package:roomly/features/home/presentation/pages/home_screen.dart';
 import 'package:roomly/features/login/presentation/cubit/login_cubit.dart';
-import 'package:roomly/utilities/constants/strings.dart';
 import 'package:roomly/utilities/helper_function.dart';
 import 'package:roomly/widgets/interactive_widgets/custom_button_widget.dart';
 
@@ -20,7 +17,7 @@ class LoginWithGoogleButton extends StatelessWidget {
       builder: (context, state) {
         final isLoading = state.googleLoginStatus.isLoading;
         return CustomButtonWidget(
-          title: Strings.signInWithGoogle.translate,
+          title: "Strings.signInWithGoogle.translate",
           titleColor: colors.text1,
           width: double.infinity,
           btnColor: colors.surface,
@@ -36,9 +33,9 @@ class LoginWithGoogleButton extends StatelessWidget {
             message: state.googleLoginStatus.message,
           );
         } else if (state.googleLoginStatus.isSuccess) {
-          if (state.user != null) {
-            context.goNamed(HomeScreen.routeName);
-          }
+          // if (state.user != null) {
+          //   context.goNamed(HomeScreen.routeName);
+          // }
         }
       },
     );

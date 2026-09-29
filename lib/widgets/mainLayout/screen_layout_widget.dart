@@ -14,12 +14,16 @@ class ScreenLayoutWidget extends StatefulWidget {
 class _ScreenLayoutWidgetState extends State<ScreenLayoutWidget> {
   @override
   Widget build(BuildContext context) {
-    return RawScrollbar(
-      thumbVisibility: true,
-      trackVisibility: true,
-      child: CustomScrollView(
-        slivers: widget.children,
-      ),
-    );
+    return SafeArea(
+        minimum: EdgeInsets.symmetric(
+          vertical: 40,
+        ),
+        child: RawScrollbar(
+          thumbVisibility: true,
+          trackVisibility: true,
+          child: CustomScrollView(
+            slivers: widget.children,
+          ),
+        ));
   }
 }

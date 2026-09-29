@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:roomly/Core/Language/app_styles.dart';
 import 'package:roomly/Utilities/Constants/constants.dart';
 import 'package:roomly/Utilities/extensions.dart';
-import 'package:roomly/utilities/constants/strings.dart';
 
 class CreateRoomHeader extends StatelessWidget {
   const CreateRoomHeader({super.key});
@@ -11,7 +10,7 @@ class CreateRoomHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     return Text(
-      Strings.createRoomScreenTitle.translate,
+      " Strings.createRoomScreenTitle.translate",
       style: AppTextStyles.screenTitle(context: context, color: colors.text1),
     ).paddingSymmetric(horizontal: mobileHozPadding);
   }

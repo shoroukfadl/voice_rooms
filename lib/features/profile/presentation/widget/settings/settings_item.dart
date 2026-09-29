@@ -66,10 +66,9 @@ class PreferencesItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    return Column(
-      spacing: 4,
-      mainAxisSize: MainAxisSize.min,
+    return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(label,
             style: AppTextStyles.formAndListText(
@@ -94,7 +93,7 @@ class PreferencesItem extends StatelessWidget {
                             selected ? Colors.white : (color ?? colors.text1))),
             ],
           ),
-          height: 32,
+          height: 40,
         ),
       ],
     );

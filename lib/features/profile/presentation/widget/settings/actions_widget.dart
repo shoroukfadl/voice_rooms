@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:roomly/Utilities/extensions.dart';
 import 'package:roomly/features/profile/presentation/widget/settings/settings_item.dart';
 import 'package:roomly/utilities/constants/constants.dart';
-import 'package:roomly/utilities/constants/strings.dart';
 import 'package:roomly/utilities/roomly.dart';
 
 class ActionsCard extends StatelessWidget {
@@ -27,13 +26,13 @@ class ActionsCard extends StatelessWidget {
               onTap: () {},
               icon: Roomly.logout,
               color: colors.secondary,
-              label: Strings.logout.translate),
+              label: "Strings.logout.translate"),
           SettingsItem(
               onTap: () {},
               isLast: true,
               icon: Roomly.remove,
               color: colors.danger,
-              label: Strings.removeAccount.translate),
+              label: "Strings.removeAccount.translate"),
         ],
       ),
     );

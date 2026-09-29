@@ -35,30 +35,26 @@ class _MainLayoutWidgetState extends State<MainLayoutWidget> {
     final activeRoom =
         widget.currentPath?.replaceAll("/", "") == ScreenRoutes.chat.name;
     return Scaffold(
-        key: GlobalKeys.scaffoldKey,
-        backgroundColor: colors.background,
-        bottomNavigationBar: activeRoom
-            ? ActiveRoomControls(
-                isSelfMuted: false,
-                onLeave: () {},
-                onRaiseHand: () {},
-                onToggleMute: () {},
-              )
-            : hideBottomNav
-                ? null
-                : BottomNavBarItems(
-                    currentPath: widget.currentPath,
-                  ),
-        //floatingActionButton: CreateNewRoom(),
-        body: SafeArea(
-          minimum: EdgeInsets.symmetric(
-            vertical: 40,
-          ),
-          child: AnimatedScale(
-            scale: scale,
-            duration: const Duration(milliseconds: 400),
-            child: widget.child,
-          ),
-        ));
+      key: GlobalKeys.scaffoldKey,
+      backgroundColor: colors.background,
+      bottomNavigationBar: activeRoom
+          ? ActiveRoomControls(
+              isSelfMuted: false,
+              onLeave: () {},
+              onRaiseHand: () {},
+              onToggleMute: () {},
+            )
+          : hideBottomNav
+              ? null
+              : BottomNavBarItems(
+                  currentPath: widget.currentPath,
+                ),
+      //floatingActionButton: CreateNewRoom(),
+      body: AnimatedScale(
+        scale: scale,
+        duration: const Duration(milliseconds: 400),
+        child: widget.child,
+      ),
+    );
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:roomly/Core/Language/app_styles.dart';
-import 'package:roomly/utilities/constants/strings.dart';
-import 'package:roomly/utilities/extensions.dart';
+import 'package:roomly/Utilities/extensions.dart';
 
 class ResendEmailVerificationWidget extends StatelessWidget {
   const ResendEmailVerificationWidget({super.key});
@@ -14,14 +13,14 @@ class ResendEmailVerificationWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          Strings.didntGetItText.translate,
+          "Strings.didntGetItText.translate",
           style:
               AppTextStyles.captionText(context: context, color: colors.text2),
         ),
         InkWell(
           onTap: () {},
           child: Text(
-            Strings.resendEmailLink.translate,
+            "Strings.resendEmailLink.translate",
             style: AppTextStyles.inlineLinkText(
                     context: context, color: colors.secondary)
                 .copyWith(

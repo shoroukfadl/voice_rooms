@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:roomly/Utilities/Constants/constants.dart';
 import 'package:roomly/Utilities/extensions.dart';
 import 'package:roomly/features/login/presentation/pages/login_screen.dart';
-import 'package:roomly/utilities/constants/strings.dart';
 import 'package:roomly/widgets/interactive_widgets/custom_button_widget.dart';
 
 class LoginWidget extends StatelessWidget {
@@ -15,7 +14,7 @@ class LoginWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     return CustomButtonWidget(
-      title: Strings.backToLogInButton.translate,
+      title: "Strings.backToLogInButton.translate",
       onPressed: () {
         context.goNamed(LoginScreen.routeName);
       },

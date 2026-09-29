@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:roomly/Core/Language/app_styles.dart';
 import 'package:roomly/Utilities/Constants/constants.dart';
 import 'package:roomly/Utilities/extensions.dart';
-import 'package:roomly/utilities/constants/strings.dart';
 
 class KeyPoints extends StatelessWidget {
   const KeyPoints({super.key});
@@ -20,7 +19,7 @@ class KeyPoints extends StatelessWidget {
         spacing: 6,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(Strings.keyPointsLabel.translate,
+          Text("Strings.keyPointsLabel.translate",
               style: AppTextStyles.fieldLabelText(
                   context: context, color: colors.secondary)),
           Text(

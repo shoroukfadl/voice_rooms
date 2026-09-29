@@ -5,14 +5,14 @@ class LoginState extends Equatable {
   final RequestStatus googleLoginStatus;
   final RequestStatus logoutStatus;
   final RequestStatus passwordResetStatus;
-  final UserEntity? user;
+  // final UserEntity? user;
 
   const LoginState({
     this.loginStatus = const RequestInitial(),
     this.googleLoginStatus = const RequestInitial(),
     this.logoutStatus = const RequestInitial(),
     this.passwordResetStatus = const RequestInitial(),
-    this.user,
+    // this.user,
   });
 
   LoginState copyWithMethod({
@@ -20,14 +20,14 @@ class LoginState extends Equatable {
     RequestStatus? logoutStatus,
     RequestStatus? googleLoginStatus,
     RequestStatus? passwordResetStatus,
-    UserEntity? user,
+    // UserEntity? user,
   }) =>
       LoginState(
         loginStatus: loginStatus ?? this.loginStatus,
         googleLoginStatus: googleLoginStatus ?? this.googleLoginStatus,
         logoutStatus: logoutStatus ?? this.logoutStatus,
         passwordResetStatus: passwordResetStatus ?? this.passwordResetStatus,
-        user: user ?? this.user,
+        // user: user ?? this.user,
       );
 
   @override
@@ -36,6 +36,6 @@ class LoginState extends Equatable {
         logoutStatus,
         passwordResetStatus,
         googleLoginStatus,
-        user,
+        // user,
       ];
 }

@@ -24,7 +24,10 @@ class ProfileCard extends StatelessWidget {
         children: [
           ProfileAvatar(),
           Name(),
-          ProfileStatsRow(followers: 10, following: 50, roomsHosted: 2),
+          ProfileStatsRow(
+            groups: 10,
+            contacts: 50,
+          ),
         ],
       ),
     );

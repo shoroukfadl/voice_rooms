@@ -1,16 +1,17 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:roomly/Core/Language/app_styles.dart';
-import 'package:roomly/Utilities/Constants/enums.dart';
+import 'package:roomly/Utilities/Constants/constants.dart';
 import 'package:roomly/Utilities/extensions.dart';
 import 'package:roomly/features/createChat/presentation/widget/contact_tile.dart';
-import 'package:roomly/features/createChat/presentation/widget/contacts_search_field.dart';
 import 'package:roomly/features/createChat/presentation/widget/selected_avatars_row.dart';
+import 'package:roomly/utilities/helper_function.dart';
 import 'package:roomly/widgets/helper/divider.dart';
 import 'package:roomly/widgets/helper/screen_spacer.dart';
 import 'package:roomly/widgets/mainLayout/screen_layout_widget.dart';
 
 class NewGroupScreen extends StatefulWidget {
-  static String routeName = ScreenRoutes.newGroups.name;
   const NewGroupScreen({super.key});
 
   @override
@@ -18,8 +19,6 @@ class NewGroupScreen extends StatefulWidget {
 }
 
 class _NewGroupScreenState extends State<NewGroupScreen> {
-  // TODO: replace with real data from your contacts repository/bloc.
-  // Each row is a plain map: name, status, isOnline, color.
   final List<Map<String, dynamic>> _contacts = const [
     {
       'name': 'Salma Nour',
@@ -47,8 +46,6 @@ class _NewGroupScreenState extends State<NewGroupScreen> {
     },
   ];
 
-  // Pre-selected to match the mock (Salma Nour + Omar Tarek already picked).
-  // Keyed by name since there's no id field on a plain map-based contact.
   final Set<String> _selectedNames = {'Salma Nour', 'Omar Tarek'};
 
   List<Map<String, dynamic>> get _selectedContacts =>
@@ -62,6 +59,55 @@ class _NewGroupScreenState extends State<NewGroupScreen> {
         _selectedNames.add(name);
       }
     });
+  }
+
+  Future<void> _showGroupNameDialog(BuildContext context) async {
+    final TextEditingController nameController = TextEditingController();
+    final colors = context.colors;
+    return showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: colors.card,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(cardRadius)),
+        title: Text('Enter group name',
+            style: AppTextStyles.captionText(
+                context: context, color: colors.text1)),
+        content: TextField(
+          controller: nameController,
+          autofocus: true,
+          decoration: InputDecoration(
+            hintText: 'Group name',
+            hintStyle: AppTextStyles.cardSubtitleText(
+                context: context, color: colors.text3),
+          ),
+          style: AppTextStyles.cardSubtitleText(
+              context: context, color: colors.text1),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text('Cancel',
+                style: AppTextStyles.cardSubtitleText(
+                    context: context, color: colors.text2)),
+          ),
+          TextButton(
+            onPressed: () {
+              final groupName = nameController.text.trim();
+              if (groupName.isNotEmpty) {
+                Navigator.pop(context);
+                HelperFunctions.showCustomToast(context,
+                    message: 'Group "$groupName" created successfully!');
+                context.pop();
+              }
+            },
+            child: Text('Create',
+                style: AppTextStyles.cardSubtitleText(
+                    context: context, color: colors.accent)),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -82,7 +128,7 @@ class _NewGroupScreenState extends State<NewGroupScreen> {
               onPressed: _selectedNames.isEmpty
                   ? null
                   : () {
-                      // TODO: navigate to group details / confirm step.
+                      _showGroupNameDialog(context);
                     },
               child: Text(
                 'Next',
@@ -95,7 +141,7 @@ class _NewGroupScreenState extends State<NewGroupScreen> {
           ],
         ).asPaddedSliver(),
         ScreenSpacer(),
-        const ContactsSearchField().asPaddedSliver(),
+        // const ContactsSearchField().asPaddedSliver(),
         ScreenSpacer(),
         SelectedAvatarsRow(selected: _selectedContacts).asPaddedSliver(),
         ScreenSpacer(),

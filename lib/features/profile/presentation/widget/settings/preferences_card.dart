@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:roomly/Utilities/Constants/constants.dart';
 import 'package:roomly/Utilities/extensions.dart';
 import 'package:roomly/features/profile/presentation/widget/settings/settings_item.dart';
-import 'package:roomly/utilities/constants/constants.dart';
-import 'package:roomly/utilities/constants/strings.dart';
 import 'package:roomly/utilities/roomly.dart';
+import 'package:roomly/widgets/helper/divider.dart';
 
 class PreferencesCard extends StatelessWidget {
   const PreferencesCard({super.key});
@@ -11,18 +11,17 @@ class PreferencesCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    return Row(
-      spacing: 8,
-      children: [
-        Container(
-          padding: EdgeInsetsGeometry.symmetric(horizontal: 16, vertical: 16),
-          margin: EdgeInsetsDirectional.only(start: mobileHozPadding),
-          decoration: BoxDecoration(
-            color: colors.card,
-            borderRadius: BorderRadius.circular(cardRadius),
-            border: Border.all(color: colors.border),
-          ),
-          child: PreferencesItem(
+    return Container(
+      padding: EdgeInsetsGeometry.symmetric(horizontal: 16, vertical: 16),
+      margin: EdgeInsetsDirectional.symmetric(horizontal: mobileHozPadding),
+      decoration: BoxDecoration(
+        color: colors.card,
+        borderRadius: BorderRadius.circular(cardRadius),
+        border: Border.all(color: colors.border),
+      ),
+      child: Column(
+        children: [
+          PreferencesItem(
               onTap: () {},
               items: [
                 PreferencesModel(
@@ -35,17 +34,9 @@ class PreferencesCard extends StatelessWidget {
                   icon: Roomly.system,
                 ),
               ],
-              label: Strings.theme.translate),
-        ).expand,
-        Container(
-          padding: EdgeInsetsGeometry.symmetric(horizontal: 16, vertical: 16),
-          margin: EdgeInsetsDirectional.only(end: mobileHozPadding),
-          decoration: BoxDecoration(
-            color: colors.card,
-            borderRadius: BorderRadius.circular(cardRadius),
-            border: Border.all(color: colors.border),
-          ),
-          child: PreferencesItem(
+              label: " Strings.theme.translate"),
+          HozDivider().paddingSymmetric(vertical: 8),
+          PreferencesItem(
               onTap: () {},
               isLast: true,
               items: [
@@ -56,9 +47,9 @@ class PreferencesCard extends StatelessWidget {
                   label: "العربيه",
                 ),
               ],
-              label: Strings.language.translate),
-        ).expand,
-      ],
+              label: "Strings.language.translate"),
+        ],
+      ),
     );
   }
 }

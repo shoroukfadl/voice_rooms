@@ -1,32 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:roomly/Core/Language/app_styles.dart';
 import 'package:roomly/Utilities/extensions.dart';
-import 'package:roomly/utilities/constants/strings.dart';
 
 class ProfileStatsRow extends StatelessWidget {
-  final int followers, roomsHosted, following;
+  final int groups, contacts;
   const ProfileStatsRow({
     super.key,
-    required this.followers,
-    required this.following,
-    required this.roomsHosted,
+    required this.groups,
+    required this.contacts,
   });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      spacing: 14,
+      spacing: 40,
       children: [
         StatPill(
-            number: roomsHosted.toString(),
-            label: Strings.roomsHostedLabel.translate),
+            number: groups.toString(),
+            label: "Strings.groupsStatLabel.translate"),
         StatPill(
-            number: followers.toString(),
-            label: Strings.followersLabel.translate),
-        StatPill(
-            number: following.toString(),
-            label: Strings.followingLabel.translate),
+            number: contacts.toString(),
+            label: "Strings.contactsStatLabel.translate"),
       ],
     );
   }

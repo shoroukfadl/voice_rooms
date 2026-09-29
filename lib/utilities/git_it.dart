@@ -3,6 +3,8 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:roomly/core/language/locale_cubit.dart';
 import 'package:roomly/core/localStorage/hive_manager.dart';
 import 'package:roomly/features/VerificationLink/data/dataSource/remote/link_remote_data_source.dart';
 import 'package:roomly/features/VerificationLink/data/dataSource/remote/link_remote_data_source_imp.dart';
@@ -16,25 +18,21 @@ import 'package:roomly/features/login/data/datasources/remote/login_remote_data_
 import 'package:roomly/features/login/data/datasources/remote/login_remote_data_source_impl.dart';
 import 'package:roomly/features/login/data/repository/login_repository_impl.dart';
 import 'package:roomly/features/login/domain/repository/login_repository.dart';
-import 'package:roomly/features/login/domain/usecases/get_current_user_usecase.dart';
-import 'package:roomly/features/login/domain/usecases/login_with_email_password_usecase.dart';
-import 'package:roomly/features/login/domain/usecases/login_with_google_usecase.dart';
-import 'package:roomly/features/login/domain/usecases/logout_usecase.dart';
-import 'package:roomly/features/login/domain/usecases/send_password_reset_email_usecase.dart';
+// import 'package:roomly/features/login/domain/usecases/get_current_user_usecase.dart';
+// import 'package:roomly/features/login/domain/usecases/login_with_email_password_usecase.dart';
+// import 'package:roomly/features/login/domain/usecases/login_with_google_usecase.dart';
+// import 'package:roomly/features/login/domain/usecases/logout_usecase.dart';
+// import 'package:roomly/features/login/domain/usecases/send_password_reset_email_usecase.dart';
 import 'package:roomly/features/login/presentation/cubit/login_cubit.dart';
-import 'package:roomly/features/register/data/datasources/local/register_local_data_source.dart';
-import 'package:roomly/features/register/data/datasources/local/register_local_data_source_imp.dart';
-import 'package:roomly/features/register/data/datasources/remote/register_remote_data_source.dart';
-import 'package:roomly/features/register/data/datasources/remote/register_remote_data_source_imp.dart';
-import 'package:roomly/features/register/data/repository/register_repo_imp.dart';
-import 'package:roomly/features/register/domain/repository/register_repo.dart';
-import 'package:roomly/features/register/domain/usecase/register_usecase.dart';
-import 'package:roomly/features/register/presentation/cubit/register_cubit.dart';
 
 final sl = GetIt.instance;
 
 class GitIt {
   static Future initGitIt() async {
+    await Hive.initFlutter();
+    final settingsBox = await Hive.openBox('settings');
+    sl.registerSingleton<LocaleCubit>(LocaleCubit(settingsBox));
+
     final firebaseStore = FirebaseFirestore.instance;
     sl.registerLazySingleton<FirebaseFirestore>(() => firebaseStore);
 
@@ -49,7 +47,6 @@ class GitIt {
 
     _initGitIt();
 
-    _initRegister();
     _initLink();
     _initLogin();
   }
@@ -62,22 +59,6 @@ class GitIt {
     final hiveManager = GetIt.I<HiveManager>();
 
     await hiveManager.init();
-  }
-
-  static void _initRegister() {
-    sl.registerFactory(() => RegisterCubit(sl()));
-    sl.registerLazySingleton(() => RegisterUseCase(sl()));
-    sl.registerLazySingleton<RegisterRep>(
-      () => RegisterRepoImp(localDataSource: sl(), remoteDataSource: sl()),
-    );
-
-    //! Data Sources
-    sl.registerLazySingleton<RegisterRemoteDataSource>(
-      () => RegisterRemoteDataSourceImpl(sl(), sl()),
-    );
-    sl.registerLazySingleton<RegisterLocalDataSource>(
-      () => RegisterLocalDataSourceImpl(),
-    );
   }
 
   static void _initLink() {
@@ -97,18 +78,18 @@ class GitIt {
 
   static void _initLogin() {
     sl.registerFactory(() => LoginCubit(
-          loginWithEmailPasswordUseCase: sl(),
-          loginWithGoogleUseCase: sl(),
-          logoutUseCase: sl(),
-          getCurrentUserUseCase: sl(),
-          sendPasswordResetEmailUseCase: sl(),
+          // loginWithEmailPasswordUseCase: sl(),
+          // loginWithGoogleUseCase: sl(),
+          // logoutUseCase: sl(),
+          // getCurrentUserUseCase: sl(),
+          // sendPasswordResetEmailUseCase: sl(),
           connectivity: sl(),
         ));
-    sl.registerLazySingleton(() => LoginWithEmailPasswordUseCase(sl()));
-    sl.registerLazySingleton(() => LoginWithGoogleUseCase(sl()));
-    sl.registerLazySingleton(() => LogoutUseCase(sl()));
-    sl.registerLazySingleton(() => GetCurrentUserUseCase(sl()));
-    sl.registerLazySingleton(() => SendPasswordResetEmailUseCase(sl()));
+    // sl.registerLazySingleton(() => LoginWithEmailPasswordUseCase(sl()));
+    // sl.registerLazySingleton(() => LoginWithGoogleUseCase(sl()));
+    // sl.registerLazySingleton(() => LogoutUseCase(sl()));
+    // sl.registerLazySingleton(() => GetCurrentUserUseCase(sl()));
+    // sl.registerLazySingleton(() => SendPasswordResetEmailUseCase(sl()));
     sl.registerLazySingleton<LoginRepository>(
       () => LoginRepositoryImpl(
         remoteDataSource: sl(),

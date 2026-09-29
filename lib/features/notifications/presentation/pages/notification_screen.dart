@@ -17,7 +17,9 @@ class NotificationScreen extends StatelessWidget {
         NotificationHeader().asSliver(),
         ScreenSpacer(),
         SliverList.separated(
-            itemBuilder: (c, i) => NotificationCard(),
+            itemBuilder: (c, i) => NotificationCard(
+                  isLast: i == 9,
+                ),
             separatorBuilder: (c, i) => const SizedBox(
                   height: 16,
                 ),

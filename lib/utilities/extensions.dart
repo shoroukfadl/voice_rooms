@@ -2,15 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:roomly/Utilities/Constants/constants.dart';
-import 'package:roomly/core/Language/locales.dart';
 
 import '../Core/Theme/theme_colors.dart';
-
-extension StringExtensions on String {
-  String get translate {
-    return tr;
-  }
-}
 
 extension SliverWidgetExtension on Widget {
   Widget asPaddedSliver() {

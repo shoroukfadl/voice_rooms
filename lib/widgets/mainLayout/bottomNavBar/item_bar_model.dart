@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import 'package:roomly/features/explore/presentation/pages/explore_screen.dart';
+import 'package:roomly/features/createChat/presentation/pages/create_room_screen.dart';
+import 'package:roomly/features/groups/presentation/pages/groups_screen.dart';
 import 'package:roomly/features/home/presentation/pages/home_screen.dart';
 import 'package:roomly/features/notifications/presentation/pages/notification_screen.dart';
 import 'package:roomly/features/profile/presentation/pages/profile_screen.dart';
-import 'package:roomly/utilities/constants/strings.dart';
 import 'package:roomly/utilities/roomly.dart';
 
 class ItemBarModel {
@@ -18,27 +18,27 @@ class ItemBarModel {
 
   static List<ItemBarModel> items = [
     ItemBarModel(
-      title: Strings.home,
-      icon: Roomly.home,
+      title: "Strings.chatsListTitle",
+      icon: Roomly.chats,
       routeName: HomeScreen.routeName,
     ),
     ItemBarModel(
-      title: Strings.groupsStatLabel,
+      title: "Strings.groupsStatLabel",
       icon: Roomly.groups,
-      routeName: ExploreScreen.routeName,
+      routeName: GroupsScreen.routeName,
     ),
     ItemBarModel(
       title: 'chat',
       icon: Roomly.createChat,
-      routeName: 'New Room',
+      routeName: CreateChatScreen.routeName,
     ),
     ItemBarModel(
-      title: Strings.notifications,
+      title: " Strings.notifications",
       icon: Roomly.notifications,
       routeName: NotificationScreen.routeName,
     ),
     ItemBarModel(
-      title: Strings.profile,
+      title: "Strings.profile",
       icon: Roomly.profile,
       routeName: ProfileScreen.routeName,
     ),

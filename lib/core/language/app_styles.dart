@@ -5,9 +5,7 @@ import 'package:roomly/utilities/extensions.dart';
 @immutable
 abstract class AppTextStyles extends ThemeExtension<AppTextStyles> {
   // ─── Base font families ───────────────────────────────────────────────────
-  static TextStyle get baseFamily => GoogleFonts.sora();
-
-  static TextStyle get secondaryFamily => GoogleFonts.inter();
+  static TextStyle get baseFamily => GoogleFonts.tajawal();
 
   /// -------------------------------- Basic Function -----------------------------------------
   static TextStyle baseStyle(
@@ -20,29 +18,91 @@ abstract class AppTextStyles extends ThemeExtension<AppTextStyles> {
         color: color ?? Colors.black,
       );
 
-  static TextStyle secondaryStyle(
-          {required double size,
-          required FontWeight fontWeight,
-          Color? color}) =>
-      secondaryFamily.copyWith(
-        fontSize: size,
-        fontWeight: fontWeight,
-        color: color ?? Colors.black,
+  /// Headings
+  static TextStyle h26({Color color = Colors.black}) => baseStyle(
+        size: 26,
+        fontWeight: FontWeight.w800,
+        color: color,
+      );
+  static TextStyle h24({Color color = Colors.black}) => baseStyle(
+        size: 24,
+        fontWeight: FontWeight.w800,
+        color: color,
+      );
+  static TextStyle h22({Color color = Colors.black}) => baseStyle(
+        size: 22,
+        fontWeight: FontWeight.w800,
+        color: color,
+      );
+  static TextStyle h20({Color color = Colors.black}) => baseStyle(
+        size: 20,
+        fontWeight: FontWeight.w800,
+        color: color,
+      );
+  static TextStyle h18({Color color = Colors.black}) => baseStyle(
+        size: 20,
+        fontWeight: FontWeight.w800,
+        color: color,
       );
 
-  // Reserved for a large marketing/display headline. Not used by any
-  static TextStyle largeDisplayHeadline(
-          {Color? color, required BuildContext context}) =>
-      baseStyle(
-        size: context.matchedSize(large: 36, medium: 30, small: 26),
-        fontWeight: FontWeight.w600,
+  /// Titles
+  static TextStyle t18({Color color = Colors.black}) => baseStyle(
+        size: 18,
+        fontWeight: FontWeight.w700,
+        color: color,
+      );
+  static TextStyle t16({Color color = Colors.black}) => baseStyle(
+        size: 16,
+        fontWeight: FontWeight.w700,
+        color: color,
+      );
+  static TextStyle t14({Color color = Colors.black}) => baseStyle(
+        size: 14,
+        fontWeight: FontWeight.w700,
+        color: color,
+      );
+  static TextStyle t12({Color color = Colors.black}) => baseStyle(
+        size: 12,
+        fontWeight: FontWeight.w700,
+        color: color,
+      );
+  static TextStyle t10({Color color = Colors.black}) => baseStyle(
+        size: 10,
+        fontWeight: FontWeight.w700,
+        color: color,
+      );
+
+  /// body
+  static TextStyle b16({Color color = Colors.black}) => baseStyle(
+        size: 16,
+        fontWeight: FontWeight.w400,
+        color: color,
+      );
+  static TextStyle b14({Color color = Colors.black}) => baseStyle(
+        size: 14,
+        fontWeight: FontWeight.w400,
+        color: color,
+      );
+  static TextStyle b12({Color color = Colors.black}) => baseStyle(
+        size: 12,
+        fontWeight: FontWeight.w400,
+        color: color,
+      );
+  static TextStyle b10({Color color = Colors.black}) => baseStyle(
+        size: 10,
+        fontWeight: FontWeight.w400,
+        color: color,
+      );
+  static TextStyle b9({Color color = Colors.black}) => baseStyle(
+        size: 9,
+        fontWeight: FontWeight.w400,
         color: color,
       );
 
   // Onboarding screen title — "Talk. Listen. Think out loud."
   static TextStyle onboardingTitle(
           {Color? color, required BuildContext context}) =>
-      secondaryStyle(
+      baseStyle(
         size: context.matchedSize(large: 30, medium: 26, small: 24),
         fontWeight: FontWeight.w600,
         color: color ?? Colors.black,
@@ -64,7 +124,7 @@ abstract class AppTextStyles extends ThemeExtension<AppTextStyles> {
   // settings ("Settings"), create room ("New room"),
   // notifications ("Notifications")
   static TextStyle screenTitle({Color? color, required BuildContext context}) =>
-      secondaryStyle(
+      baseStyle(
         size: context.matchedSize(large: 24, medium: 20, small: 22),
         fontWeight: FontWeight.w600,
         color: color ?? Colors.black,
@@ -94,7 +154,7 @@ abstract class AppTextStyles extends ThemeExtension<AppTextStyles> {
   static TextStyle cardTitleText(
           {Color? color, required BuildContext context}) =>
       baseStyle(
-        size: context.matchedSize(large: 18, medium: 16, small: 16),
+        size: context.matchedSize(large: 18, medium: 16, small: 14),
         fontWeight: FontWeight.w600,
         color: color ?? Colors.black,
       );
@@ -112,7 +172,7 @@ abstract class AppTextStyles extends ThemeExtension<AppTextStyles> {
   // Badge text — "Live" indicator on Home and Explore cards
   static TextStyle liveBadgeText(
           {Color? color, required BuildContext context}) =>
-      secondaryStyle(
+      baseStyle(
         size: context.matchedSize(large: 13, medium: 11, small: 14),
         fontWeight: FontWeight.w600,
         color: color ?? Colors.black,
@@ -133,7 +193,7 @@ abstract class AppTextStyles extends ThemeExtension<AppTextStyles> {
   // ("AI live summary", "Public room", "Two-factor authentication")
   static TextStyle boldInlineText(
           {Color? color, required BuildContext context}) =>
-      secondaryStyle(
+      baseStyle(
         fontWeight: FontWeight.w600,
         color: color ?? Colors.black,
         size: context.matchedSize(large: 16, medium: 14, small: 14),
@@ -144,7 +204,7 @@ abstract class AppTextStyles extends ThemeExtension<AppTextStyles> {
   // "**Salma Tarek** started following you"
   static TextStyle notificationBoldFragmentText(
           {Color? color, required BuildContext context}) =>
-      secondaryStyle(
+      baseStyle(
         size: context.matchedSize(large: 15, medium: 14, small: 14),
         fontWeight: FontWeight.w600,
         color: color ?? Colors.black,
@@ -154,7 +214,7 @@ abstract class AppTextStyles extends ThemeExtension<AppTextStyles> {
   // stat labels ("Followers", "Rooms hosted"), room meta text
   // ("32 listening · 4 speaking")
   static TextStyle captionText({Color? color, required BuildContext context}) =>
-      secondaryStyle(
+      baseStyle(
         size: context.matchedSize(large: 15, medium: 13, small: 14),
         fontWeight: FontWeight.w400,
         color: color ?? Colors.black,
@@ -173,8 +233,8 @@ abstract class AppTextStyles extends ThemeExtension<AppTextStyles> {
   // Chip / tag text — Explore filter chips ("For you", "Mobile dev"),
   // topic tags on Create room ("Flutter", "Q&A")
   static TextStyle chipText({Color? color, required BuildContext context}) =>
-      secondaryStyle(
-        size: context.matchedSize(large: 13, medium: 12, small: 14),
+      baseStyle(
+        size: context.matchedSize(large: 13, medium: 12, small: 12),
         fontWeight: FontWeight.w500,
         color: color ?? Colors.black,
       );
@@ -183,8 +243,8 @@ abstract class AppTextStyles extends ThemeExtension<AppTextStyles> {
   // everywhere in the design (room description, AI-summary card text)
   static TextStyle cardSubtitleText(
           {Color? color, required BuildContext context}) =>
-      secondaryStyle(
-        size: context.matchedSize(large: 15, medium: 13, small: 16),
+      baseStyle(
+        size: context.matchedSize(large: 15, medium: 13, small: 12),
         fontWeight: FontWeight.w500,
         color: color ?? Colors.black,
       );
@@ -192,7 +252,7 @@ abstract class AppTextStyles extends ThemeExtension<AppTextStyles> {
   // Muted chip text — default (unselected) chip color/weight variant
   static TextStyle chipMutedText(
           {Color? color, required BuildContext context}) =>
-      secondaryStyle(
+      baseStyle(
         size: context.matchedSize(large: 13, medium: 12, small: 14),
         fontWeight: FontWeight.w400,
         color: color ?? Colors.black,
@@ -201,7 +261,7 @@ abstract class AppTextStyles extends ThemeExtension<AppTextStyles> {
   // Smallest caption text — search placeholder, "or continue with" divider
   static TextStyle smallestCaptionText(
           {Color? color, required BuildContext context}) =>
-      secondaryStyle(
+      baseStyle(
         size: context.matchedSize(large: 13, medium: 11, small: 14),
         fontWeight: FontWeight.w400,
         color: color ?? Colors.black,
@@ -211,7 +271,7 @@ abstract class AppTextStyles extends ThemeExtension<AppTextStyles> {
   // "Sign up" / "Log in" switch line, "Change photo", "Share summary"
   static TextStyle inlineLinkText(
           {Color? color, required BuildContext context}) =>
-      secondaryStyle(
+      baseStyle(
         size: context.matchedSize(large: 13, medium: 12, small: 14),
         fontWeight: FontWeight.w500,
         color: color ?? Colors.black,
@@ -222,7 +282,7 @@ abstract class AppTextStyles extends ThemeExtension<AppTextStyles> {
   // "Key points", "Account", "Preferences", "About"
   static TextStyle fieldLabelText(
           {Color? color, required BuildContext context}) =>
-      secondaryStyle(
+      baseStyle(
         size: context.matchedSize(large: 12, medium: 11, small: 16),
         fontWeight: FontWeight.w600,
         color: color ?? Colors.black,
@@ -233,7 +293,7 @@ abstract class AppTextStyles extends ThemeExtension<AppTextStyles> {
   // on Settings, Security & two-factor, and Edit profile
   static TextStyle formAndListText(
           {Color? color, required BuildContext context}) =>
-      secondaryStyle(
+      baseStyle(
         size: context.matchedSize(large: 14, medium: 13, small: 14),
         fontWeight: FontWeight.w400,
         color: color ?? Colors.black,

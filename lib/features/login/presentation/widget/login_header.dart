@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:roomly/Core/Language/app_styles.dart';
 import 'package:roomly/Utilities/extensions.dart';
-import 'package:roomly/utilities/constants/strings.dart';
+import 'package:roomly/core/language/app_strings.dart';
+import 'package:roomly/core/language/locales.dart';
+import 'package:roomly/widgets/helper/screen_spacer.dart';
 
 class LoginHeader extends StatelessWidget {
   final double imageSize;
@@ -10,20 +12,18 @@ class LoginHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final tr = context.t;
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const SizedBox(height: 40),
         Text(
-          Strings.loginTitle.translate,
-          style: AppTextStyles.flowScreenTitle(
-              context: context, color: colors.text1),
+          tr.loginTitle,
+          style: AppTextStyles.h22(color: colors.text1),
         ),
-        const SizedBox(height: 8),
+        const CustomSpacer.S(),
         Text(
-          Strings.loginSubtitle.translate,
-          style: AppTextStyles.screenSubtitleText(
-              context: context, color: colors.text2),
+          tr.loginSubtitle,
+          style: AppTextStyles.b12(color: colors.text2),
         ),
       ],
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:roomly/features/explore/presentation/widget/search_widget.dart';
+import 'package:roomly/features/groups/presentation/widget/search_widget.dart';
 import 'package:roomly/features/home/presentation/widget/chat_card.dart';
 import 'package:roomly/features/home/presentation/widget/header.dart';
 import 'package:roomly/utilities/constants/enums.dart';
@@ -36,16 +36,16 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return ScreenLayoutWidget(
       children: [
-        Header().asSliver(),
         ScreenSpacer(),
+        Header().asSliver(),
+        SizedBox(
+          height: 16,
+        ).asSliver(),
         SearchWidget(controller: searchController).asPaddedSliver(),
         ScreenSpacer(),
-        SliverList.separated(
+        SliverList.builder(
             itemBuilder: (c, i) => ChatCard(
                   isLast: i == 4,
-                ),
-            separatorBuilder: (c, i) => const SizedBox(
-                  height: 16,
                 ),
             itemCount: 5),
       ],

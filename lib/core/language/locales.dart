@@ -1,76 +1,71 @@
-import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-extension Translate on String {
-  String get tr => AppLocalizations.instance.translate(this) ?? "";
-}
-
 class AppLocalizations {
+  AppLocalizations(this.locale, this._strings);
+
   final Locale locale;
+  final Map<String, String> _strings;
 
-  AppLocalizations(this.locale);
+  static const supportedLocales = [Locale('ar'), Locale('en')];
+  static const delegate = _AppLocalizationsDelegate();
 
-  // Helper method to keep the code in the widgets concise
-  // Localizations are accessed using an InheritedWidget "of" syntax
-  static AppLocalizations? of(BuildContext context) {
-    return Localizations.of<AppLocalizations>(context, AppLocalizations);
-  }
+  static AppLocalizations of(BuildContext context) =>
+      Localizations.of<AppLocalizations>(context, AppLocalizations)!;
 
-  // Static member to have a simple access to the delegate from the MaterialApp
-  static const LocalizationsDelegate<AppLocalizations> delegate =
-      _AppLocalizationsDelegate();
-
-  Map<String, String> _localizedStrings = {};
-
-  static AppLocalizations get instance =>
-      _AppLocalizationsDelegate.instance; // add this
-
-  Future<bool> load() async {
-    // Load the language JSON file from the "lang" folder
-    String jsonString = await rootBundle
+  static Future<AppLocalizations> load(Locale locale) async {
+    final raw = await rootBundle
         .loadString('assets/languages/${locale.languageCode}.json');
-    Map<String, dynamic> jsonMap = json.decode(jsonString);
-
-    _localizedStrings = jsonMap.map((key, value) {
-      return MapEntry(key, value.toString());
-    });
-
-    return true;
+    final map = (json.decode(raw) as Map<String, dynamic>)
+        .map((k, v) => MapEntry(k, v.toString()));
+    return AppLocalizations(locale, map);
   }
 
-  // This method will be called from every widget which needs a localized text
-  String? translate(String key) {
-    return _localizedStrings[key];
+  /// ترجمة مفتاح مع متغيّرات اختيارية: tr('codeSentTo', {'phone': '...'})
+  String tr(String key, [Map<String, String>? args]) {
+    var text = _strings[key] ?? key; // لو المفتاح ناقص بيظهر اسمه (سهل تلاقيه)
+    args?.forEach((name, value) => text = text.replaceAll('{$name}', value));
+    return text;
+  }
+
+  /// الجمع: بيدوّر على key_zero / key_one / key_two / key_few / key_many / key_other
+  String plural(String key, int count) {
+    final cat = _category(count);
+    final text = _strings['${key}_$cat'] ?? _strings['${key}_other'] ?? key;
+    return text.replaceAll('{count}', '$count');
+  }
+
+  String _category(int n) {
+    if (locale.languageCode == 'ar') {
+      if (n == 0) return 'zero';
+      if (n == 1) return 'one';
+      if (n == 2) return 'two';
+      final m = n % 100;
+      if (m >= 3 && m <= 10) return 'few';
+      if (m >= 11) return 'many';
+      return 'other';
+    }
+    return n == 0 ? 'zero' : (n == 1 ? 'one' : 'other');
   }
 }
 
 class _AppLocalizationsDelegate
     extends LocalizationsDelegate<AppLocalizations> {
-  // This delegate instance will never change (it doesn't even have fields!)
-  // It can provide a constant constructor.
   const _AppLocalizationsDelegate();
 
   @override
-  bool isSupported(Locale locale) {
-    // Include all of your supported language codes here
-    return ['en', 'ar'].contains(locale.languageCode);
-  }
-
-  static late AppLocalizations instance;
+  bool isSupported(Locale locale) => AppLocalizations.supportedLocales
+      .any((l) => l.languageCode == locale.languageCode);
 
   @override
-  Future<AppLocalizations> load(Locale locale) async {
-    AppLocalizations localizations = AppLocalizations(locale);
-    await localizations.load();
-
-    instance = localizations; // set the static instance here
-
-    return localizations;
-  }
+  Future<AppLocalizations> load(Locale locale) => AppLocalizations.load(locale);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
+}
+
+extension LocalizationX on BuildContext {
+  AppLocalizations get t => AppLocalizations.of(this);
 }

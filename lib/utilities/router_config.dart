@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:roomly/features/VerificationLink/presentation/cubit/link_cubit.dart';
-import 'package:roomly/features/VerificationLink/presentation/pages/email_verification_link_screen.dart';
 import 'package:roomly/features/aiSummary/presentation/pages/ai_summary_screen.dart';
 import 'package:roomly/features/boarding/presentation/pages/boarding_screen.dart';
 import 'package:roomly/features/chat/presentation/pages/chat_screen.dart';
+import 'package:roomly/features/codeVerification/presentation/pages/code_header.dart';
 import 'package:roomly/features/createChat/presentation/pages/create_room_screen.dart';
-import 'package:roomly/features/emailVerification/presentation/pages/email_verification_screen.dart';
-import 'package:roomly/features/explore/presentation/pages/explore_screen.dart';
-import 'package:roomly/features/forgotPassword/presentation/pages/forgot_password_screen.dart';
+import 'package:roomly/features/groups/presentation/pages/groups_screen.dart';
 import 'package:roomly/features/home/presentation/pages/home_screen.dart';
 import 'package:roomly/features/login/presentation/cubit/login_cubit.dart';
 import 'package:roomly/features/login/presentation/pages/login_screen.dart';
 import 'package:roomly/features/notifications/presentation/pages/notification_screen.dart';
 import 'package:roomly/features/profile/presentation/pages/profile_screen.dart';
-import 'package:roomly/features/register/presentation/cubit/register_cubit.dart';
-import 'package:roomly/features/register/presentation/pages/register_screen.dart';
-import 'package:roomly/features/resetLink/presentation/pages/reset_link_screen.dart';
 import 'package:roomly/utilities/constants/enums.dart';
 import 'package:roomly/utilities/git_it.dart';
 import 'package:roomly/widgets/mainLayout/main_layout_widget.dart';
@@ -84,62 +78,14 @@ class GoRouterConfig {
                   child: const LoginScreen()),
             );
           },
-          routes: [
-            GoRoute(
-                path: ForgotPasswordScreen.routeName,
-                name: ForgotPasswordScreen.routeName,
-                pageBuilder: (_, GoRouterState state) {
-                  return getCustomTransitionPage(
-                    state: state,
-                    child: const ForgotPasswordScreen(),
-                  );
-                },
-                routes: [
-                  GoRoute(
-                    path: ResetLinkScreen.routeName,
-                    name: ResetLinkScreen.routeName,
-                    pageBuilder: (_, GoRouterState state) {
-                      return getCustomTransitionPage(
-                        state: state,
-                        child: const ResetLinkScreen(),
-                      );
-                    },
-                  ),
-                ])
-          ]),
+          routes: []),
       GoRoute(
-          path: "/${RegisterScreen.routeName}",
-          name: RegisterScreen.routeName,
-          pageBuilder: (_, GoRouterState state) {
-            return getCustomTransitionPage(
-              state: state,
-              child: BlocProvider<RegisterCubit>(
-                create: (c) => sl<RegisterCubit>(),
-                child: RegisterScreen(),
-              ),
-            );
-          },
-          routes: [
-            GoRoute(
-              path: EmailVerificationLinkScreen.routeName,
-              name: EmailVerificationLinkScreen.routeName,
-              pageBuilder: (_, GoRouterState state) {
-                return getCustomTransitionPage(
-                  state: state,
-                  child: BlocProvider<LinkCubit>(
-                      create: (c) => sl<LinkCubit>(),
-                      child: EmailVerificationLinkScreen()),
-                );
-              },
-            ),
-          ]),
-      GoRoute(
-        path: "/${EmailVerificationScreen.routeName}",
-        name: EmailVerificationScreen.routeName,
+        path: "/${CodeScreen.routeName}",
+        name: CodeScreen.routeName,
         pageBuilder: (_, GoRouterState state) {
           return getCustomTransitionPage(
             state: state,
-            child: const EmailVerificationScreen(),
+            child: const CodeScreen(),
           );
         },
       ),
@@ -152,33 +98,22 @@ class GoRouterConfig {
           },
           routes: [
             GoRoute(
-                name: HomeScreen.routeName,
-                path: "/${HomeScreen.routeName}",
-                pageBuilder: (_, GoRouterState state) {
-                  return getCustomTransitionPage(
-                    state: state,
-                    child: const HomeScreen(),
-                  );
-                },
-                routes: [
-                  GoRoute(
-                    name: CreateRoomScreen.routeName,
-                    path: CreateRoomScreen.routeName,
-                    pageBuilder: (_, GoRouterState state) {
-                      return getCustomTransitionPage(
-                        state: state,
-                        child: const CreateRoomScreen(),
-                      );
-                    },
-                  )
-                ]),
-            GoRoute(
-              name: ExploreScreen.routeName,
-              path: "/${ExploreScreen.routeName}",
+              name: HomeScreen.routeName,
+              path: "/${HomeScreen.routeName}",
               pageBuilder: (_, GoRouterState state) {
                 return getCustomTransitionPage(
                   state: state,
-                  child: const ExploreScreen(),
+                  child: const HomeScreen(),
+                );
+              },
+            ),
+            GoRoute(
+              name: GroupsScreen.routeName,
+              path: "/${GroupsScreen.routeName}",
+              pageBuilder: (_, GoRouterState state) {
+                return getCustomTransitionPage(
+                  state: state,
+                  child: const GroupsScreen(),
                 );
               },
             ),
@@ -220,6 +155,16 @@ class GoRouterConfig {
                 return getCustomTransitionPage(
                   state: state,
                   child: const ProfileScreen(),
+                );
+              },
+            ),
+            GoRoute(
+              name: CreateChatScreen.routeName,
+              path: "/${CreateChatScreen.routeName}",
+              pageBuilder: (_, GoRouterState state) {
+                return getCustomTransitionPage(
+                  state: state,
+                  child: const CreateChatScreen(),
                 );
               },
             ),

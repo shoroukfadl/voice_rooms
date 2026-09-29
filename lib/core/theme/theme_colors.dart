@@ -15,6 +15,7 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color text2;
   final Color text3;
   final Color border;
+  final Color onAccent;
 
   const AppColors({
     required this.background,
@@ -31,40 +32,43 @@ class AppColors extends ThemeExtension<AppColors> {
     required this.text3,
     required this.border,
     required this.surface,
+    required this.onAccent,
   });
 
   static const light = AppColors(
-    background: Color(0xffF6F6F7),
+    background: Color(0xFFF6F6F7),
     card: Color(0xFFFFFFFF),
     surface: Color(0xFFEDEDEF),
-    accent: Color(0xff33353A),
-    accentSoft: Color(0xffE5E5E7),
+    accent: Color(0xFFEE8700),
+    onAccent: Color(0xFFE5B371),
+    accentSoft: Color(0xFFF7E7D1),
     secondary: Color(0xFF6B6D73),
-    secondarySoft: Color(0xffEBEBED),
-    success: Color(0xff1F9D6E),
+    secondarySoft: Color(0xFFEBEBED),
+    success: Color(0xFF1F9D6E),
     warning: Color(0xFFFFB627),
     danger: Color(0xFFE5484D),
-    text1: Color(0xff17181B),
-    text2: Color(0xff6B6D73),
-    text3: Color(0xffA0A2A8),
-    border: Color(0xffE0E0E3),
+    text1: Color(0xFF17181B),
+    text2: Color(0xFF6B6D73),
+    text3: Color(0xFFA0A2A8),
+    border: Color(0xFFE0E0E3),
   );
 
   static const dark = AppColors(
-    background: Color(0xFF0F1014),
-    card: Color(0xFF1A1B20),
-    surface: Color(0xFF121316),
-    accent: Color(0xFFFF7A5A),
-    accentSoft: Color(0xFF311F1E),
-    secondary: Color(0xFF4DD9E8),
-    secondarySoft: Color(0xFF1B3A40),
-    success: Color(0xFF3FCB93),
+    background: Color(0xFF0F1012),
+    card: Color(0xFF17181B),
+    surface: Color(0xFF1F2024),
+    accent: Color(0xFFEDEDEF),
+    onAccent: Color(0xFF17181B),
+    accentSoft: Color(0xFF2A2B30),
+    secondary: Color(0xFF9A9CA3),
+    secondarySoft: Color(0xFF232428),
+    success: Color(0xFF34C08A),
     warning: Color(0xFFFFC247),
-    danger: Color(0xFFFF6369),
-    text1: Color(0xFFF2F0EA),
-    text2: Color(0xFFA8A6A0),
-    text3: Color(0xFF6E6C67),
-    border: Color(0xFF2C2E36),
+    danger: Color(0xFFF2666B),
+    text1: Color(0xFFF2F2F3),
+    text2: Color(0xFFA0A2A8),
+    text3: Color(0xFF6B6D73),
+    border: Color(0xFF2E2F34),
   );
 
   @override
@@ -83,8 +87,10 @@ class AppColors extends ThemeExtension<AppColors> {
     Color? text3,
     Color? border,
     Color? surface,
+    Color? onAccent,
   }) {
     return AppColors(
+      onAccent: onAccent ?? this.onAccent,
       background: background ?? this.background,
       card: card ?? this.card,
       accent: accent ?? this.accent,
@@ -117,6 +123,7 @@ class AppColors extends ThemeExtension<AppColors> {
       danger: Color.lerp(danger, other.danger, t)!,
       text1: Color.lerp(text1, other.text1, t)!,
       text2: Color.lerp(text2, other.text2, t)!,
+      onAccent: Color.lerp(onAccent, other.onAccent, t)!,
       text3: Color.lerp(text3, other.text3, t)!,
       surface: Color.lerp(surface, other.surface, t)!,
       border: Color.lerp(border, other.border, t)!,

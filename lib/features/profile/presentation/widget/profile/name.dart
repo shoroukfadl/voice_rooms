@@ -16,7 +16,7 @@ class Name extends StatelessWidget {
               context: context, color: colors.text1),
         ),
         Text(
-          "Flutter devs Egypt · last 42 min",
+          "Flutter devs Egypt",
           style:
               AppTextStyles.captionText(context: context, color: colors.text2),
         )

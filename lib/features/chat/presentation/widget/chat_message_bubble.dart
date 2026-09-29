@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:roomly/Core/Language/app_styles.dart';
+import 'package:roomly/Utilities/Constants/constants.dart';
 import 'package:roomly/Utilities/extensions.dart';
 
 class ChatMessageBubble extends StatelessWidget {
@@ -23,26 +24,26 @@ class ChatMessageBubble extends StatelessWidget {
       children: [
         Container(
           constraints: BoxConstraints(
-            maxWidth: MediaQuery.of(context).size.width * 0.75,
+            maxWidth: MediaQuery.of(context).size.width * 0.70,
           ),
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
           decoration: BoxDecoration(
-            color: isIncoming ? colors.surface : colors.text1,
+            color: isIncoming ? colors.surface : colors.accentSoft,
             border: isIncoming
                 ? Border.all(color: colors.border, width: 0.5)
                 : null,
             borderRadius: BorderRadius.only(
-              topLeft: const Radius.circular(14),
-              topRight: const Radius.circular(14),
-              bottomLeft: Radius.circular(isIncoming ? 4 : 14),
-              bottomRight: Radius.circular(isIncoming ? 14 : 4),
+              topLeft: const Radius.circular(cardRadius),
+              topRight: const Radius.circular(cardRadius),
+              bottomLeft: Radius.circular(isIncoming ? 4 : cardRadius),
+              bottomRight: Radius.circular(isIncoming ? cardRadius : 4),
             ),
           ),
           child: Text(
             message,
-            style: AppTextStyles.flowScreenTitle(
+            style: AppTextStyles.cardSubtitleText(
               context: context,
-              color: isIncoming ? colors.text1 : Colors.white,
+              color: isIncoming ? colors.text1 : colors.accent,
             ),
           ),
         ),

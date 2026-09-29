@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:roomly/Utilities/extensions.dart';
 import 'package:roomly/features/profile/presentation/widget/settings/settings_item.dart';
 import 'package:roomly/utilities/constants/constants.dart';
-import 'package:roomly/utilities/constants/strings.dart';
 import 'package:roomly/utilities/roomly.dart';
 
 class SettingsCard extends StatelessWidget {
@@ -16,7 +15,7 @@ class SettingsCard extends StatelessWidget {
       margin: EdgeInsetsGeometry.symmetric(horizontal: mobileHozPadding),
       decoration: BoxDecoration(
         color: colors.card,
-        borderRadius: BorderRadius.circular(cardRadius),
+        borderRadius: BorderRadius.circular(pillsRadius),
         border: Border.all(color: colors.border),
       ),
       child: Column(
@@ -26,24 +25,24 @@ class SettingsCard extends StatelessWidget {
           SettingsItem(
               onTap: () {},
               icon: Roomly.editProfile,
-              label: Strings.editProfile.translate),
+              label: "Strings.editProfile.translate"),
           SettingsItem(
               onTap: () {},
               icon: Roomly.forgot,
-              label: Strings.changePassword.translate),
+              label: "Strings.changePassword.translate"),
           SettingsItem(
               onTap: () {},
               icon: Roomly.secuirty,
-              label: Strings.securityTwoFactor.translate),
+              label: "Strings.securityTwoFactor.translate"),
           SettingsItem(
               onTap: () {},
               icon: Roomly.explore,
-              label: Strings.aiSummaryPreferences.translate),
+              label: "Strings.aiSummaryPreferences.translate"),
           SettingsItem(
               onTap: () {},
               icon: Roomly.secuirty,
               isLast: true,
-              label: Strings.downloadsAndStorage.translate),
+              label: "Strings.downloadsAndStorage.translate"),
         ],
       ),
     );

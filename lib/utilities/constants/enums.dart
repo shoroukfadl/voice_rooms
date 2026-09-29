@@ -4,10 +4,9 @@ enum ScreenRoutes {
   register,
   forgotPassword,
   resetLink,
-  emailVerification,
+  code,
   verifyEmail,
   home,
-  explore,
   newRoom,
   chat,
   profile,
@@ -17,6 +16,9 @@ enum ScreenRoutes {
   downloads,
   contacts,
   newGroups,
+  createChat,
+  groups,
+  profileSetup,
 }
 
 enum AppLanguage { en, ar }
@@ -24,3 +26,12 @@ enum AppLanguage { en, ar }
 enum AppThemeMode { light, dark, system }
 
 enum AuthProvider { email, google, apple }
+
+enum FileTypeGroup {
+  image,
+  video,
+  audio,
+  document,
+  any,
+  custom,
+}

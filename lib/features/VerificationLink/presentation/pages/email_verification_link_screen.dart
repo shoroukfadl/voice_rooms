@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:roomly/Utilities/Constants/constants.dart';
 import 'package:roomly/features/VerificationLink/presentation/widget/header.dart';
-import 'package:roomly/features/resetLink/presentation/widget/login.dart';
-import 'package:roomly/features/resetLink/presentation/widget/resend_email.dart';
+import 'package:roomly/features/VerificationLink/presentation/widget/login.dart';
+import 'package:roomly/features/VerificationLink/presentation/widget/resend_email.dart';
 import 'package:roomly/utilities/constants/enums.dart';
 
 class EmailVerificationLinkScreen extends StatefulWidget {
@@ -29,7 +29,7 @@ class _EmailVerificationLinkScreenState
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const EmailLinkHeader(),
-              ResendEmailWidget(),
+              ResendEmailVerificationWidget(),
             ],
           ),
         ));

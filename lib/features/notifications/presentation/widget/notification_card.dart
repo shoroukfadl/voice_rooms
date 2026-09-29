@@ -5,7 +5,8 @@ import 'package:roomly/Utilities/extensions.dart';
 import 'package:roomly/widgets/media/rounded_image_widget.dart';
 
 class NotificationCard extends StatelessWidget {
-  const NotificationCard({super.key});
+  final bool isLast;
+  const NotificationCard({super.key, this.isLast = false});
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +15,12 @@ class NotificationCard extends StatelessWidget {
       margin: EdgeInsetsGeometry.symmetric(horizontal: mobileHozPadding),
       padding: EdgeInsetsGeometry.symmetric(horizontal: 16, vertical: 16),
       decoration: BoxDecoration(
-          color: colors.card,
           borderRadius: BorderRadius.circular(cardRadius),
-          border: Border.all(color: colors.border)),
+          border: isLast
+              ? null
+              : Border(
+                  bottom: BorderSide(color: colors.border),
+                )),
       child: Row(
         spacing: 16,
         children: [

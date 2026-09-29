@@ -50,19 +50,24 @@ class ChatHeader extends StatelessWidget {
             Text(
               subtitle,
               style: AppTextStyles.smallestCaptionText(
-                  context: context, color: const Color(0xFF1F9D6E)),
+                  context: context, color: colors.success),
             ),
           ],
         ).expand,
-        const Icon(
-          Icons.phone_rounded,
-          size: 18,
-          color: Color(0xFF6B6D73),
-        ).paddingSymmetric(horizontal: 8),
-        const Icon(
-          Icons.videocam_rounded,
-          size: 19,
-          color: Color(0xFF6B6D73),
+        Icon(
+          Roomly.call,
+          size: 20,
+          color: colors.secondary,
+        ).paddingOnly(end: 16),
+        Icon(
+          Roomly.vedio,
+          size: 20,
+          color: colors.secondary,
+        ).paddingOnly(end: 16),
+        Icon(
+          Roomly.menu,
+          size: 20,
+          color: colors.secondary,
         ),
       ],
     ).paddingSymmetric(horizontal: mobileHozPadding, vertical: 12);

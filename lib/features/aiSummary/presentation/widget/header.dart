@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:roomly/Core/Language/app_styles.dart';
 import 'package:roomly/Utilities/Constants/constants.dart';
 import 'package:roomly/Utilities/extensions.dart';
-import 'package:roomly/utilities/constants/strings.dart';
 import 'package:roomly/utilities/roomly.dart';
 
 class AiSummaryHeader extends StatelessWidget {
@@ -18,11 +17,11 @@ class AiSummaryHeader extends StatelessWidget {
         Row(
           spacing: 8,
           children: [
-            Text(
-              Strings.aiSummaryToggleTitle.translate,
-              style: AppTextStyles.screenTitle(
-                  context: context, color: colors.text1),
-            ).expand,
+            // Text(
+            //   context.t.aiSummaryToggleTitle.translate,
+            //   style: AppTextStyles.screenTitle(
+            //       context: context, color: colors.text1),
+            // ).expand,
             IconButton(
               icon: Icon(
                 Roomly.share,

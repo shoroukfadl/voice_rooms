@@ -14,8 +14,7 @@ class UserWidget extends StatelessWidget {
         backgroundColor: colors.secondarySoft,
         child: Text(
           'SF',
-          style: AppTextStyles.largeDisplayHeadline(
-              context: context, color: colors.secondary),
+          style: AppTextStyles.t14(color: colors.secondary),
         )).paddingOnly(start: mobileHozPadding);
   }
 }

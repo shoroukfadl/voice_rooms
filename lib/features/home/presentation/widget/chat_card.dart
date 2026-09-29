@@ -20,9 +20,8 @@ class ChatCard extends StatelessWidget {
       },
       child: Container(
           margin: EdgeInsetsGeometry.symmetric(horizontal: mobileHozPadding),
-          padding: EdgeInsetsGeometry.symmetric(horizontal: 16, vertical: 16),
+          padding: EdgeInsetsGeometry.symmetric(horizontal: 8, vertical: 16),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(cardRadius),
               border: isLast
                   ? null
                   : Border(

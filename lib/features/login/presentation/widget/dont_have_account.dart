@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:roomly/Core/Language/app_styles.dart';
-import 'package:roomly/features/register/presentation/pages/register_screen.dart';
-import 'package:roomly/utilities/constants/strings.dart';
 import 'package:roomly/utilities/extensions.dart';
 
 class DontHaveAccount extends StatelessWidget {
@@ -16,16 +13,16 @@ class DontHaveAccount extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          Strings.dontHaveAccount.translate,
+          "Strings.dontHaveAccount.translate",
           style: AppTextStyles.captionText(
               context: context, color: colors.secondary),
         ),
         InkWell(
           onTap: () {
-            context.goNamed(RegisterScreen.routeName);
+            // context.goNamed(RegisterScreen.routeName);
           },
           child: Text(
-            Strings.createAccountButton.translate,
+            "Strings.createAccountButton.translate,",
             style: AppTextStyles.inlineLinkText(
                     context: context, color: colors.text1)
                 .copyWith(

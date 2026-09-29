@@ -4,7 +4,6 @@ import 'package:roomly/core/either.dart';
 import 'package:roomly/core/error/failures.dart';
 import 'package:roomly/core/network/network.dart';
 import 'package:roomly/features/login/data/datasources/remote/login_remote_data_source.dart';
-import 'package:roomly/features/register/data/model/user_model.dart';
 
 class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
   final FirebaseAuth firebaseAuth;
@@ -30,95 +29,23 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
     return Either.right(null);
   }
 
-  @override
-  Future<Either<AppException, UserModel>> loginWithEmailPassword({
-    required String email,
-    required String password,
-  }) async {
-    try {
-      await _ensureConnected();
-
-      final credential = await firebaseAuth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-
-      return Either.right(UserModel.fromFirebaseUser(credential.user!));
-    } catch (e) {
-      if (e is AppException) return Either.left(e);
-      return Either.left(FirebaseExceptionHelper.handle(e));
-    }
-  }
-
-  @override
-  Future<Either<AppException, UserModel>> loginWithGoogle() async {
-    try {
-      await _ensureConnected();
-
-      final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
-      if (googleUser == null) {
-        return Either.left(AppException(
-          message: 'Google sign-in was cancelled',
-          code: 'cancelled',
-          source: ErrorSource.firebaseAuth,
-        ));
-      }
-
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser.authentication;
-
-      final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
-        idToken: googleAuth.idToken,
-      );
-
-      final userCredential =
-          await firebaseAuth.signInWithCredential(credential);
-      return Either.right(UserModel.fromFirebaseUser(userCredential.user!));
-    } catch (e) {
-      if (e is AppException) return Either.left(e);
-      return Either.left(FirebaseExceptionHelper.handle(e));
-    }
-  }
-
-  @override
-  Future<Either<AppException, void>> logout() async {
-    try {
-      await _ensureConnected();
-
-      await firebaseAuth.signOut();
-      await googleSignIn.signOut();
-      return Either.right(null);
-    } catch (e) {
-      if (e is AppException) return Either.left(e);
-      return Either.left(FirebaseExceptionHelper.handle(e));
-    }
-  }
-
-  @override
-  Future<Either<AppException, UserModel?>> getCurrentUser() async {
-    try {
-      await _ensureConnected();
-      final user = firebaseAuth.currentUser;
-      if (user == null) return Either.right(null);
-      return Either.right(UserModel.fromFirebaseUser(user));
-    } catch (e) {
-      return Either.left(FirebaseExceptionHelper.handle(e));
-    }
-  }
-
-  @override
-  Future<Either<AppException, void>> sendPasswordResetEmail({
-    required String email,
-  }) async {
-    try {
-      await _ensureConnected();
-
-      await firebaseAuth.sendPasswordResetEmail(email: email);
-      return Either.right(null);
-    } catch (e) {
-      if (e is AppException) return Either.left(e);
-      return Either.left(FirebaseExceptionHelper.handle(e));
-    }
-  }
+  // @override
+  // Future<Either<AppException, UserModel>> loginWithEmailPassword({
+  //   required String email,
+  //   required String password,
+  // }) async {
+  //   try {
+  //     await _ensureConnected();
+  //
+  //     final credential = await firebaseAuth.signInWithEmailAndPassword(
+  //       email: email,
+  //       password: password,
+  //     );
+  //
+  //     return Either.right(UserModel.fromFirestore(credential));
+  //   } catch (e) {
+  //     if (e is AppException) return Either.left(e);
+  //     return Either.left(FirebaseExceptionHelper.handle(e));
+  //   }
+  // }
 }

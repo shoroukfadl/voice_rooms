@@ -13,6 +13,14 @@ class Roomly {
 
   static const String _fontFamily = 'roomly';
 
+  static const IconData gallery = IconData(0xf02e, fontFamily: _fontFamily);
+  static const IconData contact = IconData(0xf02d, fontFamily: _fontFamily);
+  static const IconData camara = IconData(0xf02c, fontFamily: _fontFamily);
+  static const IconData audio = IconData(0xf02b, fontFamily: _fontFamily);
+  static const IconData file = IconData(0xf02a, fontFamily: _fontFamily);
+  static const IconData menu = IconData(0xf029, fontFamily: _fontFamily);
+  static const IconData vedio = IconData(0xf028, fontFamily: _fontFamily);
+  static const IconData call = IconData(0xf027, fontFamily: _fontFamily);
   static const IconData more = IconData(0xf026, fontFamily: _fontFamily);
   static const IconData media = IconData(0xf025, fontFamily: _fontFamily);
   static const IconData createChat = IconData(0xf020, fontFamily: _fontFamily);

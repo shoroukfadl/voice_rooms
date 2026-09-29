@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:roomly/Utilities/Constants/constants.dart';
 import 'package:roomly/core/language/app_styles.dart';
+import 'package:roomly/utilities/constants/constants.dart';
 import 'package:roomly/utilities/extensions.dart';
 import 'package:roomly/utilities/roomly.dart';
 
@@ -15,21 +15,22 @@ class CustomTextField extends StatefulWidget {
   final double? borderRadius, width;
   final int maxLines;
   final Function(String)? onChanged;
+  final Widget? suffixIcon;
 
-  const CustomTextField({
-    super.key,
-    this.borderRadius,
-    required this.controller,
-    this.label,
-    this.hint,
-    this.width,
-    this.obscure = false,
-    this.prefixIcon,
-    this.onChanged,
-    this.keyboardType = TextInputType.text,
-    this.validator,
-    this.maxLines = 1,
-  });
+  const CustomTextField(
+      {super.key,
+      this.borderRadius,
+      required this.controller,
+      this.label,
+      this.hint,
+      this.width,
+      this.obscure = false,
+      this.prefixIcon,
+      this.onChanged,
+      this.keyboardType = TextInputType.text,
+      this.validator,
+      this.maxLines = 1,
+      this.suffixIcon});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -37,7 +38,8 @@ class CustomTextField extends StatefulWidget {
 
 class _CustomTextFieldState extends State<CustomTextField> {
   InputBorder border({Color? color}) => OutlineInputBorder(
-        borderRadius: BorderRadius.circular(widget.borderRadius ?? cardRadius),
+        borderRadius:
+            BorderRadius.circular(widget.borderRadius ?? fieldsRadius),
         borderSide: BorderSide(color: color ?? context.colors.accent),
       );
 
@@ -54,8 +56,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           if (widget.label != null) ...[
             Text(
               widget.label!,
-              style: AppTextStyles.fieldLabelText(
-                  context: context, color: colors.text2),
+              style: AppTextStyles.t14(color: colors.text2),
             ),
             const SizedBox(height: 8),
           ],
@@ -93,16 +94,18 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   : null,
               hoverColor: Colors.transparent,
               contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-              suffixIcon: widget.obscure
-                  ? IconButton(
-                      icon: Icon(
-                        _obscured ? Roomly.hide : Roomly.show,
-                        color: colors.text3,
-                        size: 18,
-                      ),
-                      onPressed: () => setState(() => _obscured = !_obscured),
-                    )
-                  : null,
+              suffixIcon: widget.suffixIcon ??
+                  (widget.obscure
+                      ? IconButton(
+                          icon: Icon(
+                            _obscured ? Roomly.hide : Roomly.show,
+                            color: colors.text3,
+                            size: 18,
+                          ),
+                          onPressed: () =>
+                              setState(() => _obscured = !_obscured),
+                        )
+                      : null),
             ),
           ),
         ],
