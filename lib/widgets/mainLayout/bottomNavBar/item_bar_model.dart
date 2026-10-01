@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:roomly/core/language/app_strings.dart';
+import 'package:roomly/core/language/locales.dart';
 import 'package:roomly/features/createChat/presentation/pages/create_room_screen.dart';
-import 'package:roomly/features/groups/presentation/pages/groups_screen.dart';
 import 'package:roomly/features/home/presentation/pages/home_screen.dart';
 import 'package:roomly/features/notifications/presentation/pages/notification_screen.dart';
-import 'package:roomly/features/profile/presentation/pages/profile_screen.dart';
+import 'package:roomly/features/settings/presentation/pages/settings_screen.dart';
 import 'package:roomly/utilities/roomly.dart';
 
 class ItemBarModel {
@@ -16,31 +17,26 @@ class ItemBarModel {
     required this.routeName,
   });
 
-  static List<ItemBarModel> items = [
-    ItemBarModel(
-      title: "Strings.chatsListTitle",
-      icon: Roomly.chats,
-      routeName: HomeScreen.routeName,
-    ),
-    ItemBarModel(
-      title: "Strings.groupsStatLabel",
-      icon: Roomly.groups,
-      routeName: GroupsScreen.routeName,
-    ),
-    ItemBarModel(
-      title: 'chat',
-      icon: Roomly.createChat,
-      routeName: CreateChatScreen.routeName,
-    ),
-    ItemBarModel(
-      title: " Strings.notifications",
-      icon: Roomly.notifications,
-      routeName: NotificationScreen.routeName,
-    ),
-    ItemBarModel(
-      title: "Strings.profile",
-      icon: Roomly.profile,
-      routeName: ProfileScreen.routeName,
-    ),
-  ];
+  static List<ItemBarModel> items(BuildContext context) => [
+        ItemBarModel(
+          title: context.t.chats,
+          icon: Roomly.chats,
+          routeName: HomeScreen.routeName,
+        ),
+        ItemBarModel(
+          title: context.t.notifications,
+          icon: Roomly.notifications,
+          routeName: NotificationScreen.routeName,
+        ),
+        ItemBarModel(
+          title: context.t.calls,
+          icon: Roomly.call,
+          routeName: CreateChatScreen.routeName,
+        ),
+        ItemBarModel(
+          title: context.t.settings,
+          icon: Roomly.settings,
+          routeName: SettingsScreen.routeName,
+        ),
+      ];
 }

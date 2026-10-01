@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:roomly/Core/Language/app_styles.dart';
 import 'package:roomly/Utilities/extensions.dart';
+import 'package:roomly/utilities/roomly.dart';
 import 'package:roomly/widgets/interactive_widgets/segmented_button.dart';
 
 class SettingsItem extends StatelessWidget {
@@ -8,13 +9,14 @@ class SettingsItem extends StatelessWidget {
   final String label;
   final bool isLast;
   final Function() onTap;
-  final Color? color;
+  final Color? color, iconColor;
   const SettingsItem(
       {super.key,
       required this.onTap,
       this.isLast = false,
       required this.icon,
       this.color,
+      this.iconColor,
       required this.label});
 
   @override
@@ -25,22 +27,28 @@ class SettingsItem extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        InkWell(
-          onTap: onTap,
-          child: Row(
-            spacing: 8,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CircleAvatar(
-                backgroundColor: (color ?? colors.text1).withValues(alpha: 0.1),
-                radius: 18,
-                child: Icon(icon, size: 16, color: color ?? colors.text1),
-              ),
-              Text(label,
-                  style: AppTextStyles.formAndListText(
-                      context: context, color: color ?? colors.text1)),
-            ],
-          ),
+        Row(
+          spacing: 8,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CircleAvatar(
+              backgroundColor: (color ?? colors.text1).withValues(alpha: 0.1),
+              radius: 18,
+              child: Icon(icon, size: 16, color: iconColor ?? colors.text1),
+            ),
+            Text(label,
+                    style: AppTextStyles.formAndListText(
+                        context: context, color: iconColor ?? colors.text1))
+                .expand,
+            InkWell(
+                onTap: onTap,
+                child: CircleAvatar(
+                  radius: 18,
+                  backgroundColor: (color ?? colors.secondarySoft),
+                  child: Icon(Roomly.arrowRight,
+                      size: 16, color: iconColor ?? colors.secondary),
+                ))
+          ],
         ),
         if (!isLast) const Divider(),
       ],
@@ -49,53 +57,53 @@ class SettingsItem extends StatelessWidget {
 }
 
 class PreferencesItem extends StatelessWidget {
-  final String label;
   final bool isLast;
   final List<PreferencesModel> items;
   final Function() onTap;
   final Color? color;
 
-  const PreferencesItem(
-      {super.key,
-      required this.onTap,
-      this.isLast = false,
-      required this.items,
-      this.color,
-      required this.label});
+  const PreferencesItem({
+    super.key,
+    required this.onTap,
+    this.isLast = false,
+    required this.items,
+    this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(label,
-            style: AppTextStyles.formAndListText(
-                context: context, color: color ?? colors.text1)),
-        AppSegmentedButton(
-          onChanged: (i) {},
-          segments: items,
-          selectedIndex: 0,
-          buildItem: (item, selected) => Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            spacing: 8,
-            children: [
-              if (item.icon != null)
-                Icon(item.icon,
+    return AppSegmentedButton(
+      onChanged: (i) {},
+      segments: items,
+      selectedIndex: 0,
+      buildItem: (item, selected) => Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        spacing: 8,
+        children: [
+          if (item.icon != null)
+            Container(
+                width: 32,
+                height: 32,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                        color: selected ? colors.accent : colors.border),
+                    color: !selected
+                        ? Colors.transparent
+                        : (color ?? colors.accent)),
+                child: Icon(item.icon,
                     size: 16,
-                    color: selected ? Colors.white : (color ?? colors.text1)),
-              if (item.label != null)
-                Text(item.label!,
-                    style: AppTextStyles.formAndListText(
-                        context: context,
-                        color:
-                            selected ? Colors.white : (color ?? colors.text1))),
-            ],
-          ),
-          height: 40,
-        ),
-      ],
+                    color: selected
+                        ? colors.accentSoft
+                        : (color ?? colors.text2))),
+          if (item.label != null)
+            Text(item.label!,
+                style: AppTextStyles.sT12(
+                    color: selected ? colors.accent : (color ?? colors.text2))),
+        ],
+      ),
+      height: 40,
     );
   }
 }

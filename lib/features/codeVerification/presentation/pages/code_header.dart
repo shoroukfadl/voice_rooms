@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:roomly/Utilities/Constants/constants.dart';
 import 'package:roomly/features/codeVerification/presentation/widget/email_verification_header.dart';
 import 'package:roomly/features/codeVerification/presentation/widget/otp_widget.dart';
 import 'package:roomly/features/codeVerification/presentation/widget/resend_Code_widget.dart';
 import 'package:roomly/features/codeVerification/presentation/widget/verify.dart';
+import 'package:roomly/features/profileSetup/presentation/pages/profile_setup_screen.dart';
 import 'package:roomly/utilities/constants/enums.dart';
 import 'package:roomly/widgets/helper/screen_spacer.dart';
 
@@ -50,7 +52,9 @@ class _CodeScreenState extends State<CodeScreen> {
             onCompleted: (code) {},
           ),
           const CustomSpacer.L(),
-          CodeVerificationButton(onPress: () {}),
+          CodeVerificationButton(onPress: () {
+            context.goNamed(ProfileSetupScreen.routeName);
+          }),
           const CustomSpacer.L(),
           ResendCodeWidget(onResend: () async {}),
         ],

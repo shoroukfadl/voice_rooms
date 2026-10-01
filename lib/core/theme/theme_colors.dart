@@ -36,7 +36,7 @@ class AppColors extends ThemeExtension<AppColors> {
   });
 
   static const light = AppColors(
-    background: Color(0xFFF6F6F7),
+    background: Color(0xFFF7F3EC),
     card: Color(0xFFFFFFFF),
     surface: Color(0xFFEDEDEF),
     accent: Color(0xFFEE8700),

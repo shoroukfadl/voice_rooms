@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:roomly/Core/Language/app_styles.dart';
 import 'package:roomly/Utilities/Constants/constants.dart';
 import 'package:roomly/Utilities/extensions.dart';
-import 'package:roomly/widgets/media/rounded_image_widget.dart';
 
 class NotificationCard extends StatelessWidget {
   final bool isLast;
@@ -23,13 +22,11 @@ class NotificationCard extends StatelessWidget {
                 )),
       child: Row(
         spacing: 16,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          RoundedImage(
-            borderColor: colors.accent,
-            backgroundColor: colors.accentSoft,
-            radiusValue: 100,
-            width: 64,
-            height: 64,
+          CircleAvatar(
+            radius: 6,
+            backgroundColor: true ? colors.accent : colors.secondary,
           ),
           Column(
             spacing: 4,
@@ -37,21 +34,18 @@ class NotificationCard extends StatelessWidget {
             children: [
               Text(
                 "Flutter devs Egypt",
-                style: AppTextStyles.notificationBoldFragmentText(
-                    context: context, color: colors.text1),
+                style: AppTextStyles.sT12(color: colors.text1),
               ),
               Text(
                 'Just Want tp leave',
-                style: AppTextStyles.notificationBodyText(
-                    context: context, color: colors.text2),
-              ),
-              Text(
-                '2 days ago',
-                style: AppTextStyles.notificationBodyText(
-                    context: context, color: colors.text2),
+                style: AppTextStyles.sT10(color: colors.text2),
               ),
             ],
-          ).expand
+          ).expand,
+          Text(
+            '2 days ago',
+            style: AppTextStyles.sT10(color: colors.text2),
+          ),
         ],
       ),
     );

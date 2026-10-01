@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:roomly/Core/Language/app_styles.dart';
 import 'package:roomly/Utilities/extensions.dart';
+import 'package:roomly/widgets/helper/screen_spacer.dart';
 import 'package:roomly/widgets/mainLayout/BottomNavBar/item_bar_model.dart';
 
 class BottomNavBarItems extends StatelessWidget {
@@ -9,16 +11,16 @@ class BottomNavBarItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final index = ItemBarModel.items
+    final index = ItemBarModel.items(context)
         .indexWhere((e) => e.routeName == currentPath?.replaceAll('/', ""));
     return NotchedBottomNav(
       currentIndex: index < 0 ? 0 : index,
       onTap: (index) {
         context.goNamed(
-          ItemBarModel.items[index].routeName,
+          ItemBarModel.items(context)[index].routeName,
         );
       },
-      items: ItemBarModel.items,
+      items: ItemBarModel.items(context),
     );
   }
 }
@@ -39,9 +41,6 @@ class NotchedBottomNav extends StatelessWidget {
   static const double _fabSize = 56;
   static const double _fabTopOffset = -14;
   static const double _notchDepth = 24;
-  static const int _fabIndex = 2;
-
-  bool get _hasFab => items.length > _fabIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -51,9 +50,6 @@ class NotchedBottomNav extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        final width = constraints.maxWidth;
-        final centerX = _hasFab ? width / 2 : -1.0;
-
         return SizedBox(
           height: totalHeight,
           child: Stack(
@@ -62,10 +58,10 @@ class NotchedBottomNav extends StatelessWidget {
               Positioned.fill(
                 child: CustomPaint(
                   painter: _NotchPainter(
-                    notchX: centerX,
+                    notchX: -1,
                     depth: _notchDepth,
                     color: colors.card,
-                    showNotch: _hasFab,
+                    showNotch: false,
                   ),
                 ),
               ),
@@ -77,31 +73,10 @@ class NotchedBottomNav extends StatelessWidget {
                 child: Row(
                   children: [
                     for (int i = 0; i < items.length; i++)
-                      if (i == _fabIndex)
-                        // Reserve the center gap only when there really is
-                        // a FAB item — with 1 or 2 items the row now uses
-                        // the full width instead of leaving a dead gap.
-                        const Expanded(child: SizedBox())
-                      else
-                        _buildNavItem(context, i, colors).expand,
+                      _buildNavItem(context, i, colors).expand,
                   ],
                 ),
               ),
-              if (_hasFab)
-                Positioned(
-                  left: centerX - _fabSize / 2,
-                  top: _fabTopOffset,
-                  child: _FabItem(
-                    selected: currentIndex == _fabIndex,
-                    icon: items[_fabIndex].icon,
-                    size: _fabSize,
-                    accent: colors.accent,
-                    card: colors.card,
-                    border: colors.border,
-                    unselectedIconColor: colors.text2,
-                    onTap: () => onTap(_fabIndex),
-                  ),
-                ),
             ],
           ),
         );
@@ -125,22 +100,18 @@ class NotchedBottomNav extends StatelessWidget {
             scale: selected ? 1.1 : 1.0,
             child: Icon(item.icon, size: 28, color: color),
           ),
-          // const SizedBox(height: 4),
-          // AnimatedDefaultTextStyle(
-          //   duration: const Duration(milliseconds: 150),
-          //   style:
-          //       AppTextStyles.navBarTitleText(context: context, color: color),
-          //   child: Text(item.title.translate),
-          // ),
+          const CustomSpacer.S(),
+          AnimatedDefaultTextStyle(
+            duration: const Duration(milliseconds: 150),
+            style: AppTextStyles.t14(color: color),
+            child: Text(item.title.toUpperCase()),
+          ),
         ],
       ),
     );
   }
 }
 
-/// Center floating action item (index 2), extracted so its selected/
-/// unselected look is defined in one place instead of being duplicated
-/// inline inside the Stack.
 class _FabItem extends StatelessWidget {
   final bool selected;
   final IconData icon;

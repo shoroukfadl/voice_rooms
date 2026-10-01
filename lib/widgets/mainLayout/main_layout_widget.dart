@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:roomly/Core/Language/app_styles.dart';
+import 'package:roomly/core/language/locales.dart';
 import 'package:roomly/features/chat/presentation/widget/controllers.dart';
 import 'package:roomly/utilities/constants/enums.dart';
 import 'package:roomly/utilities/extensions.dart';
@@ -37,6 +39,15 @@ class _MainLayoutWidgetState extends State<MainLayoutWidget> {
     return Scaffold(
       key: GlobalKeys.scaffoldKey,
       backgroundColor: colors.background,
+      appBar: AppBar(
+        backgroundColor: colors.card,
+        elevation: 0,
+        title: Text(
+          context.t.tr(widget.currentPath?.split("/").last ?? ""),
+          style:
+              AppTextStyles.screenTitle(context: context, color: colors.text1),
+        ),
+      ),
       bottomNavigationBar: activeRoom
           ? ActiveRoomControls(
               isSelfMuted: false,

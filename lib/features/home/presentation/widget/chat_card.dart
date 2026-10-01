@@ -46,13 +46,11 @@ class ChatCard extends StatelessWidget {
                     children: [
                       Text(
                         'Voice Room 1',
-                        style: AppTextStyles.cardTitleText(
-                            context: context, color: colors.text1),
+                        style: AppTextStyles.t14(color: colors.text1),
                       ).expand,
                       Text(
                         '02:24 PM',
-                        style: AppTextStyles.chipText(
-                            context: context, color: colors.text3),
+                        style: AppTextStyles.b12(color: colors.text3),
                       ),
                     ],
                   ),
@@ -64,8 +62,7 @@ class ChatCard extends StatelessWidget {
                         'Talking about state management',
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: AppTextStyles.cardSubtitleText(
-                            context: context, color: colors.text2),
+                        style: AppTextStyles.b12(color: colors.text2),
                       ).expand,
                       UnReadedMessages()
                     ],

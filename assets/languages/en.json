@@ -62,5 +62,11 @@
   "regenerate": "Regenerate",
   "messagesCount_zero": "No messages",
   "messagesCount_one": "1 message",
-  "messagesCount_other": "{count} messages"
+  "messagesCount_other": "{count} messages",
+  "calls": "Calls",
+  "deleteAccount": "Delete Account",
+  "lightMode": "Light mode",
+  "system": "System",
+  "general": "General"
+
 }

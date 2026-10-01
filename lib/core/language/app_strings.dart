@@ -68,5 +68,10 @@ extension AppStrings on AppLocalizations {
   String get copy => tr('copy');
   String get share => tr('share');
   String get regenerate => tr('regenerate');
+  String get calls => tr('calls');
+  String get deleteAccount => tr('deleteAccount');
+  String get lightMode => tr('lightMode');
+  String get system => tr('system');
+  String get general => tr('general');
   String messagesCount(int count) => plural('messagesCount', count);
 }

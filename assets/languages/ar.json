@@ -65,5 +65,10 @@
   "messagesCount_two": "رسالتان",
   "messagesCount_few": "{count} رسائل",
   "messagesCount_many": "{count} رسالة",
-  "messagesCount_other": "{count} رسالة"
+  "messagesCount_other": "{count} رسالة",
+  "calls": "المكالمات",
+  "deleteAccount": "حذف الحساب",
+  "lightMode": "الوضع الفاتح",
+  "system": "النظام",
+  "general": "العام"
 }

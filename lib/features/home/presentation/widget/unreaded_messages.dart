@@ -10,11 +10,10 @@ class UnReadedMessages extends StatelessWidget {
     final colors = context.colors;
     return CircleAvatar(
       radius: 12,
-      backgroundColor: colors.secondary,
+      backgroundColor: colors.accent,
       child: Text(
         "5",
-        style: AppTextStyles.liveBadgeText(
-            context: context, color: colors.secondarySoft),
+        style: AppTextStyles.b10(color: colors.accentSoft),
       ),
     );
   }

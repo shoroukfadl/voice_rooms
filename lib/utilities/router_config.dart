@@ -12,6 +12,8 @@ import 'package:roomly/features/login/presentation/cubit/login_cubit.dart';
 import 'package:roomly/features/login/presentation/pages/login_screen.dart';
 import 'package:roomly/features/notifications/presentation/pages/notification_screen.dart';
 import 'package:roomly/features/profile/presentation/pages/profile_screen.dart';
+import 'package:roomly/features/profileSetup/presentation/pages/profile_setup_screen.dart';
+import 'package:roomly/features/settings/presentation/pages/settings_screen.dart';
 import 'package:roomly/utilities/constants/enums.dart';
 import 'package:roomly/utilities/git_it.dart';
 import 'package:roomly/widgets/mainLayout/main_layout_widget.dart';
@@ -78,17 +80,29 @@ class GoRouterConfig {
                   child: const LoginScreen()),
             );
           },
-          routes: []),
-      GoRoute(
-        path: "/${CodeScreen.routeName}",
-        name: CodeScreen.routeName,
-        pageBuilder: (_, GoRouterState state) {
-          return getCustomTransitionPage(
-            state: state,
-            child: const CodeScreen(),
-          );
-        },
-      ),
+          routes: [
+            GoRoute(
+                path: CodeScreen.routeName,
+                name: CodeScreen.routeName,
+                pageBuilder: (_, GoRouterState state) {
+                  return getCustomTransitionPage(
+                    state: state,
+                    child: const CodeScreen(),
+                  );
+                },
+                routes: [
+                  GoRoute(
+                    path: ProfileSetupScreen.routeName,
+                    name: ProfileSetupScreen.routeName,
+                    pageBuilder: (_, GoRouterState state) {
+                      return getCustomTransitionPage(
+                        state: state,
+                        child: const ProfileSetupScreen(),
+                      );
+                    },
+                  ),
+                ]),
+          ]),
       ShellRoute(
           builder: (context, state, child) {
             return MainLayoutWidget(
@@ -155,6 +169,16 @@ class GoRouterConfig {
                 return getCustomTransitionPage(
                   state: state,
                   child: const ProfileScreen(),
+                );
+              },
+            ),
+            GoRoute(
+              name: SettingsScreen.routeName,
+              path: "/${SettingsScreen.routeName}",
+              pageBuilder: (_, GoRouterState state) {
+                return getCustomTransitionPage(
+                  state: state,
+                  child: const SettingsScreen(),
                 );
               },
             ),

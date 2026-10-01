@@ -6,7 +6,7 @@ enum ScreenRoutes {
   resetLink,
   code,
   verifyEmail,
-  home,
+  chats,
   newRoom,
   chat,
   profile,

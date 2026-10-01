@@ -1,9 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:roomly/Utilities/Constants/constants.dart';
 import 'package:roomly/utilities/extensions.dart';
-import 'package:roomly/utilities/file_picker_helper.dart';
+import 'package:roomly/utilities/roomly.dart';
 
 class AvatarPickerWidget extends StatelessWidget {
   final String? selectedAvatarPath;
@@ -23,27 +22,26 @@ class AvatarPickerWidget extends StatelessWidget {
       onTap: onTap,
       child: Stack(
         children: [
-          Container(
-            width: 100,
-            height: 100,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: colors.card,
-              border: Border.all(color: colors.border, width: 2),
-            ),
-            child: selectedAvatarPath != null
-                ? ClipOval(
+          selectedAvatarPath != null
+              ? Container(
+                  width: 100,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: colors.card,
+                    border: Border.all(color: colors.border, width: 2),
+                  ),
+                  child: ClipOval(
                     child: Image.file(
                       File(selectedAvatarPath!),
                       fit: BoxFit.cover,
                     ),
-                  )
-                : Icon(
-                    Icons.person,
-                    size: 40,
-                    color: colors.text3,
-                  ),
-          ),
+                  ))
+              : Icon(
+                  Roomly.profile,
+                  size: 120,
+                  color: colors.text3,
+                ),
           Positioned(
             bottom: 0,
             right: 0,
@@ -56,7 +54,7 @@ class AvatarPickerWidget extends StatelessWidget {
                 border: Border.all(color: colors.card, width: 2),
               ),
               child: Icon(
-                Icons.add,
+                Roomly.add,
                 color: Colors.white,
                 size: 20,
               ),

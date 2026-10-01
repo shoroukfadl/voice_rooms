@@ -23,17 +23,6 @@ class AppSegmentedButton<T> extends StatelessWidget {
     return Row(
       children: List.generate(segments.length, (index) {
         final isActive = index == selectedIndex;
-        final BorderRadiusGeometry borderRadius = (index == 0)
-            ? BorderRadiusDirectional.only(
-                topStart: Radius.circular(height / 4),
-                bottomStart: Radius.circular(height / 4),
-              )
-            : index == segments.length - 1
-                ? BorderRadiusDirectional.only(
-                    topEnd: Radius.circular(height / 4),
-                    bottomEnd: Radius.circular(height / 4),
-                  )
-                : BorderRadiusDirectional.circular(0);
         return GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () => onChanged(index),
@@ -41,10 +30,6 @@ class AppSegmentedButton<T> extends StatelessWidget {
             height: height,
             padding: EdgeInsetsGeometry.symmetric(horizontal: 16),
             alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: isActive ? colors.accent : colors.surface,
-              borderRadius: borderRadius,
-            ),
             child: buildItem(segments[index], isActive),
           ),
         );

@@ -1,13 +1,13 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:roomly/Core/Language/app_styles.dart';
 import 'package:roomly/Utilities/Constants/constants.dart';
 import 'package:roomly/Utilities/Constants/enums.dart';
 import 'package:roomly/core/language/app_strings.dart';
 import 'package:roomly/core/language/locales.dart';
+import 'package:roomly/features/home/presentation/pages/home_screen.dart';
+import 'package:roomly/features/profile/presentation/widget/settings/preferences_card.dart';
 import 'package:roomly/features/profileSetup/presentation/widgets/avatar_picker_widget.dart';
-import 'package:roomly/features/profileSetup/presentation/widgets/language_button_widget.dart';
 import 'package:roomly/utilities/extensions.dart';
 import 'package:roomly/utilities/file_picker_helper.dart';
 import 'package:roomly/widgets/helper/screen_spacer.dart';
@@ -59,6 +59,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
             EdgeInsets.symmetric(horizontal: mobileHozPadding, vertical: 40),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const CustomSpacer.L(),
             Center(
@@ -71,42 +72,26 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
             CustomTextField(
               controller: nameController,
               label: tr.yourName,
-              hint: 'سارة كمال',
+              hint: 'ex: Sarah',
               keyboardType: TextInputType.name,
             ),
             const CustomSpacer.L(),
+            const CustomSpacer.L(),
             Text(
-              tr.yourPreferredLanguage,
+              tr.preferredLanguage,
               style: AppTextStyles.t14(color: colors.text2),
             ),
-            const SizedBox(height: 12),
-            Row(
-              children: [
-                Expanded(
-                  child: LanguageButtonWidget(
-                    title: tr.languageArabic,
-                    isSelected: selectedLanguage == 'ar',
-                    onTap: () => setState(() => selectedLanguage = 'ar'),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: LanguageButtonWidget(
-                    title: tr.languageEnglish,
-                    isSelected: selectedLanguage == 'en',
-                    onTap: () => setState(() => selectedLanguage = 'en'),
-                  ),
-                ),
-              ],
+            const CustomSpacer.M(),
+            PreferencesCard(
+              padding: 0,
             ),
-            const Spacer(),
+            const CustomSpacer.L(),
             PrimaryButtonWidget(
               title: tr.finish,
               onTap: () {
-                // Handle finish
+                context.goNamed(HomeScreen.routeName);
               },
             ),
-            const CustomSpacer.L(),
           ],
         ),
       ),

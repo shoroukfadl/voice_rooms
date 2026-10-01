@@ -72,6 +72,33 @@ abstract class AppTextStyles extends ThemeExtension<AppTextStyles> {
         color: color,
       );
 
+  /// Titles
+  static TextStyle sT18({Color color = Colors.black}) => baseStyle(
+        size: 18,
+        fontWeight: FontWeight.w500,
+        color: color,
+      );
+  static TextStyle sT16({Color color = Colors.black}) => baseStyle(
+        size: 16,
+        fontWeight: FontWeight.w500,
+        color: color,
+      );
+  static TextStyle sT14({Color color = Colors.black}) => baseStyle(
+        size: 14,
+        fontWeight: FontWeight.w500,
+        color: color,
+      );
+  static TextStyle sT12({Color color = Colors.black}) => baseStyle(
+        size: 12,
+        fontWeight: FontWeight.w500,
+        color: color,
+      );
+  static TextStyle sT10({Color color = Colors.black}) => baseStyle(
+        size: 10,
+        fontWeight: FontWeight.w500,
+        color: color,
+      );
+
   /// body
   static TextStyle b16({Color color = Colors.black}) => baseStyle(
         size: 16,
