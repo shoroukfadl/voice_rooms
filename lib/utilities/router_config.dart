@@ -163,25 +163,26 @@ class GoRouterConfig {
               },
             ),
             GoRoute(
-              name: ProfileScreen.routeName,
-              path: "/${ProfileScreen.routeName}",
-              pageBuilder: (_, GoRouterState state) {
-                return getCustomTransitionPage(
-                  state: state,
-                  child: const ProfileScreen(),
-                );
-              },
-            ),
-            GoRoute(
-              name: SettingsScreen.routeName,
-              path: "/${SettingsScreen.routeName}",
-              pageBuilder: (_, GoRouterState state) {
-                return getCustomTransitionPage(
-                  state: state,
-                  child: const SettingsScreen(),
-                );
-              },
-            ),
+                name: SettingsScreen.routeName,
+                path: "/${SettingsScreen.routeName}",
+                pageBuilder: (_, GoRouterState state) {
+                  return getCustomTransitionPage(
+                    state: state,
+                    child: const SettingsScreen(),
+                  );
+                },
+                routes: [
+                  GoRoute(
+                    name: ProfileScreen.routeName,
+                    path: ProfileScreen.routeName,
+                    pageBuilder: (_, GoRouterState state) {
+                      return getCustomTransitionPage(
+                        state: state,
+                        child: const ProfileScreen(),
+                      );
+                    },
+                  ),
+                ]),
             GoRoute(
               name: CreateChatScreen.routeName,
               path: "/${CreateChatScreen.routeName}",

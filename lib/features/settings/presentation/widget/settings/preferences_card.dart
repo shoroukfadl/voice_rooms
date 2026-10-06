@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:roomly/Utilities/Constants/constants.dart';
 import 'package:roomly/Utilities/extensions.dart';
-import 'package:roomly/features/profile/presentation/widget/settings/settings_item.dart';
+import 'package:roomly/core/Theme/theme_cubit.dart';
+import 'package:roomly/core/Theme/theme_state.dart';
+import 'package:roomly/core/language/app_strings.dart';
+import 'package:roomly/core/language/locale_cubit.dart';
+import 'package:roomly/core/language/locales.dart';
+import 'package:roomly/features/settings/presentation/widget/settings/settings_item.dart';
 import 'package:roomly/utilities/roomly.dart';
-import 'package:roomly/widgets/helper/divider.dart';
+import 'package:roomly/widgets/interactive_widgets/segmented_button.dart';
 
 class PreferencesCard extends StatelessWidget {
   final double padding;
@@ -12,6 +18,7 @@ class PreferencesCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final tr = context.t;
     return Container(
       padding: EdgeInsetsGeometry.symmetric(horizontal: 16, vertical: 16),
       margin: EdgeInsetsDirectional.symmetric(horizontal: padding),
@@ -22,33 +29,45 @@ class PreferencesCard extends StatelessWidget {
       ),
       child: Column(
         children: [
-          PreferencesItem(
-            onTap: () {},
-            items: [
-              PreferencesModel(
-                icon: Roomly.dark,
-              ),
-              PreferencesModel(
-                icon: Roomly.light,
-              ),
-              PreferencesModel(
-                icon: Roomly.system,
-              ),
-            ],
-          ),
-          HozDivider().paddingSymmetric(vertical: 8),
-          PreferencesItem(
-            onTap: () {},
-            isLast: true,
-            items: [
-              PreferencesModel(
-                label: "English",
-              ),
-              PreferencesModel(
-                label: "العربيه",
-              ),
-            ],
-          ),
+          BlocBuilder<ThemeCubit, ThemeState>(
+              builder: (c, st) => SettingsItem.List(
+                    value: st.theme,
+                    item: SegmentOption(
+                        value: st.theme, label: tr.system, icon: Roomly.system),
+                    onTap: (theme) =>
+                        context.read<ThemeCubit>().changeTheme(theme),
+                    options: [
+                      SegmentOption(
+                          value: ThemeMode.light,
+                          label: tr.lightMode,
+                          icon: Roomly.light),
+                      SegmentOption(
+                          value: ThemeMode.dark,
+                          label: tr.darkMode,
+                          icon: Roomly.dark),
+                      SegmentOption(
+                          value: ThemeMode.system,
+                          label: tr.system,
+                          icon: Roomly.system),
+                    ],
+                  )),
+          BlocBuilder<LocaleCubit, Locale>(
+              builder: (c, st) => SettingsItem.List(
+                    value: st.languageCode,
+                    item: SegmentOption(
+                        value: st.languageCode,
+                        label: tr.appLanguage,
+                        icon: Roomly.language),
+                    onTap: (code) =>
+                        context.read<LocaleCubit>().setLocale(code),
+                    isLast: true,
+                    options: const [
+                      SegmentOption(
+                          value: 'ar', label: 'العربية', icon: Roomly.language),
+                      SegmentOption(
+                          value: 'en', label: 'English', icon: Roomly.language),
+                    ],
+                  )),
         ],
       ),
     );

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:roomly/core/language/locales.dart';
 import 'package:roomly/features/profile/presentation/widget/profile/profile_card.dart';
-import 'package:roomly/features/profile/presentation/widget/settings/actions_widget.dart';
-import 'package:roomly/features/profile/presentation/widget/settings/preferences_card.dart';
-import 'package:roomly/features/profile/presentation/widget/settings/settings_card.dart';
+import 'package:roomly/features/settings/presentation/widget/settings/preferences_card.dart';
 import 'package:roomly/utilities/constants/enums.dart';
 import 'package:roomly/utilities/extensions.dart';
 import 'package:roomly/widgets/helper/screen_spacer.dart';
@@ -14,14 +13,12 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenLayoutWidget(children: [
+    final tr = context.t;
+    return ScreenLayoutWidget(verPadding: 0, children: [
       ProfileCard().asSliver(),
       ScreenSpacer(),
+      ScreenSpacer(),
       PreferencesCard().asSliver(),
-      ScreenSpacer(),
-      SettingsCard().asSliver(),
-      ScreenSpacer(),
-      ActionsCard().asSliver(),
     ]);
   }
 }

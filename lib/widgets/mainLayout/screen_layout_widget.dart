@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 class ScreenLayoutWidget extends StatefulWidget {
   final List<Widget> children;
   final String? currentPath;
+  final double verPadding;
 
   const ScreenLayoutWidget(
-      {super.key, required this.children, this.currentPath});
+      {super.key,
+      this.verPadding = 40,
+      required this.children,
+      this.currentPath});
 
   @override
   State<ScreenLayoutWidget> createState() => _ScreenLayoutWidgetState();
@@ -16,7 +20,7 @@ class _ScreenLayoutWidgetState extends State<ScreenLayoutWidget> {
   Widget build(BuildContext context) {
     return SafeArea(
         minimum: EdgeInsets.symmetric(
-          vertical: 40,
+          vertical: widget.verPadding,
         ),
         child: RawScrollbar(
           thumbVisibility: true,

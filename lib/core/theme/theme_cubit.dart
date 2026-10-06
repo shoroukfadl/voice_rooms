@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:roomly/core/Theme/theme_state.dart';
 import 'package:roomly/core/localStorage/boxes.dart';
@@ -8,17 +9,18 @@ import 'package:roomly/utilities/git_it.dart';
 class ThemeCubit extends Cubit<ThemeState> {
   ThemeCubit() : super(ThemeState.init());
 
-  void changeTheme() async {
-    emit(state.copyWithMethod(isDark: !state.isDark));
-    final hive =
-        HiveHelper<bool>(hiveManager: sl<HiveManager>(), boxName: HiveBox.user);
-    await hive.put(key: 'theme', value: state.isDark);
+  void changeTheme(ThemeMode theme) async {
+    emit(state.copyWithMethod(theme: theme));
+    final hive = HiveHelper<String>(
+        hiveManager: sl<HiveManager>(), boxName: HiveBox.user);
+    await hive.put(key: 'theme', value: state.theme.name);
   }
 
   void getCurrentTheme() async {
-    final hive =
-        HiveHelper<bool>(hiveManager: sl<HiveManager>(), boxName: HiveBox.user);
-    final isDark = await hive.get('theme');
-    emit(state.copyWithMethod(isDark: isDark ?? false));
+    final hive = HiveHelper<String>(
+        hiveManager: sl<HiveManager>(), boxName: HiveBox.user);
+    final th = await hive.get('theme');
+    final theme = ThemeMode.values.firstWhere((e) => e.name == th);
+    emit(state.copyWithMethod(theme: theme));
   }
 }

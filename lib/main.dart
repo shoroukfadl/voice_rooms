@@ -101,7 +101,7 @@ class _EntryPointState extends State<EntryPoint> {
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeCubit, ThemeState>(
       builder: (context, themeState) {
-        final bool isDark = themeState.isDark;
+        final bool isDark = themeState.theme == ThemeMode.dark;
         final currentTheme = AppThemes.createTheme(
           isArabic: false,
           isDark: isDark,

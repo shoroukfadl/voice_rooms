@@ -8,6 +8,6 @@ class TitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(title, style: AppTextStyles.t12(color: context.colors.text1));
+    return Text(title, style: AppTextStyles.t14(color: context.colors.text1));
   }
 }

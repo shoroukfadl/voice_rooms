@@ -35,3 +35,9 @@ enum FileTypeGroup {
   any,
   custom,
 }
+
+enum ThemeMode {
+  light,
+  dark,
+  system,
+}

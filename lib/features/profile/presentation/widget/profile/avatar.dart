@@ -8,9 +8,9 @@ class ProfileAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RoundedImage(
-      width: 72,
-      height: 72,
-      backgroundColor: context.colors.accentSoft,
+      width: 80,
+      height: 80,
+      backgroundColor: context.colors.accent,
       radiusValue: 100,
     );
   }

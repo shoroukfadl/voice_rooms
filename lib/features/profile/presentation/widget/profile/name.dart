@@ -9,6 +9,8 @@ class Name extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     return Column(
+      spacing: 8,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           "Shorouk Fadl",
@@ -16,10 +18,10 @@ class Name extends StatelessWidget {
               context: context, color: colors.text1),
         ),
         Text(
-          "Flutter devs Egypt",
+          "01154152887",
           style:
               AppTextStyles.captionText(context: context, color: colors.text2),
-        )
+        ),
       ],
     );
   }

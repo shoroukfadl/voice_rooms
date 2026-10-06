@@ -10,7 +10,7 @@ class SwitchButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final size = context.matchedSize(large: 120, medium: 120, small: 64);
+    final size = context.matchedSize(large: 120, medium: 120, small: 48);
     return GestureDetector(
         onTap: () => onTap(!active),
         child: AnimatedContainer(
@@ -18,7 +18,7 @@ class SwitchButton extends StatelessWidget {
           curve: Curves.easeInOut,
           width: size,
           height: 32,
-          padding: const EdgeInsets.symmetric(horizontal: 6),
+          padding: const EdgeInsets.symmetric(horizontal: 4),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(cardRadius),
             border: Border.all(color: colors.border, width: 1),
@@ -29,7 +29,7 @@ class SwitchButton extends StatelessWidget {
             curve: Curves.easeInOut,
             alignment: !active ? Alignment.centerLeft : Alignment.centerRight,
             child: CircleAvatar(
-              radius: 11,
+              radius: 10,
               backgroundColor: active ? colors.accent : colors.border,
             ),
           ),

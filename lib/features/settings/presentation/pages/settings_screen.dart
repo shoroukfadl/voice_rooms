@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:roomly/core/language/app_strings.dart';
 import 'package:roomly/core/language/locales.dart';
-import 'package:roomly/features/profile/presentation/widget/settings/actions_widget.dart';
-import 'package:roomly/features/profile/presentation/widget/settings/preferences_card.dart';
-import 'package:roomly/features/profile/presentation/widget/settings/settings_card.dart';
+import 'package:roomly/features/settings/presentation/widget/settings/actions_widget.dart';
+import 'package:roomly/features/settings/presentation/widget/settings/preferences_card.dart';
+import 'package:roomly/features/settings/presentation/widget/settings/settings_card.dart';
 import 'package:roomly/features/settings/presentation/widget/settings/title.dart';
 import 'package:roomly/utilities/constants/enums.dart';
 import 'package:roomly/utilities/extensions.dart';
@@ -18,13 +18,12 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final tr = context.t;
     return ScreenLayoutWidget(children: [
-      TitleWidget(title: tr.general).asSliver(),
       SettingsCard().asSliver(),
       ScreenSpacer(),
-      TitleWidget(title: tr.chats).asSliver(),
       PreferencesCard().asSliver(),
       ScreenSpacer(),
-      TitleWidget(title: tr.account).asSliver(),
+      TitleWidget(title: tr.account).asPaddedSliver(),
+      CustomSpacer.S().asSliver(),
       ActionsCard().asSliver(),
     ]);
   }
