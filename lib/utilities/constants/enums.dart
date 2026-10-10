@@ -19,6 +19,7 @@ enum ScreenRoutes {
   createChat,
   groups,
   profileSetup,
+  calls,
 }
 
 enum AppLanguage { en, ar }

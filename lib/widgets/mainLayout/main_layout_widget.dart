@@ -34,21 +34,23 @@ class _MainLayoutWidgetState extends State<MainLayoutWidget> {
 
     final hideBottomNav =
         preventedRoutes.contains(widget.currentPath?.replaceAll("/", "") ?? "");
-    final activeRoom =
+    final chatRoute =
         widget.currentPath?.replaceAll("/", "") == ScreenRoutes.chat.name;
     return Scaffold(
       key: GlobalKeys.scaffoldKey,
       backgroundColor: colors.background,
-      appBar: AppBar(
-        backgroundColor: colors.card,
-        elevation: 0,
-        title: Text(
-          context.t.tr(widget.currentPath?.split("/").last ?? ""),
-          style:
-              AppTextStyles.screenTitle(context: context, color: colors.text1),
-        ),
-      ),
-      bottomNavigationBar: activeRoom
+      appBar: chatRoute
+          ? null
+          : AppBar(
+              backgroundColor: colors.card,
+              elevation: 0,
+              title: Text(
+                context.t.tr(widget.currentPath?.split("/").last ?? ""),
+                style: AppTextStyles.screenTitle(
+                    context: context, color: colors.text1),
+              ),
+            ),
+      bottomNavigationBar: chatRoute
           ? ActiveRoomControls(
               isSelfMuted: false,
               onLeave: () {},

@@ -69,9 +69,25 @@ extension AppStrings on AppLocalizations {
   String get share => tr('share');
   String get regenerate => tr('regenerate');
   String get calls => tr('calls');
+  String get callLogSubtitle => tr('callLogSubtitle');
+  String get outgoing => tr('outgoing');
+  String get incoming => tr('incoming');
+  String get missed => tr('missed');
+  String get video => tr('video');
+  String get voice => tr('voice');
   String get deleteAccount => tr('deleteAccount');
   String get lightMode => tr('lightMode');
   String get system => tr('system');
+  String get favoritesS => tr('favoritesS');
+  String get groups => tr('groups');
   String get general => tr('general');
+  String get language => tr('language');
+  String get mediaAndFiles => tr('mediaAndFiles');
+  String get muteNotifications => tr('muteNotifications');
+  String get members => tr('members');
+  String get admin => tr('admin');
+  String groupMembers(int count) => tr('groupMembers', {'count': '$count'});
+  String get yes => tr('yes');
+  String get no => tr('no');
   String messagesCount(int count) => plural('messagesCount', count);
 }

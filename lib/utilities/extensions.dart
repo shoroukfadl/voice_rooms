@@ -4,6 +4,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'package:roomly/Utilities/Constants/constants.dart';
 
 import '../Core/Theme/theme_colors.dart';
+import '../core/language/locales.dart';
 
 extension SliverWidgetExtension on Widget {
   Widget asPaddedSliver() {

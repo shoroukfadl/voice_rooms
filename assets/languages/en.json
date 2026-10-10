@@ -64,9 +64,26 @@
   "messagesCount_one": "1 message",
   "messagesCount_other": "{count} messages",
   "calls": "Calls",
+  "callLogSubtitle": "Filter and tap to call back.",
+  "outgoing": "Outgoing",
+  "incoming": "Incoming",
+  "missed": "Missed",
+  "video": "Video",
+  "voice": "Voice",
   "deleteAccount": "Delete Account",
   "lightMode": "Light mode",
   "system": "System",
-  "general": "General"
+  "general": "General",
+  "groups": "Groups",
+  "favoritesS": "Favorites",
+  "about": "About",
+  "language": "Language",
+  "mediaAndFiles": "Media and Files",
+  "muteNotifications": "Mute Notifications",
+  "members": "Members",
+  "admin": "Admin",
+  "groupMembers": "Group - {count} members",
+  "yes": "Yes",
+  "no": "No"
 
 }

@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 
 class ScreenLayoutWidget extends StatefulWidget {
   final List<Widget> children;
-  final String? currentPath;
   final double verPadding;
 
-  const ScreenLayoutWidget(
-      {super.key,
-      this.verPadding = 40,
-      required this.children,
-      this.currentPath});
+  const ScreenLayoutWidget({
+    super.key,
+    this.verPadding = 40,
+    required this.children,
+  });
 
   @override
   State<ScreenLayoutWidget> createState() => _ScreenLayoutWidgetState();

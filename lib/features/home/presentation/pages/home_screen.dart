@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import 'package:roomly/features/groups/presentation/widget/search_widget.dart';
-import 'package:roomly/features/home/presentation/widget/chat_card.dart';
+import 'package:roomly/core/language/app_strings.dart';
+import 'package:roomly/core/language/locales.dart';
+import 'package:roomly/features/home/presentation/widget/chats_widget.dart';
 import 'package:roomly/utilities/constants/enums.dart';
-import 'package:roomly/utilities/extensions.dart';
-import 'package:roomly/widgets/helper/screen_spacer.dart';
-import 'package:roomly/widgets/mainLayout/screen_layout_widget.dart';
+import 'package:roomly/widgets/interactive_widgets/custom_tab_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   static String routeName = ScreenRoutes.chats.name;
@@ -33,15 +32,18 @@ class _HomeScreenState extends State<HomeScreen> {
   }
   @override
   Widget build(BuildContext context) {
-    return ScreenLayoutWidget(
-      children: [
-        SearchWidget(controller: searchController).asPaddedSliver(),
-        ScreenSpacer(),
-        SliverList.builder(
-            itemBuilder: (c, i) => ChatCard(
-                  isLast: i == 4,
-                ),
-            itemCount: 5),
+    final tr = context.t;
+    return CustomTabBar(
+      tabs: [
+        TabItem(label: tr.chats),
+        TabItem(label: tr.groups),
+        TabItem(label: tr.favoritesS),
+      ],
+      initialIndex: 0,
+      tabViews: [
+        ChatsWidget(searchController: searchController),
+        ChatsWidget(searchController: searchController),
+        ChatsWidget(searchController: searchController),
       ],
     );
   }

@@ -7,7 +7,9 @@ import 'package:roomly/utilities/roomly.dart';
 
 class ChatHeader extends StatelessWidget {
   final String name, subtitle;
-  const ChatHeader({super.key, required this.name, required this.subtitle});
+  final VoidCallback? onTapMenu;
+  const ChatHeader(
+      {super.key, required this.name, required this.subtitle, this.onTapMenu});
 
   @override
   Widget build(BuildContext context) {
@@ -43,14 +45,12 @@ class ChatHeader extends StatelessWidget {
           children: [
             Text(
               name,
-              style: AppTextStyles.captionText(
-                  context: context, color: colors.text1),
+              style: AppTextStyles.t14(color: colors.text1),
             ),
             const SizedBox(height: 2),
             Text(
               subtitle,
-              style: AppTextStyles.smallestCaptionText(
-                  context: context, color: colors.success),
+              style: AppTextStyles.b12(color: colors.success),
             ),
           ],
         ).expand,
@@ -64,10 +64,13 @@ class ChatHeader extends StatelessWidget {
           size: 20,
           color: colors.secondary,
         ).paddingOnly(end: 16),
-        Icon(
-          Roomly.menu,
-          size: 20,
-          color: colors.secondary,
+        GestureDetector(
+          onTap: onTapMenu,
+          child: Icon(
+            Roomly.menu,
+            size: 20,
+            color: colors.secondary,
+          ),
         ),
       ],
     ).paddingSymmetric(horizontal: mobileHozPadding, vertical: 12);

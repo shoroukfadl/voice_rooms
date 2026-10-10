@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:roomly/core/language/app_strings.dart';
 import 'package:roomly/core/language/locales.dart';
-import 'package:roomly/features/createChat/presentation/pages/create_room_screen.dart';
+import 'package:roomly/features/calls/presentation/pages/calls_screen.dart';
 import 'package:roomly/features/home/presentation/pages/home_screen.dart';
 import 'package:roomly/features/notifications/presentation/pages/notification_screen.dart';
 import 'package:roomly/features/settings/presentation/pages/settings_screen.dart';
@@ -31,7 +31,7 @@ class ItemBarModel {
         ItemBarModel(
           title: context.t.calls,
           icon: Roomly.call,
-          routeName: CreateChatScreen.routeName,
+          routeName: CallsScreen.routeName,
         ),
         ItemBarModel(
           title: context.t.settings,

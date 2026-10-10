@@ -19,14 +19,12 @@ class ChatCard extends StatelessWidget {
         context.goNamed(ChatScreen.routeName);
       },
       child: Container(
-          margin: EdgeInsetsGeometry.symmetric(horizontal: mobileHozPadding),
-          padding: EdgeInsetsGeometry.symmetric(horizontal: 8, vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          margin: EdgeInsetsGeometry.symmetric(horizontal: mobileHozPadding,vertical: 8),
           decoration: BoxDecoration(
-              border: isLast
-                  ? null
-                  : Border(
-                      bottom: BorderSide(color: colors.border),
-                    )),
+            color: colors.card,
+            borderRadius: BorderRadius.circular(cardRadius),
+          ),
           child: Row(
             spacing: 16,
             crossAxisAlignment: CrossAxisAlignment.start,

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:roomly/features/aiSummary/presentation/pages/ai_summary_screen.dart';
 import 'package:roomly/features/boarding/presentation/pages/boarding_screen.dart';
+import 'package:roomly/features/calls/presentation/pages/calls_screen.dart';
 import 'package:roomly/features/chat/presentation/pages/chat_screen.dart';
 import 'package:roomly/features/codeVerification/presentation/pages/code_header.dart';
 import 'package:roomly/features/createChat/presentation/pages/create_room_screen.dart';
@@ -190,6 +191,16 @@ class GoRouterConfig {
                 return getCustomTransitionPage(
                   state: state,
                   child: const CreateChatScreen(),
+                );
+              },
+            ),
+            GoRoute(
+              name: CallsScreen.routeName,
+              path: "/${CallsScreen.routeName}",
+              pageBuilder: (_, GoRouterState state) {
+                return getCustomTransitionPage(
+                  state: state,
+                  child: const CallsScreen(),
                 );
               },
             ),
