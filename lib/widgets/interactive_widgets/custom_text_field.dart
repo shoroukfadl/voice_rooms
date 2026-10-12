@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:roomly/core/language/app_styles.dart';
 import 'package:roomly/utilities/constants/constants.dart';
 import 'package:roomly/utilities/extensions.dart';
-import 'package:roomly/utilities/roomly.dart';
 
 class CustomTextField extends StatefulWidget {
   final TextEditingController controller;
@@ -16,6 +15,7 @@ class CustomTextField extends StatefulWidget {
   final int maxLines;
   final Function(String)? onChanged;
   final Widget? suffixIcon;
+  final Color? backgroundColor, borderColor;
 
   const CustomTextField(
       {super.key,
@@ -30,6 +30,8 @@ class CustomTextField extends StatefulWidget {
       this.keyboardType = TextInputType.text,
       this.validator,
       this.maxLines = 1,
+      this.backgroundColor,
+      this.borderColor,
       this.suffixIcon});
 
   @override
@@ -81,14 +83,17 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 context: context,
                 color: colors.text3,
               ),
-              border: border(color: colors.border),
-              enabledBorder: border(color: colors.border),
-              disabledBorder: border(color: colors.border),
-              errorBorder: border(color: colors.danger),
-              focusedBorder: border(color: colors.secondary),
-              focusedErrorBorder: border(color: colors.danger),
+              border: border(color: widget.borderColor ?? colors.border),
+              enabledBorder: border(color: widget.borderColor ?? colors.border),
+              disabledBorder:
+                  border(color: widget.borderColor ?? colors.border),
+              errorBorder: border(color: widget.borderColor ?? colors.danger),
+              focusedBorder:
+                  border(color: widget.borderColor ?? colors.secondary),
+              focusedErrorBorder:
+                  border(color: widget.borderColor ?? colors.danger),
               filled: true,
-              fillColor: colors.card,
+              fillColor: widget.backgroundColor ?? colors.card,
               prefixIcon: widget.prefixIcon != null
                   ? Icon(widget.prefixIcon, color: colors.text3, size: 18)
                   : null,
@@ -98,7 +103,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   (widget.obscure
                       ? IconButton(
                           icon: Icon(
-                            _obscured ? Roomly.hide : Roomly.show,
+                            _obscured ? Icons.visibility_off : Icons.visibility,
                             color: colors.text3,
                             size: 18,
                           ),

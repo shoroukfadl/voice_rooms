@@ -14,65 +14,73 @@ class ChatHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    return Row(
-      children: [
-        GestureDetector(
-          onTap: () => context.pop(),
-          child: Icon(
-            Roomly.arrowLeft,
-            size: 18,
-            color: colors.text2,
-          ),
-        ),
-        const SizedBox(width: 12),
-        Container(
-          width: 40,
-          height: 40,
-          decoration: const BoxDecoration(
-            color: Color(0xFF6B6D73),
-            shape: BoxShape.circle,
-          ),
-          alignment: Alignment.center,
-          child: Text(
-            "SN",
-            style: AppTextStyles.captionText(
-                context: context, color: Colors.white),
-          ),
-        ),
-        const SizedBox(width: 12),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              name,
-              style: AppTextStyles.t14(color: colors.text1),
+    return Container(
+      color: colors.card,
+      height: 120,
+      alignment: Alignment.center,
+      padding: const EdgeInsets.only(
+          left: mobileHozPadding, right: mobileHozPadding, top: 40),
+      child: Row(
+        children: [
+          GestureDetector(
+            onTap: () => context.pop(),
+            child: Icon(
+              Roomly.arrowLeft,
+              size: 18,
+              color: colors.text2,
             ),
-            const SizedBox(height: 2),
-            Text(
-              subtitle,
-              style: AppTextStyles.b12(color: colors.success),
+          ),
+          const SizedBox(width: 12),
+          Container(
+            width: 40,
+            height: 40,
+            decoration: const BoxDecoration(
+              color: Color(0xFF6B6D73),
+              shape: BoxShape.circle,
             ),
-          ],
-        ).expand,
-        Icon(
-          Roomly.call,
-          size: 20,
-          color: colors.secondary,
-        ).paddingOnly(end: 16),
-        Icon(
-          Roomly.vedio,
-          size: 20,
-          color: colors.secondary,
-        ).paddingOnly(end: 16),
-        GestureDetector(
-          onTap: onTapMenu,
-          child: Icon(
-            Roomly.menu,
+            alignment: Alignment.center,
+            child: Text(
+              "SN",
+              style: AppTextStyles.captionText(
+                  context: context, color: Colors.white),
+            ),
+          ),
+          const SizedBox(width: 12),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                name,
+                style: AppTextStyles.t14(color: colors.text1),
+              ),
+              const SizedBox(height: 2),
+              Text(
+                subtitle,
+                style: AppTextStyles.b12(color: colors.success),
+              ),
+            ],
+          ).expand,
+          Icon(
+            Roomly.call,
             size: 20,
             color: colors.secondary,
+          ).paddingOnly(end: 16),
+          Icon(
+            Roomly.vedio,
+            size: 20,
+            color: colors.secondary,
+          ).paddingOnly(end: 16),
+          GestureDetector(
+            onTap: onTapMenu,
+            child: Icon(
+              Roomly.menu,
+              size: 20,
+              color: colors.secondary,
+            ),
           ),
-        ),
-      ],
-    ).paddingSymmetric(horizontal: mobileHozPadding, vertical: 12);
+        ],
+      ),
+    );
   }
 }

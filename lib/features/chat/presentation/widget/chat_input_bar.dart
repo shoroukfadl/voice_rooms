@@ -34,6 +34,7 @@ class _ChatInputBarState extends State<ChatInputBar> {
     final strings = context.t;
 
     return Column(
+      spacing: 8,
       children: [
         // Suggested Message
         if (widget.suggestedMessage != null)
@@ -69,26 +70,28 @@ class _ChatInputBarState extends State<ChatInputBar> {
               ],
             ),
           ),
-        const SizedBox(height: 8),
         // Input Field
-        CustomTextField(
-          controller: message,
-          hint: strings.typeMessage,
-          keyboardType: TextInputType.multiline,
-          prefixIcon: Roomly.add,
-          borderRadius: 0,
-          suffixIcon: Container(
-            width: 40,
-            margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            decoration: BoxDecoration(
-              color: colors.accent,
-              borderRadius: BorderRadius.circular(12),
+        Row(
+          children: [
+            const SizedBox(width: 8),
+            CustomTextField(
+              backgroundColor: colors.background,
+              borderColor: colors.border,
+              controller: message,
+              hint: strings.typeMessage,
+              keyboardType: TextInputType.multiline,
+              prefixIcon: Roomly.add,
+              borderRadius: pillsRadius,
+            ).expand,
+            const SizedBox(width: 8),
+            CircleAvatar(
+              radius: 24,
+              backgroundColor: colors.accent,
+              child: Icon(Roomly.send, size: 20, color: colors.accentSoft),
             ),
-            alignment: Alignment.center,
-            child: Icon(Roomly.send, size: 20, color: colors.accentSoft),
-          ),
-        ),
+            const SizedBox(width: 8),
+          ],
+        )
       ],
     );
   }

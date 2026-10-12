@@ -4,7 +4,10 @@ import 'package:go_router/go_router.dart';
 import 'package:roomly/features/aiSummary/presentation/pages/ai_summary_screen.dart';
 import 'package:roomly/features/boarding/presentation/pages/boarding_screen.dart';
 import 'package:roomly/features/calls/presentation/pages/calls_screen.dart';
+import 'package:roomly/features/chat/data/model/chat_model.dart';
 import 'package:roomly/features/chat/presentation/pages/chat_screen.dart';
+import 'package:roomly/features/chatProfile/data/model/chat_member_model.dart';
+import 'package:roomly/features/chatProfile/presentation/pages/chat_profile_screen.dart';
 import 'package:roomly/features/codeVerification/presentation/pages/code_header.dart';
 import 'package:roomly/features/createChat/presentation/pages/create_room_screen.dart';
 import 'package:roomly/features/groups/presentation/pages/groups_screen.dart';
@@ -113,15 +116,57 @@ class GoRouterConfig {
           },
           routes: [
             GoRoute(
-              name: HomeScreen.routeName,
-              path: "/${HomeScreen.routeName}",
-              pageBuilder: (_, GoRouterState state) {
-                return getCustomTransitionPage(
-                  state: state,
-                  child: const HomeScreen(),
-                );
-              },
-            ),
+                name: HomeScreen.routeName,
+                path: "/${HomeScreen.routeName}",
+                pageBuilder: (_, GoRouterState state) {
+                  return getCustomTransitionPage(
+                    state: state,
+                    child: const HomeScreen(),
+                  );
+                },
+                routes: [
+                  GoRoute(
+                      name: ChatScreen.routeName,
+                      path: ChatScreen.routeName,
+                      pageBuilder: (_, GoRouterState state) {
+                        return getCustomTransitionPage(
+                          state: state,
+                          child: const ChatScreen(),
+                        );
+                      },
+                      routes: [
+                        GoRoute(
+                          name: 'chatProfile',
+                          path: 'profile',
+                          pageBuilder: (_, GoRouterState state) {
+                            final extra = state.extra as Map<String, dynamic>?;
+                            return getCustomTransitionPage(
+                              state: state,
+                              child: ChatProfileScreen(
+                                chatType: extra?['chatType'] ?? ChatType.direct,
+                                name: extra?['name'],
+                                phoneNumber: extra?['phoneNumber'],
+                                about: extra?['about'],
+                                language: extra?['language'],
+                                mediaCount: extra?['mediaCount'],
+                                isMuted: extra?['isMuted'],
+                                members: extra?['members'],
+                              ),
+                            );
+                          },
+                        ),
+                        GoRoute(
+                          name: AiSummaryScreen.routeName,
+                          path: AiSummaryScreen.routeName,
+                          pageBuilder: (_, GoRouterState state) {
+                            return getCustomTransitionPage(
+                              state: state,
+                              child: const AiSummaryScreen(),
+                            );
+                          },
+                        )
+                      ]),
+                ]),
             GoRoute(
               name: GroupsScreen.routeName,
               path: "/${GroupsScreen.routeName}",
@@ -132,27 +177,6 @@ class GoRouterConfig {
                 );
               },
             ),
-            GoRoute(
-                name: ChatScreen.routeName,
-                path: "/${ChatScreen.routeName}",
-                pageBuilder: (_, GoRouterState state) {
-                  return getCustomTransitionPage(
-                    state: state,
-                    child: const ChatScreen(),
-                  );
-                },
-                routes: [
-                  GoRoute(
-                    name: AiSummaryScreen.routeName,
-                    path: AiSummaryScreen.routeName,
-                    pageBuilder: (_, GoRouterState state) {
-                      return getCustomTransitionPage(
-                        state: state,
-                        child: const AiSummaryScreen(),
-                      );
-                    },
-                  )
-                ]),
             GoRoute(
               name: NotificationScreen.routeName,
               path: "/${NotificationScreen.routeName}",

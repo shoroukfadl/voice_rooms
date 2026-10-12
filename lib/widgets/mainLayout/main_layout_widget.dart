@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:roomly/Core/Language/app_styles.dart';
 import 'package:roomly/core/language/locales.dart';
+import 'package:roomly/features/chat/presentation/pages/chat_screen.dart';
 import 'package:roomly/features/chat/presentation/widget/controllers.dart';
-import 'package:roomly/utilities/constants/enums.dart';
 import 'package:roomly/utilities/extensions.dart';
 import 'package:roomly/utilities/router_config.dart';
 import 'package:roomly/widgets/mainLayout/BottomNavBar/bottom_nav_bar_items.dart';
@@ -32,13 +32,12 @@ class _MainLayoutWidgetState extends State<MainLayoutWidget> {
         ? (screenWidth / _designWidth).clamp(0.5, 1.0)
         : 1.0;
 
-    final hideBottomNav =
-        preventedRoutes.contains(widget.currentPath?.replaceAll("/", "") ?? "");
-    final chatRoute =
-        widget.currentPath?.replaceAll("/", "") == ScreenRoutes.chat.name;
+    final currentRoute = widget.currentPath?.split('/').last;
+    final hideBottomNav = preventedRoutes.contains(currentRoute);
+    final chatRoute = currentRoute == ChatScreen.routeName;
     return Scaffold(
       key: GlobalKeys.scaffoldKey,
-      backgroundColor: colors.background,
+      backgroundColor: colors.card,
       appBar: chatRoute
           ? null
           : AppBar(

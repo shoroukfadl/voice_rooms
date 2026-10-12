@@ -96,6 +96,6 @@ class ChatMessageBubble extends StatelessWidget {
               context: context, color: colors.text3),
         ),
       ],
-    ).paddingSymmetric(vertical: 4);
+    ).paddingSymmetric(vertical: 4, horizontal: mobileHozPadding);
   }
 }

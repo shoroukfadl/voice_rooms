@@ -4,6 +4,7 @@ import 'package:roomly/Utilities/Constants/constants.dart';
 import 'package:roomly/Utilities/extensions.dart';
 import 'package:roomly/core/language/app_strings.dart';
 import 'package:roomly/core/language/locales.dart';
+import 'package:roomly/utilities/roomly.dart';
 
 class ChatActionButtons extends StatelessWidget {
   const ChatActionButtons({
@@ -25,23 +26,23 @@ class ChatActionButtons extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: mobileHozPadding, vertical: 12),
       child: Row(
-        spacing: 4,
+        spacing: 16,
         children: [
           _ActionButton(
             label: strings.translate,
-            icon: Icons.translate,
+            icon: Roomly.language,
             colors: colors,
             onTap: onTranslate,
           ),
           _ActionButton(
             label: strings.summarize,
-            icon: Icons.summarize,
+            icon: Roomly.ai,
             colors: colors,
             onTap: onSummarize,
           ),
           _ActionButton(
             label: strings.correct,
-            icon: Icons.check_circle,
+            icon: Roomly.check,
             colors: colors,
             onTap: onCorrect,
           ),
@@ -71,7 +72,8 @@ class _ActionButton extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(cardRadius),
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+          height: 40,
+          alignment: Alignment.center,
           decoration: BoxDecoration(
             color: colors.surface,
             borderRadius: BorderRadius.circular(cardRadius),
@@ -83,12 +85,12 @@ class _ActionButton extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                size: 18,
+                size: 16,
                 color: colors.text2,
               ),
               Text(
                 label,
-                style: AppTextStyles.t14(color: colors.text1),
+                style: AppTextStyles.t12(color: colors.text1),
               ),
             ],
           ),

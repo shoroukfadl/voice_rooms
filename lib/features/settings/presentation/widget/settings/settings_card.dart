@@ -43,7 +43,7 @@ class SettingsCard extends StatelessWidget {
             item: SegmentOption(
               value: 'security',
               label: tr.privacy,
-              icon: Roomly.secuirty,
+              icon: Roomly.forgot,
             ),
             isLast: true,
             onTap: (_) {},

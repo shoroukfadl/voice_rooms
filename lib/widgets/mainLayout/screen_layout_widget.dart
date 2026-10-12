@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:roomly/Utilities/extensions.dart';
 
 class ScreenLayoutWidget extends StatefulWidget {
   final List<Widget> children;
@@ -17,10 +18,11 @@ class ScreenLayoutWidget extends StatefulWidget {
 class _ScreenLayoutWidgetState extends State<ScreenLayoutWidget> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        minimum: EdgeInsets.symmetric(
+    return Container(
+        padding: EdgeInsets.symmetric(
           vertical: widget.verPadding,
         ),
+        color: context.colors.background,
         child: RawScrollbar(
           thumbVisibility: true,
           trackVisibility: true,
