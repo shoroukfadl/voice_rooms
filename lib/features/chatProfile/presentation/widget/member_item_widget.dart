@@ -18,8 +18,10 @@ class MemberItemWidget extends StatelessWidget {
     final colors = context.colors;
     final strings = context.t;
 
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
+    return Container(
+      padding: const EdgeInsets.only(bottom: 8, top: 8),
+      decoration: BoxDecoration(
+          border: Border(bottom: BorderSide(color: colors.border))),
       child: Row(
         children: [
           Container(

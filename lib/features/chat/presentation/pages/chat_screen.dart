@@ -19,7 +19,7 @@ class ChatScreen extends StatefulWidget {
   static String routeName = ScreenRoutes.chat.name;
   const ChatScreen({
     super.key,
-    this.chatType = ChatType.direct,
+    this.chatType = ChatType.group,
     this.name,
     this.subtitle,
   });
@@ -98,7 +98,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void _showProfileScreen(BuildContext context) {
-    context.pushNamed(
+    context.goNamed(
       ChatProfileScreen.routeName,
       extra: {
         'chatType': widget.chatType,

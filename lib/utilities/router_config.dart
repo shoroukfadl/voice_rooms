@@ -6,7 +6,6 @@ import 'package:roomly/features/boarding/presentation/pages/boarding_screen.dart
 import 'package:roomly/features/calls/presentation/pages/calls_screen.dart';
 import 'package:roomly/features/chat/data/model/chat_model.dart';
 import 'package:roomly/features/chat/presentation/pages/chat_screen.dart';
-import 'package:roomly/features/chatProfile/data/model/chat_member_model.dart';
 import 'package:roomly/features/chatProfile/presentation/pages/chat_profile_screen.dart';
 import 'package:roomly/features/codeVerification/presentation/pages/code_header.dart';
 import 'package:roomly/features/createChat/presentation/pages/create_room_screen.dart';
@@ -136,14 +135,14 @@ class GoRouterConfig {
                       },
                       routes: [
                         GoRoute(
-                          name: 'chatProfile',
-                          path: 'profile',
+                          name: ChatProfileScreen.routeName,
+                          path: ChatProfileScreen.routeName,
                           pageBuilder: (_, GoRouterState state) {
                             final extra = state.extra as Map<String, dynamic>?;
                             return getCustomTransitionPage(
                               state: state,
                               child: ChatProfileScreen(
-                                chatType: extra?['chatType'] ?? ChatType.direct,
+                                chatType: extra?['chatType'] ?? ChatType.group,
                                 name: extra?['name'],
                                 phoneNumber: extra?['phoneNumber'],
                                 about: extra?['about'],
@@ -256,5 +255,6 @@ class GoRouterConfig {
 
 List<String> preventedRoutes = [
   ScreenRoutes.chat.name,
-  ScreenRoutes.aiSummary.name
+  ScreenRoutes.aiSummary.name,
+  ScreenRoutes.profileChat.name,
 ];

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:roomly/Core/Language/app_styles.dart';
 import 'package:roomly/core/language/locales.dart';
-import 'package:roomly/features/chat/presentation/pages/chat_screen.dart';
-import 'package:roomly/features/chat/presentation/widget/controllers.dart';
 import 'package:roomly/utilities/extensions.dart';
 import 'package:roomly/utilities/router_config.dart';
 import 'package:roomly/widgets/mainLayout/BottomNavBar/bottom_nav_bar_items.dart';
+import 'package:roomly/widgets/mainLayout/new_chat_floating.dart';
 
 import '../../Utilities/Constants/global_keys.dart';
 
@@ -34,11 +33,10 @@ class _MainLayoutWidgetState extends State<MainLayoutWidget> {
 
     final currentRoute = widget.currentPath?.split('/').last;
     final hideBottomNav = preventedRoutes.contains(currentRoute);
-    final chatRoute = currentRoute == ChatScreen.routeName;
     return Scaffold(
       key: GlobalKeys.scaffoldKey,
       backgroundColor: colors.card,
-      appBar: chatRoute
+      appBar: hideBottomNav
           ? null
           : AppBar(
               backgroundColor: colors.card,
@@ -49,19 +47,12 @@ class _MainLayoutWidgetState extends State<MainLayoutWidget> {
                     context: context, color: colors.text1),
               ),
             ),
-      bottomNavigationBar: chatRoute
-          ? ActiveRoomControls(
-              isSelfMuted: false,
-              onLeave: () {},
-              onRaiseHand: () {},
-              onToggleMute: () {},
-            )
-          : hideBottomNav
-              ? null
-              : BottomNavBarItems(
-                  currentPath: widget.currentPath,
-                ),
-      //floatingActionButton: CreateNewRoom(),
+      bottomNavigationBar: hideBottomNav
+          ? null
+          : BottomNavBarItems(
+              currentPath: widget.currentPath,
+            ),
+      floatingActionButton: NewChatWidget(),
       body: AnimatedScale(
         scale: scale,
         duration: const Duration(milliseconds: 400),

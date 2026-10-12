@@ -16,21 +16,18 @@ class DetailRowWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
 
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 20),
-      child: Row(
-        children: [
-          Text(
-            label,
-            style: AppTextStyles.t14(color: colors.text2),
-          ),
-          const Spacer(),
-          Text(
-            value,
-            style: AppTextStyles.t14(color: colors.text1),
-          ),
-        ],
-      ),
+    return Row(
+      children: [
+        Text(
+          label,
+          style: AppTextStyles.t14(color: colors.text2),
+        ),
+        const Spacer(),
+        Text(
+          value,
+          style: AppTextStyles.t14(color: colors.text1),
+        ),
+      ],
     );
   }
 }

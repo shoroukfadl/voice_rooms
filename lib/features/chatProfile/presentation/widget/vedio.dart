@@ -14,24 +14,15 @@ class VideoWidget extends StatelessWidget {
     final strings = context.t;
     return Column(
       children: [
-        Container(
-          width: 56,
-          height: 56,
-          decoration: BoxDecoration(
-            color: colors.accent,
-            shape: BoxShape.circle,
-          ),
-          alignment: Alignment.center,
-          child: Icon(
-            Roomly.vedio,
-            size: 28,
-            color: colors.accentSoft,
-          ),
+        Icon(
+          Roomly.vedio,
+          size: 100,
+          color: colors.accent,
         ),
         const SizedBox(height: 8),
         Text(
           strings.video,
-          style: AppTextStyles.t14(color: colors.text2),
+          style: AppTextStyles.t16(color: colors.text2),
         ),
       ],
     );

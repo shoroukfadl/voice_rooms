@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:roomly/Core/Language/app_styles.dart';
 import 'package:roomly/Utilities/Constants/constants.dart';
 import 'package:roomly/Utilities/extensions.dart';
 import 'package:roomly/utilities/roomly.dart';
+import 'package:roomly/widgets/helper/back_button.dart';
 
 class ChatHeader extends StatelessWidget {
   final String name, subtitle;
@@ -22,14 +22,7 @@ class ChatHeader extends StatelessWidget {
           left: mobileHozPadding, right: mobileHozPadding, top: 40),
       child: Row(
         children: [
-          GestureDetector(
-            onTap: () => context.pop(),
-            child: Icon(
-              Roomly.arrowLeft,
-              size: 18,
-              color: colors.text2,
-            ),
-          ),
+          CustomBackButton(),
           const SizedBox(width: 12),
           Container(
             width: 40,

@@ -84,6 +84,7 @@
   "admin": "Admin",
   "groupMembers": "Group - {count} members",
   "yes": "Yes",
-  "no": "No"
+  "no": "No",
+  "newChat": "New chat"
 
 }

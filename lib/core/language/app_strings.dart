@@ -85,6 +85,7 @@ extension AppStrings on AppLocalizations {
   String get mediaAndFiles => tr('mediaAndFiles');
   String get muteNotifications => tr('muteNotifications');
   String get members => tr('members');
+  String get newChat => tr('newChat');
   String get admin => tr('admin');
   String groupMembers(int count) => tr('groupMembers', {'count': '$count'});
   String get yes => tr('yes');
