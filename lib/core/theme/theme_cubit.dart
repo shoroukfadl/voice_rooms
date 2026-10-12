@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:roomly/core/Theme/theme_state.dart';
@@ -20,7 +21,8 @@ class ThemeCubit extends Cubit<ThemeState> {
     final hive = HiveHelper<String>(
         hiveManager: sl<HiveManager>(), boxName: HiveBox.user);
     final th = await hive.get('theme');
-    final theme = ThemeMode.values.firstWhere((e) => e.name == th);
+    final theme = ThemeMode.values.firstWhereOrNull((e) => e.name == th) ??
+        ThemeMode.system;
     emit(state.copyWithMethod(theme: theme));
   }
 }
