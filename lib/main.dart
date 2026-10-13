@@ -18,12 +18,15 @@ import 'package:roomly/core/network/network.dart';
 import 'package:roomly/firebase_options.dart';
 import 'package:roomly/utilities/app_themes.dart';
 import 'package:roomly/utilities/git_it.dart';
+import 'package:roomly/utilities/observer.dart';
 import 'package:roomly/utilities/router_config.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 Future<void> main() async {
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
+    AppBlocObserver observer = AppBlocObserver();
+    Bloc.observer = observer;
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );

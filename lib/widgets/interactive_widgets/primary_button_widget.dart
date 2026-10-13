@@ -6,7 +6,7 @@ import 'package:roomly/widgets/interactive_widgets/custom_button_widget.dart';
 
 class PrimaryButtonWidget extends StatelessWidget {
   final String title;
-  final Function() onTap;
+  final Function()? onTap;
   final double height;
   final bool loading;
   const PrimaryButtonWidget(
@@ -14,7 +14,7 @@ class PrimaryButtonWidget extends StatelessWidget {
       this.loading = false,
       this.height = 56,
       required this.title,
-      required this.onTap});
+      this.onTap});
 
   @override
   Widget build(BuildContext context) {

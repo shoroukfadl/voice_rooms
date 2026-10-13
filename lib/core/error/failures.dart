@@ -57,7 +57,7 @@ class FirebaseExceptionHelper {
         msg = 'Incorrect password.';
         break;
       case 'invalid-credential':
-      case 'invalid-login-credentials':
+      case 'invalid-sendCode-credentials':
         msg = 'Incorrect email or password.';
         break;
       case 'email-already-in-use':
@@ -72,10 +72,10 @@ class FirebaseExceptionHelper {
       case 'too-many-requests':
         msg = 'Too many attempts. Please try again later.';
         break;
-      case 'network-request-failed':
+      case 'network-dataSource-failed':
         msg = 'No internet connection.';
         break;
-      case 'requires-recent-login':
+      case 'requires-recent-sendCode':
         msg = 'Please sign in again to complete this action.';
         break;
       case 'account-exists-with-different-credential':
@@ -100,7 +100,7 @@ class FirebaseExceptionHelper {
         msg = 'Quota exceeded. Please try again later.';
         break;
       case 'popup-closed-by-user':
-      case 'cancelled-popup-request':
+      case 'cancelled-popup-dataSource':
         msg = 'Sign-in was cancelled.';
         break;
       default:

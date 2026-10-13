@@ -7,15 +7,16 @@ import 'package:roomly/features/calls/presentation/pages/calls_screen.dart';
 import 'package:roomly/features/chat/data/model/chat_model.dart';
 import 'package:roomly/features/chat/presentation/pages/chat_screen.dart';
 import 'package:roomly/features/chatProfile/presentation/pages/chat_profile_screen.dart';
-import 'package:roomly/features/codeVerification/presentation/pages/code_header.dart';
+import 'package:roomly/features/codeVerification/presentation/cubit/code_verification_cubit.dart';
+import 'package:roomly/features/codeVerification/presentation/pages/code_screen.dart';
 import 'package:roomly/features/createChat/presentation/pages/create_room_screen.dart';
 import 'package:roomly/features/groups/presentation/pages/groups_screen.dart';
 import 'package:roomly/features/home/presentation/pages/home_screen.dart';
-import 'package:roomly/features/login/presentation/cubit/login_cubit.dart';
-import 'package:roomly/features/login/presentation/pages/login_screen.dart';
 import 'package:roomly/features/notifications/presentation/pages/notification_screen.dart';
 import 'package:roomly/features/profile/presentation/pages/profile_screen.dart';
 import 'package:roomly/features/profileSetup/presentation/pages/profile_setup_screen.dart';
+import 'package:roomly/features/sendCode/presentation/cubit/send_code_cubit.dart';
+import 'package:roomly/features/sendCode/presentation/pages/send_code_screen.dart';
 import 'package:roomly/features/settings/presentation/pages/settings_screen.dart';
 import 'package:roomly/utilities/constants/enums.dart';
 import 'package:roomly/utilities/git_it.dart';
@@ -72,15 +73,15 @@ class GoRouterConfig {
         },
       ),
       GoRoute(
-          path: "/${LoginScreen.routeName}",
-          name: LoginScreen.routeName,
+          path: "/${SendCodeScreen.routeName}",
+          name: SendCodeScreen.routeName,
           pageBuilder: (_, GoRouterState state) {
             return getCustomTransitionPage(
               state: state,
-              child: BlocProvider<LoginCubit>(
-                  create: (c) => sl<LoginCubit>(),
+              child: BlocProvider<SendCodeCubit>(
+                  create: (c) => sl<SendCodeCubit>(),
                   // dispse: (c, cubit) => cubit.close(),
-                  child: const LoginScreen()),
+                  child: const SendCodeScreen()),
             );
           },
           routes: [
@@ -89,9 +90,15 @@ class GoRouterConfig {
                 name: CodeScreen.routeName,
                 pageBuilder: (_, GoRouterState state) {
                   return getCustomTransitionPage(
-                    state: state,
-                    child: const CodeScreen(),
-                  );
+                      state: state,
+                      child: BlocProvider<VerifyCodeCubit>(
+                        create: (c) => sl<VerifyCodeCubit>(),
+                        child: CodeScreen(
+                          phone: state.uri.queryParameters['phone'] ?? "",
+                          verificationId:
+                              state.uri.queryParameters['verificationId'] ?? "",
+                        ),
+                      ));
                 },
                 routes: [
                   GoRoute(

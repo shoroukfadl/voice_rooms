@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:roomly/Utilities/Constants/constants.dart';
 import 'package:roomly/Utilities/extensions.dart';
-import 'package:roomly/features/login/presentation/pages/login_screen.dart';
+import 'package:roomly/features/sendCode/presentation/pages/send_code_screen.dart';
 import 'package:roomly/widgets/interactive_widgets/custom_button_widget.dart';
 
 class LoginWidget extends StatelessWidget {
@@ -16,7 +16,7 @@ class LoginWidget extends StatelessWidget {
     return CustomButtonWidget(
       title: "Strings.backToLogInButton.translate",
       onPressed: () {
-        context.goNamed(LoginScreen.routeName);
+        context.goNamed(SendCodeScreen.routeName);
       },
       height: 48,
       btnColor: colors.surface,

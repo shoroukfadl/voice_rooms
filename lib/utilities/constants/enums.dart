@@ -43,3 +43,7 @@ enum ThemeMode {
   dark,
   system,
 }
+
+enum Collection {
+  users,
+}

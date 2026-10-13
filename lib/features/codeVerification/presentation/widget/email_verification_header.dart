@@ -7,8 +7,10 @@ import 'package:roomly/utilities/roomly.dart';
 import 'package:roomly/widgets/helper/icon_with_background.dart';
 
 class CodeVerificationHeader extends StatelessWidget {
+  final String phone;
   const CodeVerificationHeader({
     super.key,
+    required this.phone,
   });
 
   @override
@@ -30,7 +32,7 @@ class CodeVerificationHeader extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         Text(
-          tr.codeSentTo("01222212121"),
+          tr.codeSentTo(phone),
           style: AppTextStyles.b12(color: colors.text2),
         ),
       ],

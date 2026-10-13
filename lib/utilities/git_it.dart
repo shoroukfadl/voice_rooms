@@ -12,18 +12,23 @@ import 'package:roomly/features/VerificationLink/data/repository/link_repo_imp.d
 import 'package:roomly/features/VerificationLink/domain/repository/link_repo.dart';
 import 'package:roomly/features/VerificationLink/domain/useCases/link_useCase.dart';
 import 'package:roomly/features/VerificationLink/presentation/cubit/link_cubit.dart';
-import 'package:roomly/features/login/data/datasources/local/login_local_data_source.dart';
-import 'package:roomly/features/login/data/datasources/local/login_local_data_source_impl.dart';
-import 'package:roomly/features/login/data/datasources/remote/login_remote_data_source.dart';
-import 'package:roomly/features/login/data/datasources/remote/login_remote_data_source_impl.dart';
-import 'package:roomly/features/login/data/repository/login_repository_impl.dart';
-import 'package:roomly/features/login/domain/repository/login_repository.dart';
-// import 'package:roomly/features/login/domain/usecases/get_current_user_usecase.dart';
-// import 'package:roomly/features/login/domain/usecases/login_with_email_password_usecase.dart';
-// import 'package:roomly/features/login/domain/usecases/login_with_google_usecase.dart';
-// import 'package:roomly/features/login/domain/usecases/logout_usecase.dart';
-// import 'package:roomly/features/login/domain/usecases/send_password_reset_email_usecase.dart';
-import 'package:roomly/features/login/presentation/cubit/login_cubit.dart';
+import 'package:roomly/features/codeVerification/data/dataSource/remote/code_verif_remote_data_source.dart';
+import 'package:roomly/features/codeVerification/data/dataSource/remote/code_verif_remote_data_source_impl.dart';
+import 'package:roomly/features/codeVerification/data/repository/code_verif_repo_imp.dart';
+import 'package:roomly/features/codeVerification/domain/repository/code_verif_repo.dart';
+import 'package:roomly/features/codeVerification/domain/usecase/verify_code_usecase.dart';
+import 'package:roomly/features/codeVerification/presentation/cubit/code_verification_cubit.dart';
+import 'package:roomly/features/sendCode/data/datasources/remote/send_remote_data_source.dart';
+import 'package:roomly/features/sendCode/data/datasources/remote/send_remote_data_source_impl.dart';
+import 'package:roomly/features/sendCode/data/repository/send_code_repository_impl.dart';
+import 'package:roomly/features/sendCode/domain/repository/send_code_repository.dart';
+import 'package:roomly/features/sendCode/domain/usecases/send_code_usecase.dart';
+// import 'package:roomly/features/sendCode/domain/usecases/get_current_user_usecase.dart';
+// import 'package:roomly/features/sendCode/domain/usecases/login_with_email_password_usecase.dart';
+// import 'package:roomly/features/sendCode/domain/usecases/login_with_google_usecase.dart';
+// import 'package:roomly/features/sendCode/domain/usecases/logout_usecase.dart';
+// import 'package:roomly/features/sendCode/domain/usecases/send_password_reset_email_usecase.dart';
+import 'package:roomly/features/sendCode/presentation/cubit/send_code_cubit.dart';
 
 final sl = GetIt.instance;
 
@@ -48,7 +53,8 @@ class GitIt {
     _initGitIt();
 
     _initLink();
-    _initLogin();
+    _initSendCode();
+    _initVerifyCode();
   }
 
   static Future<void> _initGitIt() async {
@@ -76,36 +82,42 @@ class GitIt {
     );
   }
 
-  static void _initLogin() {
-    sl.registerFactory(() => LoginCubit(
-          // loginWithEmailPasswordUseCase: sl(),
-          // loginWithGoogleUseCase: sl(),
-          // logoutUseCase: sl(),
-          // getCurrentUserUseCase: sl(),
-          // sendPasswordResetEmailUseCase: sl(),
-          connectivity: sl(),
+  static void _initSendCode() {
+    sl.registerFactory(() => SendCodeCubit(
+          sendCodeUseCase: sl(),
         ));
-    // sl.registerLazySingleton(() => LoginWithEmailPasswordUseCase(sl()));
-    // sl.registerLazySingleton(() => LoginWithGoogleUseCase(sl()));
-    // sl.registerLazySingleton(() => LogoutUseCase(sl()));
-    // sl.registerLazySingleton(() => GetCurrentUserUseCase(sl()));
-    // sl.registerLazySingleton(() => SendPasswordResetEmailUseCase(sl()));
-    sl.registerLazySingleton<LoginRepository>(
-      () => LoginRepositoryImpl(
+    sl.registerLazySingleton(() => SendCodeUseCase(repository: sl()));
+    sl.registerLazySingleton<SendCodeRepository>(
+      () => SendCodeRepositoryImpl(
         remoteDataSource: sl(),
-        localDataSource: sl(),
       ),
     );
 
     //! Data Sources
-    sl.registerLazySingleton<LoginRemoteDataSource>(
-      () => LoginRemoteDataSourceImpl(
-        sl(),
+    sl.registerLazySingleton<SendCodeRemoteDataSource>(
+      () => SendCodeRemoteDataSourceImpl(
         sl(),
       ),
     );
-    sl.registerLazySingleton<LoginLocalDataSource>(
-      () => LoginLocalDataSourceImpl(),
+  }
+
+  static void _initVerifyCode() {
+    sl.registerFactory(() => VerifyCodeCubit(
+          sendCodeUseCase: sl(),
+        ));
+    sl.registerLazySingleton(() => VerifyCodeUseCase(repository: sl()));
+    sl.registerLazySingleton<VerifyCodeRepository>(
+      () => VerifyCodeRepositoryImpl(
+        remoteDataSource: sl(),
+      ),
+    );
+
+    //! Data Sources
+    sl.registerLazySingleton<VerifyCodeRemoteDataSource>(
+      () => VerifyCodeRemoteDataSourceImpl(
+        sl(),
+        sl(),
+      ),
     );
   }
 }

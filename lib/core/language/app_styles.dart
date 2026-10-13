@@ -315,7 +315,7 @@ abstract class AppTextStyles extends ThemeExtension<AppTextStyles> {
         color: color ?? Colors.black,
       );
 
-  // Regular body/list text — form field values (login email, password
+  // Regular body/list text — form field values (sendCode email, password
   // dots, bio, room title placeholder, username), and regular list rows
   // on Settings, Security & two-factor, and Edit profile
   static TextStyle formAndListText(

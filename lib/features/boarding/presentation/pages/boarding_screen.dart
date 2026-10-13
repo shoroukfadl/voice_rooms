@@ -4,8 +4,8 @@ import 'package:roomly/Core/Language/app_styles.dart';
 import 'package:roomly/Utilities/Constants/constants.dart';
 import 'package:roomly/core/language/app_strings.dart';
 import 'package:roomly/core/language/locales.dart';
+import 'package:roomly/features/sendCode/presentation/pages/send_code_screen.dart';
 import 'package:roomly/features/boarding/presentation/widget/logo_widget.dart';
-import 'package:roomly/features/login/presentation/pages/login_screen.dart';
 import 'package:roomly/utilities/extensions.dart';
 import 'package:roomly/widgets/helper/screen_spacer.dart';
 import 'package:roomly/widgets/interactive_widgets/primary_button_widget.dart';
@@ -39,7 +39,7 @@ class BoardingScreen extends StatelessWidget {
           PrimaryButtonWidget(
               title: tr.getStarted,
               onTap: () {
-                context.goNamed(LoginScreen.routeName);
+                context.goNamed(SendCodeScreen.routeName);
               })
         ],
       ),
